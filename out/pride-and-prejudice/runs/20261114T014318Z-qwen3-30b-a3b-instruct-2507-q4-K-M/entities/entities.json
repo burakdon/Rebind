@@ -1,0 +1,2912 @@
+[
+  {
+    "id": "elizabeth-bennet",
+    "canonical": "Elizabeth Bennet",
+    "kind": "person",
+    "mentions": 225,
+    "names": [
+      "Elizabeth Bennet",
+      "Lizzy",
+      "Miss Elizabeth Bennet"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 61
+  },
+  {
+    "id": "jane-bennet",
+    "canonical": "Jane Bennet",
+    "kind": "person",
+    "mentions": 181,
+    "names": [
+      "Jane Bennet",
+      "Miss Bennet"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 61
+  },
+  {
+    "id": "mr-darcy",
+    "canonical": "Mr. Darcy",
+    "kind": "person",
+    "mentions": 150,
+    "names": [
+      "Mr. Darcy",
+      "Mr. Fitzwilliam Darcy",
+      "Darcy"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 61
+  },
+  {
+    "id": "mrs-bennet",
+    "canonical": "Mrs. Bennet",
+    "kind": "person",
+    "mentions": 119,
+    "names": [
+      "Mrs. Bennet"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 59
+  },
+  {
+    "id": "mr-bingley",
+    "canonical": "Mr. Bingley",
+    "kind": "person",
+    "mentions": 104,
+    "names": [
+      "Mr. Bingley",
+      "Bingley"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 61
+  },
+  {
+    "id": "mr-wickham",
+    "canonical": "Mr. Wickham",
+    "kind": "person",
+    "mentions": 102,
+    "names": [
+      "Mr. Wickham",
+      "Wickham",
+      "George Wickham"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 61
+  },
+  {
+    "id": "lydia-bennet",
+    "canonical": "Lydia Bennet",
+    "kind": "person",
+    "mentions": 88,
+    "names": [
+      "Lydia Bennet",
+      "Miss Lydia Bennet",
+      "Mrs. Wickham"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 61
+  },
+  {
+    "id": "mr-bennet",
+    "canonical": "Mr. Bennet",
+    "kind": "person",
+    "mentions": 83,
+    "names": [
+      "Mr. Bennet"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 61
+  },
+  {
+    "id": "mr-collins",
+    "canonical": "Mr. Collins",
+    "kind": "person",
+    "mentions": 81,
+    "names": [
+      "Mr. Collins"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 60
+  },
+  {
+    "id": "miss-bingley",
+    "canonical": "Miss Bingley",
+    "kind": "person",
+    "mentions": 63,
+    "names": [
+      "Miss Bingley",
+      "Caroline Bingley",
+      "Caroline"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 61
+  },
+  {
+    "id": "lady-catherine-de-bourgh",
+    "canonical": "Lady Catherine de Bourgh",
+    "kind": "person",
+    "mentions": 61,
+    "names": [
+      "Lady Catherine de Bourgh",
+      "Lady Catherine"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 61
+  },
+  {
+    "id": "kitty-bennet",
+    "canonical": "Kitty Bennet",
+    "kind": "person",
+    "mentions": 61,
+    "names": [
+      "Kitty Bennet",
+      "Catherine Bennet"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 60
+  },
+  {
+    "id": "mrs-gardiner",
+    "canonical": "Mrs. Gardiner",
+    "kind": "person",
+    "mentions": 44,
+    "names": [
+      "Mrs. Gardiner"
+    ],
+    "first_chapter": 25,
+    "last_chapter": 60
+  },
+  {
+    "id": "charlotte-lucas",
+    "canonical": "Charlotte Lucas",
+    "kind": "person",
+    "mentions": 43,
+    "names": [
+      "Charlotte Lucas",
+      "Charlotte"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 57
+  },
+  {
+    "id": "georgiana",
+    "canonical": "Georgiana",
+    "kind": "person",
+    "mentions": 39,
+    "names": [
+      "Miss Darcy",
+      "Georgiana",
+      "Georgiana Darcy"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 61
+  },
+  {
+    "id": "mr-gardiner",
+    "canonical": "Mr. Gardiner",
+    "kind": "person",
+    "mentions": 36,
+    "names": [
+      "Mr. Gardiner"
+    ],
+    "first_chapter": 25,
+    "last_chapter": 53
+  },
+  {
+    "id": "colonel-fitzwilliam",
+    "canonical": "Colonel Fitzwilliam",
+    "kind": "person",
+    "mentions": 29,
+    "names": [
+      "Colonel Fitzwilliam"
+    ],
+    "first_chapter": 30,
+    "last_chapter": 60
+  },
+  {
+    "id": "mary-bennet",
+    "canonical": "Mary Bennet",
+    "kind": "person",
+    "mentions": 29,
+    "names": [
+      "Mary Bennet",
+      "Mary"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 61
+  },
+  {
+    "id": "sir-william-lucas",
+    "canonical": "Sir William Lucas",
+    "kind": "person",
+    "mentions": 28,
+    "names": [
+      "Sir William Lucas"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 56
+  },
+  {
+    "id": "the-officers",
+    "canonical": "the officers",
+    "kind": "group",
+    "mentions": 23,
+    "names": [
+      "the officers"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 51
+  },
+  {
+    "id": "mrs-hurst",
+    "canonical": "Mrs. Hurst",
+    "kind": "person",
+    "mentions": 23,
+    "names": [
+      "Mrs. Hurst"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 53
+  },
+  {
+    "id": "maria-lucas",
+    "canonical": "Maria Lucas",
+    "kind": "person",
+    "mentions": 22,
+    "names": [
+      "Maria Lucas"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 58
+  },
+  {
+    "id": "mrs-collins",
+    "canonical": "Mrs. Collins",
+    "kind": "person",
+    "mentions": 21,
+    "names": [
+      "Mrs. Collins"
+    ],
+    "first_chapter": 29,
+    "last_chapter": 57
+  },
+  {
+    "id": "lady-lucas",
+    "canonical": "Lady Lucas",
+    "kind": "person",
+    "mentions": 20,
+    "names": [
+      "Lady Lucas",
+      "Mrs. Lucas"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 54
+  },
+  {
+    "id": "miss-lucas",
+    "canonical": "Miss Lucas",
+    "kind": "person",
+    "mentions": 19,
+    "names": [
+      "Miss Lucas"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 54
+  },
+  {
+    "id": "colonel-forster",
+    "canonical": "Colonel Forster",
+    "kind": "person",
+    "mentions": 18,
+    "names": [
+      "Colonel Forster"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 56
+  },
+  {
+    "id": "mr-hurst",
+    "canonical": "Mr. Hurst",
+    "kind": "person",
+    "mentions": 14,
+    "names": [
+      "Mr. Hurst"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 52
+  },
+  {
+    "id": "miss-de-bourgh",
+    "canonical": "Miss de Bourgh",
+    "kind": "person",
+    "mentions": 13,
+    "names": [
+      "Miss de Bourgh"
+    ],
+    "first_chapter": 14,
+    "last_chapter": 56
+  },
+  {
+    "id": "pemberley",
+    "canonical": "Pemberley",
+    "kind": "not_a_person",
+    "mentions": 11,
+    "names": [
+      "Pemberley"
+    ],
+    "first_chapter": 25,
+    "last_chapter": 61
+  },
+  {
+    "id": "mrs-philips",
+    "canonical": "Mrs. Philips",
+    "kind": "person",
+    "mentions": 10,
+    "names": [
+      "Mrs. Philips"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 55
+  },
+  {
+    "id": "mrs-long",
+    "canonical": "Mrs. Long",
+    "kind": "person",
+    "mentions": 9,
+    "names": [
+      "Mrs. Long"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 54
+  },
+  {
+    "id": "mr-denny",
+    "canonical": "Mr. Denny",
+    "kind": "person",
+    "mentions": 9,
+    "names": [
+      "Mr. Denny",
+      "Denny",
+      "Richard"
+    ],
+    "first_chapter": 14,
+    "last_chapter": 47
+  },
+  {
+    "id": "the-girls",
+    "canonical": "the girls",
+    "kind": "group",
+    "mentions": 8,
+    "names": [
+      "the girls"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 49
+  },
+  {
+    "id": "meryton",
+    "canonical": "Meryton",
+    "kind": "not_a_person",
+    "mentions": 8,
+    "names": [
+      "Meryton"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 52
+  },
+  {
+    "id": "mrs-forster",
+    "canonical": "Mrs. Forster",
+    "kind": "person",
+    "mentions": 8,
+    "names": [
+      "Mrs. Forster"
+    ],
+    "first_chapter": 41,
+    "last_chapter": 50
+  },
+  {
+    "id": "mr-philips",
+    "canonical": "Mr. Philips",
+    "kind": "person",
+    "mentions": 6,
+    "names": [
+      "Mr. Philips"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 25
+  },
+  {
+    "id": "netherfield",
+    "canonical": "Netherfield",
+    "kind": "not_a_person",
+    "mentions": 6,
+    "names": [
+      "Netherfield"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 53
+  },
+  {
+    "id": "the-two-eldest",
+    "canonical": "the two eldest",
+    "kind": "reference",
+    "mentions": 5,
+    "names": [
+      "the two eldest"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 25
+  },
+  {
+    "id": "rosings",
+    "canonical": "Rosings",
+    "kind": "not_a_person",
+    "mentions": 5,
+    "names": [
+      "Rosings"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 38
+  },
+  {
+    "id": "longbourn",
+    "canonical": "Longbourn",
+    "kind": "group",
+    "mentions": 5,
+    "names": [
+      "Longbourn",
+      "Longbourn estate"
+    ],
+    "first_chapter": 18,
+    "last_chapter": 50
+  },
+  {
+    "id": "mrs-hill",
+    "canonical": "Mrs. Hill",
+    "kind": "person",
+    "mentions": 5,
+    "names": [
+      "Mrs. Hill",
+      "Hill",
+      "Sally",
+      "Sarah"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 55
+  },
+  {
+    "id": "mr-darcy-s-father",
+    "canonical": "Mr. Darcy's father",
+    "kind": "reference",
+    "mentions": 4,
+    "names": [
+      "Mr. Darcy's father"
+    ],
+    "first_chapter": 16,
+    "last_chapter": 43
+  },
+  {
+    "id": "the-shire",
+    "canonical": "the ----shire",
+    "kind": "reference",
+    "mentions": 4,
+    "names": [
+      "the ----shire"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 53
+  },
+  {
+    "id": "the-housekeeper",
+    "canonical": "the housekeeper",
+    "kind": "reference",
+    "mentions": 4,
+    "names": [
+      "the housekeeper"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 49
+  },
+  {
+    "id": "the-ladies",
+    "canonical": "the ladies",
+    "kind": "group",
+    "mentions": 4,
+    "names": [
+      "the ladies"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-sisters",
+    "canonical": "the sisters",
+    "kind": "group",
+    "mentions": 4,
+    "names": [
+      "the sisters"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 41
+  },
+  {
+    "id": "the-young-ladies",
+    "canonical": "the young ladies",
+    "kind": "group",
+    "mentions": 4,
+    "names": [
+      "the young ladies"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 24
+  },
+  {
+    "id": "brighton",
+    "canonical": "Brighton",
+    "kind": "group",
+    "mentions": 4,
+    "names": [
+      "Brighton"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 50
+  },
+  {
+    "id": "lambton",
+    "canonical": "Lambton",
+    "kind": "group",
+    "mentions": 4,
+    "names": [
+      "Lambton"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 52
+  },
+  {
+    "id": "london",
+    "canonical": "London",
+    "kind": "group",
+    "mentions": 4,
+    "names": [
+      "London"
+    ],
+    "first_chapter": 18,
+    "last_chapter": 61
+  },
+  {
+    "id": "mrs-reynolds",
+    "canonical": "Mrs. Reynolds",
+    "kind": "person",
+    "mentions": 4,
+    "names": [
+      "Mrs. Reynolds",
+      "Reynolds"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 52
+  },
+  {
+    "id": "the-late-mr-darcy",
+    "canonical": "the late Mr. Darcy",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the late Mr. Darcy"
+    ],
+    "first_chapter": 16,
+    "last_chapter": 36
+  },
+  {
+    "id": "the-longbourn-family",
+    "canonical": "the Longbourn family",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the Longbourn family"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 48
+  },
+  {
+    "id": "the-lucases",
+    "canonical": "the Lucases",
+    "kind": "group",
+    "mentions": 3,
+    "names": [
+      "the Lucases"
+    ],
+    "first_chapter": 25,
+    "last_chapter": 57
+  },
+  {
+    "id": "the-whole-party",
+    "canonical": "the whole party",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the whole party"
+    ],
+    "first_chapter": 45,
+    "last_chapter": 45
+  },
+  {
+    "id": "captain-carter",
+    "canonical": "Captain Carter",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Captain Carter"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 9
+  },
+  {
+    "id": "derbyshire",
+    "canonical": "Derbyshire",
+    "kind": "group",
+    "mentions": 3,
+    "names": [
+      "Derbyshire"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 42
+  },
+  {
+    "id": "mr-jones",
+    "canonical": "Mr. Jones",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Mr. Jones"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 9
+  },
+  {
+    "id": "mrs-annesley",
+    "canonical": "Mrs. Annesley",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Mrs. Annesley"
+    ],
+    "first_chapter": 45,
+    "last_chapter": 54
+  },
+  {
+    "id": "mrs-jenkinson",
+    "canonical": "Mrs. Jenkinson",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Mrs. Jenkinson"
+    ],
+    "first_chapter": 28,
+    "last_chapter": 29
+  },
+  {
+    "id": "miss-king",
+    "canonical": "Miss King",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Miss King",
+      "Mary King"
+    ],
+    "first_chapter": 27,
+    "last_chapter": 39
+  },
+  {
+    "id": "mr-darcy-s-father-deceased",
+    "canonical": "Mr. Darcy's father (deceased)",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "Mr. Darcy's father (deceased)"
+    ],
+    "first_chapter": 35,
+    "last_chapter": 35
+  },
+  {
+    "id": "the-apothecary",
+    "canonical": "the apothecary",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the apothecary"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 9
+  },
+  {
+    "id": "the-children",
+    "canonical": "the children",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the children"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 48
+  },
+  {
+    "id": "the-daughters",
+    "canonical": "the daughters",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "the daughters"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 47
+  },
+  {
+    "id": "the-family-from-longbourn",
+    "canonical": "the family from Longbourn",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the family from Longbourn"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "the-gentleman",
+    "canonical": "the gentleman",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the gentleman"
+    ],
+    "first_chapter": 18,
+    "last_chapter": 18
+  },
+  {
+    "id": "the-gentlemen",
+    "canonical": "the gentlemen",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the gentlemen"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 44
+  },
+  {
+    "id": "the-gouldings",
+    "canonical": "the Gouldings",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "the Gouldings"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 53
+  },
+  {
+    "id": "the-parsonage",
+    "canonical": "the Parsonage",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the Parsonage"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 33
+  },
+  {
+    "id": "the-poor",
+    "canonical": "the poor",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the poor"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 44
+  },
+  {
+    "id": "the-regiment",
+    "canonical": "the regiment",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the regiment"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 41
+  },
+  {
+    "id": "the-servant",
+    "canonical": "the servant",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the servant"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 46
+  },
+  {
+    "id": "the-servants",
+    "canonical": "the servants",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "the servants"
+    ],
+    "first_chapter": 29,
+    "last_chapter": 47
+  },
+  {
+    "id": "the-street",
+    "canonical": "the street",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the street"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 44
+  },
+  {
+    "id": "your-daughter",
+    "canonical": "your daughter",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "your daughter"
+    ],
+    "first_chapter": 20,
+    "last_chapter": 20
+  },
+  {
+    "id": "general",
+    "canonical": "General----",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "General----"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "harriet",
+    "canonical": "Harriet",
+    "kind": "not_a_person",
+    "mentions": 2,
+    "names": [
+      "Harriet"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 47
+  },
+  {
+    "id": "john",
+    "canonical": "John",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "John"
+    ],
+    "first_chapter": 37,
+    "last_chapter": 46
+  },
+  {
+    "id": "kent",
+    "canonical": "Kent",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "Kent"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 33
+  },
+  {
+    "id": "louisa",
+    "canonical": "Louisa",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Louisa"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 11
+  },
+  {
+    "id": "mrs-younge",
+    "canonical": "Mrs. Younge",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Mrs. Younge"
+    ],
+    "first_chapter": 35,
+    "last_chapter": 52
+  },
+  {
+    "id": "pratt",
+    "canonical": "Pratt",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Pratt"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 47
+  },
+  {
+    "id": "boxes",
+    "canonical": "boxes",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "boxes",
+      "parcels"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "a-man-whom-nobody-cared-anything-about",
+    "canonical": "a man whom nobody cared anything about",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "a man whom nobody cared anything about"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "a-private",
+    "canonical": "a private",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "a private"
+    ],
+    "first_chapter": 12,
+    "last_chapter": 12
+  },
+  {
+    "id": "a-quarter-of-an-hour",
+    "canonical": "a quarter of an hour",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "a quarter of an hour"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "a-very-respectable-man",
+    "canonical": "a very respectable man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "a very respectable man"
+    ],
+    "first_chapter": 35,
+    "last_chapter": 35
+  },
+  {
+    "id": "a-young-lucas",
+    "canonical": "a young Lucas",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "a young Lucas"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "all-its-furniture",
+    "canonical": "all its furniture",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "all its furniture"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "all-your-family",
+    "canonical": "all your family",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "all your family"
+    ],
+    "first_chapter": 20,
+    "last_chapter": 20
+  },
+  {
+    "id": "an-earl-s-younger-son",
+    "canonical": "an earl’s younger son",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "an earl’s younger son"
+    ],
+    "first_chapter": 33,
+    "last_chapter": 33
+  },
+  {
+    "id": "an-ensign",
+    "canonical": "an ensign",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "an ensign"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "clarke-s-library",
+    "canonical": "Clarke’s library",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Clarke’s library"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "her-daughter",
+    "canonical": "her daughter",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "her daughter"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "her-daughters",
+    "canonical": "her daughters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "her daughters"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "her-friends",
+    "canonical": "her friends",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "her friends"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "her-ladyship",
+    "canonical": "her Ladyship",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "her Ladyship"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "her-longbourn-nieces",
+    "canonical": "her Longbourn nieces",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "her Longbourn nieces"
+    ],
+    "first_chapter": 25,
+    "last_chapter": 25
+  },
+  {
+    "id": "her-nephews",
+    "canonical": "her nephews",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "her nephews"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "her-nieces",
+    "canonical": "her nieces",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "her nieces"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "her-sister",
+    "canonical": "her sister",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "her sister"
+    ],
+    "first_chapter": 25,
+    "last_chapter": 25
+  },
+  {
+    "id": "her-uncle",
+    "canonical": "her uncle",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "her uncle"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "her-uncle-and-aunt",
+    "canonical": "her uncle and aunt",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "her uncle and aunt"
+    ],
+    "first_chapter": 44,
+    "last_chapter": 44
+  },
+  {
+    "id": "her-waiting-woman",
+    "canonical": "her waiting-woman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "her waiting-woman"
+    ],
+    "first_chapter": 56,
+    "last_chapter": 56
+  },
+  {
+    "id": "his-book",
+    "canonical": "his book",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "his book"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "his-father",
+    "canonical": "his father",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "his father"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "his-friend",
+    "canonical": "his friend",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "his friend"
+    ],
+    "first_chapter": 24,
+    "last_chapter": 24
+  },
+  {
+    "id": "his-relations-in-kent",
+    "canonical": "his relations in Kent",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "his relations in Kent"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "mr-and-mrs-collins",
+    "canonical": "Mr. and Mrs. Collins",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Mr. and Mrs. Collins"
+    ],
+    "first_chapter": 33,
+    "last_chapter": 33
+  },
+  {
+    "id": "mr-and-mrs-gardiner",
+    "canonical": "Mr. and Mrs. Gardiner",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Mr. and Mrs. Gardiner"
+    ],
+    "first_chapter": 46,
+    "last_chapter": 46
+  },
+  {
+    "id": "mr-bennet-s-brother-in-law",
+    "canonical": "Mr. Bennet's brother-in-law",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Mr. Bennet's brother-in-law"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "mr-bingley-s-sisters",
+    "canonical": "Mr. Bingley's sisters",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Mr. Bingley's sisters"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "mr-darcy-s-sister",
+    "canonical": "Mr. Darcy’s sister",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Mr. Darcy’s sister"
+    ],
+    "first_chapter": 26,
+    "last_chapter": 26
+  },
+  {
+    "id": "mr-jones-s-shopboy",
+    "canonical": "Mr. Jones’s shopboy",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Mr. Jones’s shopboy"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "mr-wickham-s-father",
+    "canonical": "Mr. Wickham's father",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Mr. Wickham's father"
+    ],
+    "first_chapter": 35,
+    "last_chapter": 35
+  },
+  {
+    "id": "my-fair-cousin",
+    "canonical": "my fair cousin",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "my fair cousin"
+    ],
+    "first_chapter": 20,
+    "last_chapter": 20
+  },
+  {
+    "id": "old-wickham",
+    "canonical": "old Wickham",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "old Wickham"
+    ],
+    "first_chapter": 18,
+    "last_chapter": 18
+  },
+  {
+    "id": "one-of-her-sisters",
+    "canonical": "one of her sisters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "one of her sisters"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "that-little-something-bordering-on-conceit-and-impertinence-which-your-lady-possesses",
+    "canonical": "that little something, bordering on conceit and impertinence, which your lady possesses",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "that little something, bordering on conceit and impertinence, which your lady possesses"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "the-attention",
+    "canonical": "the attention",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the attention"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-attics",
+    "canonical": "the attics",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the attics"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "the-aunt",
+    "canonical": "the aunt",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the aunt"
+    ],
+    "first_chapter": 44,
+    "last_chapter": 44
+  },
+  {
+    "id": "the-bell",
+    "canonical": "the Bell",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Bell"
+    ],
+    "first_chapter": 37,
+    "last_chapter": 37
+  },
+  {
+    "id": "the-bingleys",
+    "canonical": "the Bingleys",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Bingleys"
+    ],
+    "first_chapter": 61,
+    "last_chapter": 61
+  },
+  {
+    "id": "the-book",
+    "canonical": "the book",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the book"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "the-boulanger",
+    "canonical": "the Boulanger",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Boulanger"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-boys",
+    "canonical": "the boys",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the boys"
+    ],
+    "first_chapter": 22,
+    "last_chapter": 22
+  },
+  {
+    "id": "the-brother",
+    "canonical": "the brother",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the brother"
+    ],
+    "first_chapter": 44,
+    "last_chapter": 44
+  },
+  {
+    "id": "the-butcher-s",
+    "canonical": "the butcher’s",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the butcher’s"
+    ],
+    "first_chapter": 53,
+    "last_chapter": 53
+  },
+  {
+    "id": "the-card-table",
+    "canonical": "the card-table",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the card-table"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "the-carriage",
+    "canonical": "the carriage",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the carriage"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "the-chambermaid",
+    "canonical": "the chambermaid",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the chambermaid"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "the-colonel-of-the-regiment",
+    "canonical": "the colonel of the regiment",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the colonel of the regiment"
+    ],
+    "first_chapter": 41,
+    "last_chapter": 41
+  },
+  {
+    "id": "the-courier",
+    "canonical": "the Courier",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Courier"
+    ],
+    "first_chapter": 53,
+    "last_chapter": 53
+  },
+  {
+    "id": "the-dining-room",
+    "canonical": "the dining-room",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the dining-room"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "the-elder-brother",
+    "canonical": "the elder brother",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the elder brother"
+    ],
+    "first_chapter": 33,
+    "last_chapter": 33
+  },
+  {
+    "id": "the-elder-ones",
+    "canonical": "the elder ones",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the elder ones"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "the-entail",
+    "canonical": "the entail",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the entail"
+    ],
+    "first_chapter": 23,
+    "last_chapter": 23
+  },
+  {
+    "id": "the-evening",
+    "canonical": "the evening",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the evening"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-excellence-of-its-cookery",
+    "canonical": "the excellence of its cookery",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the excellence of its cookery"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "the-family",
+    "canonical": "the family",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the family"
+    ],
+    "first_chapter": 48,
+    "last_chapter": 48
+  },
+  {
+    "id": "the-five-daughters",
+    "canonical": "the five daughters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the five daughters"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "the-flow",
+    "canonical": "the flow",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the flow"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-footman",
+    "canonical": "the footman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the footman"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "the-gardiners",
+    "canonical": "the Gardiners",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Gardiners"
+    ],
+    "first_chapter": 61,
+    "last_chapter": 61
+  },
+  {
+    "id": "the-gentleman-we-were-speaking-of-just-now",
+    "canonical": "the gentleman we were speaking of just now",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the gentleman we were speaking of just now"
+    ],
+    "first_chapter": 16,
+    "last_chapter": 16
+  },
+  {
+    "id": "the-good-lady-who-showed-us-the-house",
+    "canonical": "the good lady who showed us the house",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the good lady who showed us the house"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "the-great-house-at-stoke",
+    "canonical": "the great house at Stoke",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the great house at Stoke"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "the-hall",
+    "canonical": "the hall",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the hall"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "the-hermitage",
+    "canonical": "the hermitage",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the hermitage"
+    ],
+    "first_chapter": 56,
+    "last_chapter": 56
+  },
+  {
+    "id": "the-housemaid",
+    "canonical": "the housemaid",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the housemaid"
+    ],
+    "first_chapter": 30,
+    "last_chapter": 30
+  },
+  {
+    "id": "the-incumbent-of-the-living",
+    "canonical": "the incumbent of the living",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the incumbent of the living"
+    ],
+    "first_chapter": 35,
+    "last_chapter": 35
+  },
+  {
+    "id": "the-inhabitants-of-a-small-market-town",
+    "canonical": "the inhabitants of a small market town",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the inhabitants of a small market town"
+    ],
+    "first_chapter": 44,
+    "last_chapter": 44
+  },
+  {
+    "id": "the-inn",
+    "canonical": "the inn",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the inn"
+    ],
+    "first_chapter": 44,
+    "last_chapter": 44
+  },
+  {
+    "id": "the-ladies-of-rosings",
+    "canonical": "the ladies of Rosings",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the ladies of Rosings"
+    ],
+    "first_chapter": 38,
+    "last_chapter": 38
+  },
+  {
+    "id": "the-ladies-of-the-family",
+    "canonical": "the ladies of the family",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the ladies of the family"
+    ],
+    "first_chapter": 45,
+    "last_chapter": 45
+  },
+  {
+    "id": "the-ladies-of-the-group",
+    "canonical": "the ladies of the group",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the ladies of the group"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "the-lady",
+    "canonical": "the lady",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the lady"
+    ],
+    "first_chapter": 33,
+    "last_chapter": 33
+  },
+  {
+    "id": "the-lakes",
+    "canonical": "the Lakes",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Lakes"
+    ],
+    "first_chapter": 60,
+    "last_chapter": 60
+  },
+  {
+    "id": "the-late-father-s-steward",
+    "canonical": "the late father’s steward",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the late father’s steward"
+    ],
+    "first_chapter": 56,
+    "last_chapter": 56
+  },
+  {
+    "id": "the-late-mr-darcy-s-steward",
+    "canonical": "the late Mr. Darcy’s steward",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the late Mr. Darcy’s steward"
+    ],
+    "first_chapter": 18,
+    "last_chapter": 18
+  },
+  {
+    "id": "the-library",
+    "canonical": "the library",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the library"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "the-little-gardiners",
+    "canonical": "the little Gardiners",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the little Gardiners"
+    ],
+    "first_chapter": 47,
+    "last_chapter": 47
+  },
+  {
+    "id": "the-living-of-hunsford",
+    "canonical": "the living of Hunsford",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the living of Hunsford"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "the-man",
+    "canonical": "the man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the man"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "the-management-of-all-the-pemberley-estates",
+    "canonical": "the management of all the Pemberley estates",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the management of all the Pemberley estates"
+    ],
+    "first_chapter": 35,
+    "last_chapter": 35
+  },
+  {
+    "id": "the-mess",
+    "canonical": "the mess",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the mess"
+    ],
+    "first_chapter": 36,
+    "last_chapter": 36
+  },
+  {
+    "id": "the-miss-bennets",
+    "canonical": "the Miss Bennets",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Miss Bennets"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "the-monthly-balls-of-meryton",
+    "canonical": "the monthly balls of Meryton",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the monthly balls of Meryton"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "the-neighbourhood",
+    "canonical": "the neighbourhood",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the neighbourhood"
+    ],
+    "first_chapter": 36,
+    "last_chapter": 36
+  },
+  {
+    "id": "the-neighbours-in-meryton",
+    "canonical": "the neighbours in Meryton",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the neighbours in Meryton"
+    ],
+    "first_chapter": 55,
+    "last_chapter": 55
+  },
+  {
+    "id": "the-netherfield-ladies",
+    "canonical": "the Netherfield ladies",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Netherfield ladies"
+    ],
+    "first_chapter": 25,
+    "last_chapter": 25
+  },
+  {
+    "id": "the-new-books",
+    "canonical": "the new books",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the new books"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-nieces",
+    "canonical": "the nieces",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the nieces"
+    ],
+    "first_chapter": 48,
+    "last_chapter": 48
+  },
+  {
+    "id": "the-north",
+    "canonical": "the north",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the north"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "the-original",
+    "canonical": "the original",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the original"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "the-parents",
+    "canonical": "the parents",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the parents"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "the-park",
+    "canonical": "the park",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the park"
+    ],
+    "first_chapter": 33,
+    "last_chapter": 33
+  },
+  {
+    "id": "the-parsonage-house",
+    "canonical": "the parsonage-house",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the parsonage-house"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "the-party",
+    "canonical": "the party",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the party"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-peak",
+    "canonical": "the Peak",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Peak"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "the-pemberley-estates",
+    "canonical": "the Pemberley estates",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Pemberley estates"
+    ],
+    "first_chapter": 35,
+    "last_chapter": 35
+  },
+  {
+    "id": "the-pemberley-family",
+    "canonical": "the Pemberley family",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Pemberley family"
+    ],
+    "first_chapter": 36,
+    "last_chapter": 36
+  },
+  {
+    "id": "the-ponies",
+    "canonical": "the ponies",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the ponies"
+    ],
+    "first_chapter": 60,
+    "last_chapter": 60
+  },
+  {
+    "id": "the-regiment-of-militia",
+    "canonical": "the regiment of militia",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the regiment of militia"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "the-room",
+    "canonical": "the room",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the room"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-second-volume",
+    "canonical": "the second volume",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the second volume"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "the-sister",
+    "canonical": "the sister",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the sister"
+    ],
+    "first_chapter": 48,
+    "last_chapter": 48
+  },
+  {
+    "id": "the-son",
+    "canonical": "the son",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the son"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "the-spirit",
+    "canonical": "the spirit",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the spirit"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-tenants",
+    "canonical": "the tenants",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the tenants"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "the-three-ladies",
+    "canonical": "the three ladies",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the three ladies"
+    ],
+    "first_chapter": 29,
+    "last_chapter": 29
+  },
+  {
+    "id": "the-times",
+    "canonical": "the Times",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Times"
+    ],
+    "first_chapter": 53,
+    "last_chapter": 53
+  },
+  {
+    "id": "the-tradesmen",
+    "canonical": "the tradesmen",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the tradesmen"
+    ],
+    "first_chapter": 48,
+    "last_chapter": 48
+  },
+  {
+    "id": "the-two-fifth",
+    "canonical": "the two fifth",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the two fifth"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-two-fourth",
+    "canonical": "the two fourth",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the two fourth"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-two-friends",
+    "canonical": "the two friends",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the two friends"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "the-two-gentlemen",
+    "canonical": "the two gentlemen",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the two gentlemen"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "the-two-girls",
+    "canonical": "the two girls",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the two girls"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "the-two-housemaids",
+    "canonical": "the two housemaids",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the two housemaids"
+    ],
+    "first_chapter": 51,
+    "last_chapter": 51
+  },
+  {
+    "id": "the-two-ladies",
+    "canonical": "the two ladies",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the two ladies"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "the-two-sisters",
+    "canonical": "the two sisters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the two sisters"
+    ],
+    "first_chapter": 18,
+    "last_chapter": 18
+  },
+  {
+    "id": "the-two-sixth",
+    "canonical": "the two sixth",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the two sixth"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-two-third",
+    "canonical": "the two third",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the two third"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-uncle",
+    "canonical": "the uncle",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the uncle"
+    ],
+    "first_chapter": 48,
+    "last_chapter": 48
+  },
+  {
+    "id": "the-unwelcome-addition",
+    "canonical": "the unwelcome addition",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the unwelcome addition"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "the-visitors",
+    "canonical": "the visitors",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the visitors"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "the-waiter",
+    "canonical": "the waiter",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the waiter"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "the-whole-family",
+    "canonical": "the whole family",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the whole family"
+    ],
+    "first_chapter": 13,
+    "last_chapter": 13
+  },
+  {
+    "id": "the-widow-and-younger-children",
+    "canonical": "the widow and younger children",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the widow and younger children"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "the-young-lady-who-does-the-honours-of-this-house",
+    "canonical": "the young lady who does the honours of this house",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the young lady who does the honours of this house"
+    ],
+    "first_chapter": 18,
+    "last_chapter": 18
+  },
+  {
+    "id": "the-young-man",
+    "canonical": "the young man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the young man"
+    ],
+    "first_chapter": 36,
+    "last_chapter": 36
+  },
+  {
+    "id": "the-younger-girls",
+    "canonical": "the younger girls",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the younger girls"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "the-younger-miss-bennets",
+    "canonical": "the younger Miss Bennets",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the younger Miss Bennets"
+    ],
+    "first_chapter": 17,
+    "last_chapter": 17
+  },
+  {
+    "id": "the-youngest-of-her-daughters",
+    "canonical": "the youngest of her daughters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the youngest of her daughters"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "three-couple-of-ducks",
+    "canonical": "three couple of ducks",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "three couple of ducks"
+    ],
+    "first_chapter": 53,
+    "last_chapter": 53
+  },
+  {
+    "id": "uncle-and-aunt-philips",
+    "canonical": "uncle and aunt Philips",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "uncle and aunt Philips"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "young-ladies-who-are-slighted-by-other-men",
+    "canonical": "young ladies who are slighted by other men",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "young ladies who are slighted by other men"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "young-men",
+    "canonical": "young men",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "young men"
+    ],
+    "first_chapter": 43,
+    "last_chapter": 43
+  },
+  {
+    "id": "your-daughter-s-favour",
+    "canonical": "your daughter’s favour",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "your daughter’s favour"
+    ],
+    "first_chapter": 20,
+    "last_chapter": 20
+  },
+  {
+    "id": "your-family",
+    "canonical": "your family",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "your family"
+    ],
+    "first_chapter": 20,
+    "last_chapter": 20
+  },
+  {
+    "id": "anne",
+    "canonical": "Anne",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Anne"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "ashworth",
+    "canonical": "Ashworth",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Ashworth"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "bath",
+    "canonical": "Bath",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Bath"
+    ],
+    "first_chapter": 61,
+    "last_chapter": 61
+  },
+  {
+    "id": "birmingham",
+    "canonical": "Birmingham",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Birmingham"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "blenheim",
+    "canonical": "Blenheim",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Blenheim"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "bromley",
+    "canonical": "Bromley",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Bromley"
+    ],
+    "first_chapter": 37,
+    "last_chapter": 37
+  },
+  {
+    "id": "chatsworth",
+    "canonical": "Chatsworth",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Chatsworth"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "church",
+    "canonical": "church",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "church"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "colonel-miller",
+    "canonical": "Colonel Miller",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Colonel Miller"
+    ],
+    "first_chapter": 41,
+    "last_chapter": 41
+  },
+  {
+    "id": "dovedale",
+    "canonical": "Dovedale",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Dovedale"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "easter-day",
+    "canonical": "Easter-day",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Easter-day"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "forsters",
+    "canonical": "Forsters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Forsters"
+    ],
+    "first_chapter": 47,
+    "last_chapter": 47
+  },
+  {
+    "id": "great-uncle-the-judge",
+    "canonical": "great-uncle the judge",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "great-uncle the judge"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "haggerston",
+    "canonical": "Haggerston",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Haggerston"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "haye-park",
+    "canonical": "Haye Park",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Haye Park"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "hertfordshire",
+    "canonical": "Hertfordshire",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Hertfordshire"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "hunsford",
+    "canonical": "Hunsford",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Hunsford"
+    ],
+    "first_chapter": 15,
+    "last_chapter": 15
+  },
+  {
+    "id": "kenilworth",
+    "canonical": "Kenilworth",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Kenilworth"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "lady-anne",
+    "canonical": "Lady Anne",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Lady Anne"
+    ],
+    "first_chapter": 37,
+    "last_chapter": 37
+  },
+  {
+    "id": "lady-anne-darcy",
+    "canonical": "Lady Anne Darcy",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Lady Anne Darcy"
+    ],
+    "first_chapter": 16,
+    "last_chapter": 16
+  },
+  {
+    "id": "lady-metcalfe",
+    "canonical": "Lady Metcalfe",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Lady Metcalfe"
+    ],
+    "first_chapter": 29,
+    "last_chapter": 29
+  },
+  {
+    "id": "matlock",
+    "canonical": "Matlock",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Matlock"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "miss-grantley",
+    "canonical": "Miss Grantley",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Miss Grantley"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "miss-watson",
+    "canonical": "Miss Watson",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Miss Watson"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "miss-webbs",
+    "canonical": "Miss Webbs",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Miss Webbs"
+    ],
+    "first_chapter": 29,
+    "last_chapter": 29
+  },
+  {
+    "id": "mr-morris",
+    "canonical": "Mr. Morris",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Mr. Morris"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "mr-robinson",
+    "canonical": "Mr. Robinson",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Mr. Robinson"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "mr-stone",
+    "canonical": "Mr. Stone",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Mr. Stone"
+    ],
+    "first_chapter": 51,
+    "last_chapter": 51
+  },
+  {
+    "id": "mrs-bingley",
+    "canonical": "Mrs. Bingley",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Mrs. Bingley"
+    ],
+    "first_chapter": 61,
+    "last_chapter": 61
+  },
+  {
+    "id": "mrs-nichols",
+    "canonical": "Mrs. Nichols",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Mrs. Nichols"
+    ],
+    "first_chapter": 53,
+    "last_chapter": 53
+  },
+  {
+    "id": "music",
+    "canonical": "music",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "music"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "newcastle",
+    "canonical": "Newcastle",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Newcastle"
+    ],
+    "first_chapter": 52,
+    "last_chapter": 52
+  },
+  {
+    "id": "oxford",
+    "canonical": "Oxford",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Oxford"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "purvis-lodge",
+    "canonical": "Purvis Lodge",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Purvis Lodge"
+    ],
+    "first_chapter": 50,
+    "last_chapter": 50
+  },
+  {
+    "id": "sir-lewis-de-bourgh",
+    "canonical": "Sir Lewis de Bourgh",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Sir Lewis de Bourgh"
+    ],
+    "first_chapter": 29,
+    "last_chapter": 29
+  },
+  {
+    "id": "warwick",
+    "canonical": "Warwick",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Warwick"
+    ],
+    "first_chapter": 42,
+    "last_chapter": 42
+  },
+  {
+    "id": "workbags",
+    "canonical": "workbags",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "workbags"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "pen",
+    "canonical": "Pen",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Pen"
+    ],
+    "first_chapter": 39,
+    "last_chapter": 39
+  },
+  {
+    "id": "anne-darcy",
+    "canonical": "Anne Darcy",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Anne Darcy"
+    ],
+    "first_chapter": 31,
+    "last_chapter": 31
+  },
+  {
+    "id": "miss-hurst",
+    "canonical": "Miss Hurst",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Miss Hurst"
+    ],
+    "first_chapter": 51,
+    "last_chapter": 51
+  }
+]

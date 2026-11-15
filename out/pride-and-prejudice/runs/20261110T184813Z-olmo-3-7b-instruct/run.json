@@ -1,0 +1,292 @@
+{
+  "run_id": "20261110T184813Z-olmo-3-7b-instruct",
+  "book": {
+    "slug": "pride-and-prejudice",
+    "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "file": "data/raw/pg1342.txt"
+  },
+  "backend": {
+    "spec": "ollama:olmo-3:7b-instruct",
+    "model": "olmo-3:7b-instruct",
+    "base_url": "http://localhost:11434/v1"
+  },
+  "prompt_version": "dd4b50c66300",
+  "system_prompt": "You are a careful literary annotator. You read ONE passage from a novel and record what is in it.\n\nRules:\n- Record only what this passage itself shows. Do not use outside knowledge of the novel.\n- Every item needs \"evidence\": a quote copied exactly, word for word, from the passage. Never paraphrase inside evidence and never join separate sentences. If you cannot quote it, leave the item out.\n- Characters: everyone who appears or is clearly referred to. Use the full canonical name (e.g. \"Elizabeth Bennet\", not \"Lizzy\"). If someone is already in the known-characters list, use that exact name. Their evidence must contain the words the passage uses for them.\n- Interactions: two or more characters dealing with each other directly in this passage.\n- Places: where the passage happens, and places that matter in it. The evidence must name the place.\n- Objects: physical things that matter (a letter, a carriage, a pianoforte), with how they are described. The evidence must name the object.\n- Events: what happens, one sentence each, in order. At most five.\n- Tone: rate tension and warmth from 0 to 10, with a one-sentence reason and a quote.",
+  "repair_prompt": "Some of your evidence could not be accepted:\n\n{items}\n\nFor each number, copy a quote exactly from the passage that shows the item (for characters, places and objects it must contain the name), or give null to withdraw the item.",
+  "schema": {
+    "properties": {
+      "characters": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "Full canonical name, e.g. 'Elizabeth Bennet' rather than 'Lizzy'.",
+              "title": "Name",
+              "type": "string"
+            },
+            "called_here": {
+              "description": "The word(s) this passage uses for them, e.g. 'Lizzy' or 'his lady'.",
+              "title": "Called Here",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "A quote copied word for word from the passage that contains `called_here`.",
+              "title": "Evidence",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "called_here",
+            "evidence"
+          ],
+          "title": "Character",
+          "type": "object"
+        },
+        "title": "Characters",
+        "type": "array"
+      },
+      "interactions": {
+        "items": {
+          "properties": {
+            "characters": {
+              "description": "Canonical names of the two or more characters involved.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Characters",
+              "type": "array"
+            },
+            "kind": {
+              "enum": [
+                "conversation",
+                "meeting",
+                "dance",
+                "letter",
+                "proposal",
+                "quarrel",
+                "visit",
+                "other"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "summary": {
+              "description": "One sentence: what passes between them.",
+              "title": "Summary",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "A quote copied word for word from the passage that shows this. A few words up to one sentence.",
+              "title": "Evidence",
+              "type": "string"
+            }
+          },
+          "required": [
+            "characters",
+            "kind",
+            "summary",
+            "evidence"
+          ],
+          "title": "Interaction",
+          "type": "object"
+        },
+        "title": "Interactions",
+        "type": "array"
+      },
+      "places": {
+        "items": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "house",
+                "room",
+                "estate",
+                "town",
+                "outdoors",
+                "road",
+                "other"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "A quote copied word for word from the passage that shows this. A few words up to one sentence.",
+              "title": "Evidence",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "kind",
+            "evidence"
+          ],
+          "title": "Place",
+          "type": "object"
+        },
+        "title": "Places",
+        "type": "array"
+      },
+      "objects": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "A physical object that matters in the passage.",
+              "title": "Name",
+              "type": "string"
+            },
+            "description": {
+              "description": "How the passage describes it, or what it is used for.",
+              "title": "Description",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "A quote copied word for word from the passage that shows this. A few words up to one sentence.",
+              "title": "Evidence",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "evidence"
+          ],
+          "title": "Thing",
+          "type": "object"
+        },
+        "title": "Objects",
+        "type": "array"
+      },
+      "events": {
+        "description": "What happens, in order. At most five.",
+        "items": {
+          "properties": {
+            "summary": {
+              "description": "One sentence.",
+              "title": "Summary",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "A quote copied word for word from the passage that shows this. A few words up to one sentence.",
+              "title": "Evidence",
+              "type": "string"
+            }
+          },
+          "required": [
+            "summary",
+            "evidence"
+          ],
+          "title": "Event",
+          "type": "object"
+        },
+        "title": "Events",
+        "type": "array"
+      },
+      "tone": {
+        "properties": {
+          "tension": {
+            "description": "0 calm, 10 crisis.",
+            "maximum": 10,
+            "minimum": 0,
+            "title": "Tension",
+            "type": "integer"
+          },
+          "warmth": {
+            "description": "0 cold or hostile, 10 tender or joyful.",
+            "maximum": 10,
+            "minimum": 0,
+            "title": "Warmth",
+            "type": "integer"
+          },
+          "reason": {
+            "description": "One sentence explaining both scores.",
+            "title": "Reason",
+            "type": "string"
+          },
+          "evidence": {
+            "description": "A quote copied word for word from the passage that shows this. A few words up to one sentence.",
+            "title": "Evidence",
+            "type": "string"
+          }
+        },
+        "required": [
+          "tension",
+          "warmth",
+          "reason",
+          "evidence"
+        ],
+        "title": "Tone",
+        "type": "object"
+      }
+    },
+    "required": [
+      "characters",
+      "interactions",
+      "places",
+      "objects",
+      "events",
+      "tone"
+    ],
+    "title": "PassageReading",
+    "type": "object"
+  },
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342,
+    "max_tokens": 3000
+  },
+  "passages": [
+    "c01.p01",
+    "c01.p02",
+    "c02.p01",
+    "c02.p02",
+    "c03.p01",
+    "c03.p02",
+    "c03.p03",
+    "c03.p04",
+    "c03.p05"
+  ],
+  "started": "2026-11-10T18:48:13.342160+00:00",
+  "finished": "2026-11-10T19:03:29.521786+00:00",
+  "counts": {
+    "character_rejected": 37,
+    "character_verified": 32,
+    "event_rejected": 7,
+    "event_verified": 29,
+    "interaction_rejected": 7,
+    "interaction_verified": 21,
+    "object_rejected": 1,
+    "object_verified": 7,
+    "passages_unparsable": 1,
+    "place_rejected": 10,
+    "place_verified": 4,
+    "repair_failed": 67,
+    "tone_rejected": 5,
+    "tone_verified": 3
+  },
+  "cast": {
+    "Mr. Bennet": 4,
+    "Mrs. Bennet": 4,
+    "Mr. Bingley": 4,
+    "Elizabeth Bennet": 2,
+    "Lydia Bennet": 2,
+    "Mr. Darcy": 2,
+    "Mr. Morris": 1,
+    "Girls (implied to be the Bennet daughters)": 1,
+    "Kitty Bennet": 1,
+    "Mrs. Long": 1,
+    "Mary Bennet": 1,
+    "Lady Lucas": 1,
+    "Mr. Hurst": 1,
+    "Miss Bingley": 1,
+    "Miss Bennet (Elizabeth Bennet's sister, as implied by context)": 1,
+    "Jane Bennet": 1,
+    "Maria Lucas": 1,
+    "Boulanger": 1,
+    "Miss King": 1,
+    "Mrs. Hurst": 1
+  }
+}

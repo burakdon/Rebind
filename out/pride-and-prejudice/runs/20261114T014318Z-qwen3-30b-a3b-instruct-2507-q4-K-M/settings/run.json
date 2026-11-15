@@ -1,0 +1,99 @@
+{
+  "backend": {
+    "spec": "ollama:qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "base_url": "http://localhost:11434/v1",
+    "server_version": "0.17.0",
+    "digest": "19e422b0231392335cfc49cfd172de7034bb1aeabb08aa307cce745c60b272fe",
+    "parameter_size": "30.5B",
+    "quantization": "Q4_K_M",
+    "context_length": null
+  },
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342,
+    "max_tokens": 400
+  },
+  "system": "You decide where a passage of a novel physically takes place: the place where the characters in the scene are.\n- A place that is only talked about, remembered, planned, or described in a letter is NOT the setting. If Elizabeth reads a letter about Ramsgate while staying in Kent, the setting is where she is.\n- Choose the most specific place in the list that fits. Choose \"elsewhere\" if the scene is at a place not in the list, and \"unclear\" if the passage does not show where it is (narration, reflection with no scene).\n- `basis`: \"named in the passage\" if a cited sentence names the place; \"continues from the previous passage\" if the scene simply carries on; otherwise \"implied by the passage\".\n- `evidence`: the numbers of one to three sentences that show it. Keep `rationale` to one short sentence.",
+  "task": "Book: {title}\nPlaces: {places}\nPrevious passage ({prev_id}) was set at: {prev}\n\nPASSAGE {pid} (chapter {chapter}):\n<<<\n{numbered}\n>>>\n\nWhere does this passage take place?",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "setting": {
+        "enum": [
+          "Longbourn",
+          "Netherfield",
+          "Meryton",
+          "Rosings",
+          "Pemberley",
+          "London",
+          "Hertfordshire",
+          "Hunsford",
+          "Derbyshire",
+          "Brighton",
+          "Lambton",
+          "Lucas Lodge",
+          "Gracechurch Street",
+          "Kent",
+          "Clapham",
+          "Epsom",
+          "Ramsgate",
+          "Newcastle",
+          "Grosvenor Street",
+          "elsewhere",
+          "unclear"
+        ]
+      },
+      "basis": {
+        "enum": [
+          "named in the passage",
+          "continues from the previous passage",
+          "implied by the passage"
+        ]
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "maxItems": 3
+      },
+      "rationale": {
+        "type": "string",
+        "maxLength": 120
+      }
+    },
+    "required": [
+      "setting",
+      "basis",
+      "evidence",
+      "rationale"
+    ],
+    "additionalProperties": false
+  },
+  "gazetteer_min": 2,
+  "finished": "2026-11-14T22:08:30.238139+00:00",
+  "counts": {
+    "by_setting": {
+      "Longbourn": 140,
+      "Netherfield": 38,
+      "Hunsford": 33,
+      "Pemberley": 29,
+      "Meryton": 17,
+      "Lucas Lodge": 15,
+      "Rosings": 10,
+      "Gracechurch Street": 9,
+      "Lambton": 9,
+      "elsewhere": 6,
+      "Grosvenor Street": 3,
+      "London": 3,
+      "Ramsgate": 2
+    },
+    "by_basis": {
+      "implied by the passage": 55,
+      "continues from the previous passage": 177,
+      "named in the passage": 82
+    },
+    "flagged": 49
+  }
+}

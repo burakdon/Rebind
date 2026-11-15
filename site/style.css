@@ -1,0 +1,63 @@
+:root {
+  --paper: #efe5cf;
+  --paper-deep: #e4d6b8;
+  --ink: #2b2620;
+  --ink-soft: #5a4e40;
+  --rule: #b9a582;
+  --mark: #f1d27a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--paper); color: var(--ink);
+  font-family: "EB Garamond", Georgia, serif; overflow: hidden; }
+#stage { position: fixed; inset: 0; }
+#stage canvas { display: block; }
+
+#cartouche { position: fixed; top: 16px; left: 16px; max-width: 420px; padding: 12px 16px 10px;
+  background: rgba(239, 229, 207, 0.92); border: 1px solid var(--ink); outline: 1px solid var(--ink);
+  outline-offset: 3px; pointer-events: none; }
+#cartouche h1 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 28px; margin: 0;
+  letter-spacing: 0.04em; }
+#cartouche .sub { font-family: "IM Fell English", serif; font-style: italic; margin: 2px 0 6px; font-size: 16px; }
+#cartouche .meta { margin: 0; font-size: 12.5px; color: var(--ink-soft); }
+
+#tools { position: fixed; top: 16px; right: 16px; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+#tools button, #panel button.link { font: inherit; font-size: 15px; background: var(--paper); color: var(--ink);
+  border: 1px solid var(--ink); padding: 5px 11px; cursor: pointer; }
+#tools button.on { background: var(--ink); color: var(--paper); }
+
+#panel, #legend { position: fixed; right: 16px; top: 64px; bottom: 16px; width: min(440px, calc(100vw - 32px));
+  overflow-y: auto; background: rgba(243, 235, 217, 0.97); border: 1px solid var(--ink); padding: 18px 20px;
+  box-shadow: 0 6px 28px rgba(43, 38, 32, 0.18); }
+#legend { left: 16px; right: auto; }
+#close, .close-legend { position: absolute; top: 6px; right: 10px; border: 0; background: none; font-size: 26px;
+  cursor: pointer; color: var(--ink); }
+#panel h2, #legend h2 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 22px; margin: 0 0 4px; }
+#panel h3 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 17px; margin: 16px 0 4px;
+  border-bottom: 1px solid var(--rule); }
+#panel .kicker { font-style: italic; color: var(--ink-soft); margin: 0 0 10px; }
+#panel .rule { font-size: 14.5px; background: var(--paper-deep); padding: 8px 10px; margin: 8px 0; border-left: 3px solid var(--ink); }
+#panel .rule b { font-family: "IM Fell English SC", serif; font-weight: 400; }
+#panel .fact { font-size: 12px; color: var(--ink-soft); font-family: ui-monospace, Menlo, monospace; }
+#panel .flag { color: #9b2f22; font-size: 14px; }
+#panel blockquote { margin: 6px 0; padding: 0 0 0 10px; border-left: 2px solid var(--rule); font-size: 15.5px; }
+#panel .passage { font-size: 15.5px; line-height: 1.45; white-space: pre-wrap; }
+#panel mark { background: var(--mark); color: inherit; padding: 0 1px; }
+#panel table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+#panel td { padding: 4px 4px; border-bottom: 1px solid var(--paper-deep); vertical-align: top; }
+#panel td.n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+#panel .bar { height: 6px; background: var(--ink); margin-top: 3px; }
+#panel a, #panel .link-a { color: var(--ink); text-decoration: underline; cursor: pointer; }
+#legend ol { padding-left: 22px; font-size: 15px; }
+#legend li { margin: 6px 0; }
+#legend .hint { font-style: italic; }
+
+#tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--paper); font-size: 14px;
+  padding: 3px 8px; white-space: nowrap; transform: translate(12px, 12px); }
+
+@media (max-width: 640px) {
+  #cartouche { max-width: calc(100vw - 32px); padding: 8px 12px; }
+  #cartouche h1 { font-size: 22px; }
+  #cartouche .sub { font-size: 14px; }
+  #tools { top: auto; bottom: 16px; right: 16px; left: 16px; justify-content: center; }
+  #panel, #legend { top: auto; height: 60vh; left: 16px; right: 16px; width: auto; bottom: 64px; }
+}

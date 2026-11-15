@@ -1,0 +1,360 @@
+{
+  "run_id": "20261113T154117Z-olmo-3-7b-instruct",
+  "book": {
+    "slug": "pride-and-prejudice",
+    "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "file": "data/raw/pg1342.txt"
+  },
+  "backend": {
+    "spec": "ollama:olmo-3:7b-instruct",
+    "model": "olmo-3:7b-instruct",
+    "base_url": "http://localhost:11434/v1",
+    "server_version": "0.17.0",
+    "digest": "ea72df8c85d75c6783ab0d00278803c53a634fc9d0fe38d3fd4ab6f35adbdbb2",
+    "parameter_size": "7.3B",
+    "quantization": "Q4_K_M",
+    "context_length": 32768
+  },
+  "prompt_version": "b6611dfab1df",
+  "system_prompt": "You are a careful literary annotator. You read ONE passage from a novel and record what is in it.\n\nRules:\n- Record only what this passage itself shows. Do not use outside knowledge of the novel.\n- The passage's sentences are numbered [1], [2], ... Every item needs \"evidence\": the numbers of the one to three sentences that show it. If no sentence shows it, leave the item out.\n- Use full canonical names for people (e.g. \"Elizabeth Bennet\", not \"Lizzy\"). If someone is in the known-characters list, use that exact name.",
+  "tasks": [
+    {
+      "key": "characters",
+      "instruction": "List every character who appears in or is referred to by this passage. For each, give `called_here`, the words this passage uses for them (e.g. 'his lady', 'Lizzy', 'Mr. Bingley'), and cite sentences that contain those words.",
+      "schema": {
+        "properties": {
+          "characters": {
+            "items": {
+              "properties": {
+                "name": {
+                  "description": "Full canonical name, e.g. 'Elizabeth Bennet' rather than 'Lizzy'.",
+                  "title": "Name",
+                  "type": "string"
+                },
+                "called_here": {
+                  "description": "The word(s) this passage uses for them, e.g. 'Lizzy' or 'his lady'.",
+                  "title": "Called Here",
+                  "type": "string"
+                },
+                "evidence": {
+                  "description": "Numbers of the one to three sentences, e.g. [4], that show them, using the words in `called_here`.",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "name",
+                "called_here",
+                "evidence"
+              ],
+              "title": "Character",
+              "type": "object"
+            },
+            "minItems": 1,
+            "title": "Characters",
+            "type": "array"
+          }
+        },
+        "required": [
+          "characters"
+        ],
+        "title": "CharactersOut",
+        "type": "object"
+      }
+    },
+    {
+      "key": "interactions",
+      "instruction": "List each interaction in which two or more of these characters deal with each other directly in this passage (talk, meet, dance, write, quarrel, visit, propose): {cast_here}. Give an empty list if there is none.",
+      "schema": {
+        "properties": {
+          "interactions": {
+            "items": {
+              "properties": {
+                "characters": {
+                  "description": "Canonical names of the two or more characters involved.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "Characters",
+                  "type": "array"
+                },
+                "kind": {
+                  "enum": [
+                    "conversation",
+                    "meeting",
+                    "dance",
+                    "letter",
+                    "proposal",
+                    "quarrel",
+                    "visit",
+                    "other"
+                  ],
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "summary": {
+                  "description": "One sentence: what passes between them.",
+                  "title": "Summary",
+                  "type": "string"
+                },
+                "evidence": {
+                  "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "characters",
+                "kind",
+                "summary",
+                "evidence"
+              ],
+              "title": "Interaction",
+              "type": "object"
+            },
+            "title": "Interactions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "interactions"
+        ],
+        "title": "InteractionsOut",
+        "type": "object"
+      }
+    },
+    {
+      "key": "setting",
+      "instruction": "List the places where this passage happens or that matter in it, and the physical objects that matter (a letter, a carriage, a hat, a pianoforte), each with how the passage describes it. Cited sentences must name the place or object. Empty lists are fine.",
+      "schema": {
+        "properties": {
+          "places": {
+            "items": {
+              "properties": {
+                "name": {
+                  "title": "Name",
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "house",
+                    "room",
+                    "estate",
+                    "town",
+                    "outdoors",
+                    "road",
+                    "other"
+                  ],
+                  "title": "Kind",
+                  "type": "string"
+                },
+                "evidence": {
+                  "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "name",
+                "kind",
+                "evidence"
+              ],
+              "title": "Place",
+              "type": "object"
+            },
+            "title": "Places",
+            "type": "array"
+          },
+          "objects": {
+            "items": {
+              "properties": {
+                "name": {
+                  "description": "A physical object that matters in the passage.",
+                  "title": "Name",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "How the passage describes it, or what it is used for.",
+                  "title": "Description",
+                  "type": "string"
+                },
+                "evidence": {
+                  "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "name",
+                "description",
+                "evidence"
+              ],
+              "title": "Thing",
+              "type": "object"
+            },
+            "title": "Objects",
+            "type": "array"
+          }
+        },
+        "required": [
+          "places",
+          "objects"
+        ],
+        "title": "SettingOut",
+        "type": "object"
+      }
+    },
+    {
+      "key": "events",
+      "instruction": "List what happens in this passage, one sentence per event, in order (one to five events). Then rate the passage's tension and warmth from 0 to 10 with a one-sentence reason.",
+      "schema": {
+        "properties": {
+          "events": {
+            "description": "What happens, in order.",
+            "items": {
+              "properties": {
+                "summary": {
+                  "description": "One sentence.",
+                  "title": "Summary",
+                  "type": "string"
+                },
+                "evidence": {
+                  "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "title": "Evidence",
+                  "type": "array"
+                }
+              },
+              "required": [
+                "summary",
+                "evidence"
+              ],
+              "title": "Event",
+              "type": "object"
+            },
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Events",
+            "type": "array"
+          },
+          "tone": {
+            "properties": {
+              "tension": {
+                "description": "0 calm, 10 crisis.",
+                "maximum": 10,
+                "minimum": 0,
+                "title": "Tension",
+                "type": "integer"
+              },
+              "warmth": {
+                "description": "0 cold or hostile, 10 tender or joyful.",
+                "maximum": 10,
+                "minimum": 0,
+                "title": "Warmth",
+                "type": "integer"
+              },
+              "reason": {
+                "description": "One sentence explaining both scores.",
+                "title": "Reason",
+                "type": "string"
+              },
+              "evidence": {
+                "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+                "items": {
+                  "type": "integer"
+                },
+                "title": "Evidence",
+                "type": "array"
+              }
+            },
+            "required": [
+              "tension",
+              "warmth",
+              "reason",
+              "evidence"
+            ],
+            "title": "Tone",
+            "type": "object"
+          }
+        },
+        "required": [
+          "events",
+          "tone"
+        ],
+        "title": "EventsOut",
+        "type": "object"
+      }
+    }
+  ],
+  "repair_prompt": "Some of your evidence could not be accepted:\n\n{items}\n\nFor each numbered item, give the sentence numbers that show it (for characters, places and objects the sentences must contain the name), or [] to withdraw the item.",
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342,
+    "max_tokens": 2000
+  },
+  "passages": [
+    "c01.p01",
+    "c01.p02",
+    "c02.p01",
+    "c02.p02",
+    "c03.p01",
+    "c03.p02",
+    "c03.p03",
+    "c03.p04",
+    "c03.p05"
+  ],
+  "started": "2026-11-13T15:41:17.303618+00:00",
+  "finished": "2026-11-13T16:03:02.360747+00:00",
+  "counts": {
+    "character_rejected": 71,
+    "character_verified": 48,
+    "characters_unparsable": 1,
+    "event_verified": 44,
+    "interaction_rejected": 4,
+    "interaction_verified": 31,
+    "object_rejected": 30,
+    "object_verified": 18,
+    "place_rejected": 12,
+    "place_verified": 21,
+    "repair_failed": 117,
+    "repaired": 2,
+    "tone_verified": 9
+  },
+  "cast": {
+    "Mrs. Bennet": 7,
+    "Mr. Bennet": 6,
+    "Bingley": 4,
+    "Mr. Bingley": 4,
+    "Lizzy": 3,
+    "Lydia": 3,
+    "Mr. Darcy": 3,
+    "Mrs. Long": 2,
+    "Jane": 2,
+    "Mary": 2,
+    "Elizabeth Bennet": 2,
+    "Mr. Morris": 1,
+    "Sir William Lucas": 1,
+    "Lady Lucas": 1,
+    "Kitty": 1,
+    "Mr. Hurst": 1,
+    "Netherfield (location)": 1,
+    "Catherine": 1,
+    "Netherfield (person not named, but referred to as 'the Netherfield party')": 1,
+    "Miss Lucas": 1,
+    "Mrs. Hurst": 1
+  }
+}

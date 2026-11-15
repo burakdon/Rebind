@@ -1,0 +1,280 @@
+{
+  "run_id": "20261110T190456Z-olmo-3-7b-instruct",
+  "book": {
+    "slug": "pride-and-prejudice",
+    "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
+    "file": "data/raw/pg1342.txt"
+  },
+  "backend": {
+    "spec": "ollama:olmo-3:7b-instruct",
+    "model": "olmo-3:7b-instruct",
+    "base_url": "http://localhost:11434/v1"
+  },
+  "prompt_version": "2b509285d3ed",
+  "system_prompt": "You are a careful literary annotator. You read ONE passage from a novel and record what is in it.\n\nRules:\n- Record only what this passage itself shows. Do not use outside knowledge of the novel.\n- The passage's sentences are numbered [1], [2], ... Every item needs \"evidence\": the numbers of the one to three sentences that show it. If no sentence shows it, leave the item out.\n- Characters: everyone who appears or is clearly referred to. Use the full canonical name (e.g. \"Elizabeth Bennet\", not \"Lizzy\"). If someone is already in the known-characters list, use that exact name. Their evidence sentences must contain the words in \"called_here\".\n- Interactions: two or more characters dealing with each other directly in this passage.\n- Places: where the passage happens, and places that matter in it. Its evidence sentences must name the place.\n- Objects: physical things that matter (a letter, a carriage, a pianoforte), with how they are described. Its evidence sentences must name the object.\n- Events: what happens, one sentence each, in order. At most five.\n- Tone: rate tension and warmth from 0 to 10, with a one-sentence reason.",
+  "repair_prompt": "Some of your evidence could not be accepted:\n\n{items}\n\nFor each numbered item, give the sentence numbers that show it (for characters, places and objects the sentences must contain the name), or [] to withdraw the item.",
+  "schema": {
+    "properties": {
+      "characters": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "Full canonical name, e.g. 'Elizabeth Bennet' rather than 'Lizzy'.",
+              "title": "Name",
+              "type": "string"
+            },
+            "called_here": {
+              "description": "The word(s) this passage uses for them, e.g. 'Lizzy' or 'his lady'.",
+              "title": "Called Here",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "Numbers of the one to three sentences, e.g. [4], that show them, using the words in `called_here`.",
+              "items": {
+                "type": "integer"
+              },
+              "title": "Evidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "name",
+            "called_here",
+            "evidence"
+          ],
+          "title": "Character",
+          "type": "object"
+        },
+        "title": "Characters",
+        "type": "array"
+      },
+      "interactions": {
+        "items": {
+          "properties": {
+            "characters": {
+              "description": "Canonical names of the two or more characters involved.",
+              "items": {
+                "type": "string"
+              },
+              "title": "Characters",
+              "type": "array"
+            },
+            "kind": {
+              "enum": [
+                "conversation",
+                "meeting",
+                "dance",
+                "letter",
+                "proposal",
+                "quarrel",
+                "visit",
+                "other"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "summary": {
+              "description": "One sentence: what passes between them.",
+              "title": "Summary",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+              "items": {
+                "type": "integer"
+              },
+              "title": "Evidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "characters",
+            "kind",
+            "summary",
+            "evidence"
+          ],
+          "title": "Interaction",
+          "type": "object"
+        },
+        "title": "Interactions",
+        "type": "array"
+      },
+      "places": {
+        "items": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "house",
+                "room",
+                "estate",
+                "town",
+                "outdoors",
+                "road",
+                "other"
+              ],
+              "title": "Kind",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+              "items": {
+                "type": "integer"
+              },
+              "title": "Evidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "name",
+            "kind",
+            "evidence"
+          ],
+          "title": "Place",
+          "type": "object"
+        },
+        "title": "Places",
+        "type": "array"
+      },
+      "objects": {
+        "items": {
+          "properties": {
+            "name": {
+              "description": "A physical object that matters in the passage.",
+              "title": "Name",
+              "type": "string"
+            },
+            "description": {
+              "description": "How the passage describes it, or what it is used for.",
+              "title": "Description",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+              "items": {
+                "type": "integer"
+              },
+              "title": "Evidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "name",
+            "description",
+            "evidence"
+          ],
+          "title": "Thing",
+          "type": "object"
+        },
+        "title": "Objects",
+        "type": "array"
+      },
+      "events": {
+        "description": "What happens, in order. At most five.",
+        "items": {
+          "properties": {
+            "summary": {
+              "description": "One sentence.",
+              "title": "Summary",
+              "type": "string"
+            },
+            "evidence": {
+              "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+              "items": {
+                "type": "integer"
+              },
+              "title": "Evidence",
+              "type": "array"
+            }
+          },
+          "required": [
+            "summary",
+            "evidence"
+          ],
+          "title": "Event",
+          "type": "object"
+        },
+        "title": "Events",
+        "type": "array"
+      },
+      "tone": {
+        "properties": {
+          "tension": {
+            "description": "0 calm, 10 crisis.",
+            "maximum": 10,
+            "minimum": 0,
+            "title": "Tension",
+            "type": "integer"
+          },
+          "warmth": {
+            "description": "0 cold or hostile, 10 tender or joyful.",
+            "maximum": 10,
+            "minimum": 0,
+            "title": "Warmth",
+            "type": "integer"
+          },
+          "reason": {
+            "description": "One sentence explaining both scores.",
+            "title": "Reason",
+            "type": "string"
+          },
+          "evidence": {
+            "description": "Numbers of the one to three sentences, e.g. [4], that show this.",
+            "items": {
+              "type": "integer"
+            },
+            "title": "Evidence",
+            "type": "array"
+          }
+        },
+        "required": [
+          "tension",
+          "warmth",
+          "reason",
+          "evidence"
+        ],
+        "title": "Tone",
+        "type": "object"
+      }
+    },
+    "required": [
+      "characters",
+      "interactions",
+      "places",
+      "objects",
+      "events",
+      "tone"
+    ],
+    "title": "PassageReading",
+    "type": "object"
+  },
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342,
+    "max_tokens": 2500
+  },
+  "passages": [
+    "c01.p01",
+    "c01.p02",
+    "c02.p01",
+    "c02.p02",
+    "c03.p01",
+    "c03.p02",
+    "c03.p03",
+    "c03.p04",
+    "c03.p05"
+  ],
+  "started": "2026-11-10T19:04:56.737583+00:00",
+  "finished": "2026-11-10T19:08:50.943415+00:00",
+  "counts": {
+    "event_verified": 64,
+    "place_rejected": 2,
+    "place_verified": 2,
+    "repair_failed": 2,
+    "tone_verified": 9
+  },
+  "cast": {}
+}
