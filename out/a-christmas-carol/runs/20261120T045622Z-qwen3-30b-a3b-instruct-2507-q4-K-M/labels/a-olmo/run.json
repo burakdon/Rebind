@@ -1,0 +1,35 @@
+{
+  "backend": {
+    "spec": "ollama:olmo-3.1:32b-instruct",
+    "model": "olmo-3.1:32b-instruct",
+    "base_url": "http://localhost:11434/v1",
+    "server_version": "0.17.0",
+    "digest": "a16b6a5be6cf4de20e3ba6a67fc6eb292b5e5a059ccc7ccd31443fc316621fbd",
+    "parameter_size": "32.2B",
+    "quantization": "Q4_K_M",
+    "context_length": null
+  },
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342
+  },
+  "reading": "a",
+  "swapped": false,
+  "system": "You label each sentence of one passage from a novel. Judge each sentence by what it says and how it is said here. Do not use outside knowledge of the novel.\n\nFor every numbered sentence give two labels: its feeling, then its pace.\n\nfeeling:\n- warm: the sentence shows affection, kindness, pleasure, praise or ease between people.\n- cold: the sentence shows dislike, contempt, anger, hurt, mockery or distance between people.\n- neither: it shows neither, or you cannot tell.\n\npace:\n- tense: something is at stake or unsettled in the sentence: a conflict, a worry, suspense, or strong feeling held back.\n- calm: nothing is at stake in the sentence.\n\nLabel every sentence, including short ones.",
+  "task": "PASSAGE:\n<<<\n{numbered}\n>>>\n\nLabel sentences 1 to {n}.",
+  "order": [
+    "feeling",
+    "pace"
+  ],
+  "feelings": [
+    "warm",
+    "cold",
+    "neither"
+  ],
+  "paces": [
+    "tense",
+    "calm"
+  ],
+  "swap_table": {},
+  "started": "2026-11-21T18:03:36.223128+00:00"
+}
