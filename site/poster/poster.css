@@ -37,7 +37,12 @@ h2 { font-size: 36pt; letter-spacing: 0.05em; }
 .key .ramp i { margin-right: 0.03in; }
 .key b { font-weight: 500; color: var(--ink); }
 
-#others { position: absolute; left: 1in; top: 13.3in; display: flex; gap: 0.7in; align-items: flex-start; }
+#others { position: absolute; left: 1in; right: 2.55in; top: 13.3in; display: flex; gap: 0.7in; align-items: flex-start; }
+#others .book { flex: none; }
+#others .note { flex: 1; min-width: 0; font-size: 16pt; line-height: 1.26; border-left: 1.5pt solid var(--ink); padding-left: 0.22in; }
+#others .note p + p { margin-top: 0.09in; }
+#others .note b, .refs b { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 1.12em; letter-spacing: 0.04em; margin-right: 0.06in; }
+.refs { font-size: 13.5pt; line-height: 1.25; color: var(--soft); margin-top: 0.1in; border-top: 0.75pt solid var(--rule); padding-top: 0.06in; }
 #others .book { position: relative; }
 #others h3 { font-size: 23pt; letter-spacing: 0.05em; }
 #others .small { margin-bottom: 0.08in; }

@@ -7,6 +7,37 @@ To learn from a book, an AI cuts it into pieces and keeps no note of where each 
 - **Live site:** https://burakdon.github.io/Rebind/ (the scarves, knitted on screen; click any row to unravel it)
 - **Poster:** `site/poster/` draws the 36 × 24 inch poster from the same data files; `poster/` holds the printed PDF
 - **Books so far:** A Christmas Carol, Pride and Prejudice, Alice's Adventures in Wonderland (all Project Gutenberg texts)
+- **To look without running anything:** open the live site, or `python3 scripts/serve.py` and http://localhost:8737. The finished readings are in `site/data/`, so no model is needed to view them.
+
+## The question
+
+Explanations of language models are mostly made for one answer on a short input. A model's reading of a whole novel is thousands of small judgements, and a summary, a score or a picture of that reading gives a person nothing they can check.
+
+Rebind asks two things:
+
+1. Can a model's reading of a whole book be shown so that a person can trace everything they see, by rules they could apply by hand, back to the sentences it came from?
+2. How steady is that reading when the question is reworded, when every name is swapped, and when a different model reads?
+
+What three books showed:
+
+1. **Yes, by construction.** Every yarn, ridge and eyelet is a count of sentence labels or a checked fact, by seven written rules, and the tests confirm each row is exactly what the rules make of the labels. What cannot be traced is why the model gave a sentence its label.
+2. **Only partly steady.** Asked in other words, a sentence keeps its warm, cold or neither label 58 to 68 times in 100, depending on the book. With every name swapped it keeps it 85 to 89 times in 100. A second model gives the same label 65 to 72 times in 100 (two books). The scarf shows this instead of hiding it: the rows left undyed run from about a sixth of Pride and Prejudice to over a third of Alice.
+
+It is made for people who read and knit and do not program, and for anyone learning what an explanation of a model can and cannot promise.
+
+## Where it sits
+
+The course topics it draws on are explainable AI, interpretable machine learning, AI evaluation and human-AI interaction. Full references are at the end.
+
+- **Interpretable by design, not explained afterwards.** Rudin (2019) argues for models a person can follow over explanations fitted to a black box afterwards. Rebind cannot make the language model interpretable, so it keeps the model's part as small as it can: one label on one sentence, which a person can judge in seconds. Everything after that is counting.
+- **Faithfulness.** Jacovi and Goldberg (2020) separate an explanation that sounds right from one that reflects what actually produced the output. A row's explanation here is faithful to the pipeline because it is the pipeline: the sum on screen is the sum that chose the yarn. It claims nothing about what happens inside the model. Models' own accounts of their reasoning can be unfaithful (Turpin et al., 2023), so Rebind never asks the model why.
+- **Pointing at evidence.** Work on rationales has a model show the part of the input its answer rests on (Lei et al., 2016; DeYoung et al., 2020). Rebind has the model cite sentence numbers for who is present, and code refuses any citation that does not hold.
+- **Wording.** Sclar et al. (2024) show that changes in a prompt's format with no bearing on meaning move results a great deal, and recommend reporting a spread over plausible prompts instead of one. Rebind reads each book in two wordings and knits the disagreement in as undyed rows.
+- **Memory of the book.** Chang et al. (2023) test which books a model has memorised by hiding a name and asking for it, and find that the more a book appears on the web the more of it is memorised. All three books here are everywhere on the web. So the model is never told the title, and one check swaps every name and counts what changes.
+- **Emotional arcs.** Reagan et al. (2016) trace feeling through Project Gutenberg fiction with word lists. The scarf's run of cold and warm is that kind of arc, with one difference: each point opens into its sentences and their labels.
+- **Data you can hold.** Jansen et al. (2015) define a data physicalization as an object whose shape or material carries the data. Here yarn, texture and holes carry it, and knitting sets the limits on how much can be said.
+- **How it is evaluated.** The agreement figures use Cohen's kappa (Cohen, 1960). In the terms of Doshi-Velez and Kim (2017) every check here is functionally grounded, meaning no people took part. The two kinds that need people have not been done.
+- **Knowing where data came from.** In the spirit of datasheets for datasets (Gebru et al., 2021), each source text is pinned by its hash, every exclusion is logged with its reason, and every prompt and answer is kept.
 
 ## What it does
 
@@ -34,16 +65,45 @@ The explanation is the artefact itself, not something added afterwards: the scar
 - **Memory of the text is not ruled out.** Swapping every name moves the labels less than rewording does, so the model is not leaning on the names, but it may still know these famous books.
 - **No readers' test yet** against a baseline such as an image model's picture of the same book.
 
+## Who could be misled or harmed
+
+- **People who see or wear the scarf.** A knitted thing looks finished and certain. Off the screen, the undyed rows are the only doubt that survives; a thin margin does not show. The printed pattern names the passage and the count on every row, but a scarf given away loses that.
+- **Readers of the books.** Warm and cold are one model's reading, not what the book means. No one has checked how it handles irony, which Austen depends on.
+- **Anyone who takes "traceable" for "correct".** Every row has a source, and that says nothing about whether the label on the source is right. The steadiness figures are not accuracy and should not be quoted as accuracy.
+- **Authors and publishers.** All three books are out of copyright, and the site publishes the full text of every passage. For a book in copyright that would be republishing it. The reading runs on the laptop, so a person's own copy would stay there, but there is no mode yet that publishes a pattern without the text.
+- **People whose own writing is labelled.** The same sentence labelling pointed at letters, essays or messages would be a profile of a person's feelings, made with labels this unsteady. It has only been built and tested on published fiction.
+- **Knitters.** The pattern has not been knitted, so yarn and hours could be spent on something that does not work as written.
+- **Readers of other languages.** One open-weight model read three English classics. Nothing here says how it reads anything else.
+
+## What comes next
+
+1. **People label a sample.** `site/knit/check.html` is ready. This is the only way to learn whether the labels are right and not just steady.
+2. **A readers' test.** Given a scarf and its pattern, can a person find where something happens in the book, and do they do better than with an image model's picture of the same book?
+3. **Knit one.** Swatch for the real gauge, then test-knit A Christmas Carol, the shortest that shows an arc.
+4. **A closed-book mode** that publishes the pattern and the offsets without the text, so a book in copyright can be read from the owner's copy.
+5. **Who "he" is.** Find a way to settle pronouns that code can check, and tell the four ghosts apart.
+6. **Harder books.** The second model on Alice and on the rest of Pride and Prejudice; then a book too new or too obscure for the model to know, and one not in English.
+7. **Moving the cut points.** Show how each scarf changes as the four cuts move, so a reader can see how much of the picture is the choice of cuts.
+8. **Other things to wear.** The reading is one file with nothing in it about drawing, so a second pattern costs no new reading.
+
 ## Run the reading pipeline
 
-Needs Python 3.11+, [uv](https://docs.astral.sh/uv/) and, for local models, [Ollama](https://ollama.com).
+Needs Python 3.11+, [uv](https://docs.astral.sh/uv/) and [Ollama](https://ollama.com). The only Python packages are `openai` and `pydantic` (plus `pytest` for the tests); `uv sync` installs them. The three book texts are in `data/raw/`, each pinned by SHA-256 in `books/<slug>.json`.
+
+Models, both open weights, run on an M1 Pro with 32 GB of memory:
+
+```bash
+ollama pull qwen3:30b-a3b-instruct-2507-q4_K_M      # the reader, 18 GB
+ollama pull olmo-3.1:32b-instruct                   # only for the second-model check, 19 GB
+OLLAMA_CONTEXT_LENGTH=8192 ollama serve             # in its own terminal
+```
 
 ```bash
 uv sync
+uv run pytest -q                                       # 46 tests, no model needed
 scripts/pipeline.sh a-christmas-carol                  # every step for one book, about 1½ hours; or step by step:
 uv run rebind segment                                  # passages with source offsets
-ollama pull olmo-3:7b-instruct
-uv run rebind read --chapters 1-3                      # cited facts, checked against the text
+uv run rebind read --chapters 1-3 --model ollama:qwen3:30b-a3b-instruct-2507-q4_K_M   # cited facts, checked against the text
 uv run rebind summary out/pride-and-prejudice/runs/<run>
 uv run rebind resolve out/pride-and-prejudice/runs/<run>  # merge names into characters
 uv run rebind locate out/pride-and-prejudice/runs/<run>   # where each passage takes place
@@ -51,7 +111,8 @@ uv run rebind tokenize out/pride-and-prejudice/runs/<run> # book.json: one recor
 uv run rebind label out/pride-and-prejudice/runs/<run> --reading a   # then --reading b, then --reading a --swapped
 uv run rebind tokenize out/pride-and-prejudice/runs/<run>           # again, to take the labels into book.json
 uv run rebind knit                                        # pattern.json: the scarf pattern, from book.json (no model)
-uv run rebind check out/pride-and-prejudice/runs/<run>    # checks.json: stability, memory, hand
+uv run rebind label out/pride-and-prejudice/runs/<run> --reading a --model ollama:olmo-3.1:32b-instruct --tag olmo   # a second model's labels
+uv run rebind check out/pride-and-prejudice/runs/<run>    # checks.json: stability, memory, other model, hand
 uv run rebind compose out/pride-and-prejudice/runs/<run>  # layout for the survey-map style
 python3 scripts/serve.py                                  # then open http://localhost:8737 (front page; scarves under /knit/, the map under /map/)
 uv run rebind trace out/pride-and-prejudice/runs/<run> <fact-id>
@@ -72,7 +133,7 @@ Other models: `--model openai-compat:<model>@<url>` for any OpenAI-compatible se
    - *Supports:* for characters, the cited sentences must contain the exact words the passage uses for them (`called_here`), as whole words; for places and objects, they must name the thing. A sentence about Elizabeth Bennet is not evidence for Mrs. Bennet.
    - *Not a pronoun:* a character "called" only "her", "you" or "the others" is refused. Those words are in nearly every sentence, so finding one proves nothing about who is meant. Descriptions such as "her sister" are still checked as words; the entity pass treats them as references, not names.
    - *Repair:* items that fail get one round in which the model is told why and may cite again or withdraw. Both attempts are kept.
-   - The checker cannot catch a misreading of a correctly cited sentence (a 7B model said Darcy's "She is tolerable" was about Jane). That is what the hand-checked evaluation chapters are for.
+   - The checker cannot catch a misreading of a correctly cited sentence (a 7B model said Darcy's "She is tolerable" was about Jane). Only a person can catch that, and no one has checked yet (see Limitations).
    - Rejected items stay in `rejected.jsonl` with the reason, so the rejection rate is itself a measurement.
    - *Recheck:* the checker has a version number in `run.json`. `rebind recheck <run>` applies the current checker to an older run without calling a model: facts it now refuses move to `rejected.jsonl` with their old record, and the old `facts.jsonl` is kept as `facts.checker-<n>.jsonl`. Applying checker 2 to the full Qwen read moved 374 of 2,502 character facts (15%), 373 of them pronoun-only.
 4. **Entities.** `rebind resolve <run>` merges the names the reader used ("Lizzy", "Miss Elizabeth Bennet") into one entity per character. It never edits the facts; it writes `entities/decisions.jsonl`, one line per name saying which step placed it and why:
@@ -98,3 +159,18 @@ Other models: `--model openai-compat:<model>@<url>` for any OpenAI-compatible se
 12. **Audit trail.** `calls.jsonl` stores every model call verbatim. `run.json` records the model, prompt hash, schema and decoding parameters.
 
 **macOS note.** If `uv run rebind` says `No module named 'rebind'`, macOS has marked the virtualenv as hidden and Python skips hidden `.pth` files. Fix with `chflags -R nohidden .venv`.
+
+## References
+
+- Chang, K. K., Cramer, M., Soni, S., and Bamman, D. (2023). Speak, Memory: An Archaeology of Books Known to ChatGPT/GPT-4. *EMNLP 2023*, 7312–7327.
+- Cohen, J. (1960). A coefficient of agreement for nominal scales. *Educational and Psychological Measurement*, 20(1), 37–46.
+- DeYoung, J., Jain, S., Rajani, N. F., Lehman, E., Xiong, C., Socher, R., and Wallace, B. C. (2020). ERASER: A Benchmark to Evaluate Rationalized NLP Models. *ACL 2020*.
+- Doshi-Velez, F., and Kim, B. (2017). Towards A Rigorous Science of Interpretable Machine Learning. arXiv:1702.08608.
+- Gebru, T., Morgenstern, J., Vecchione, B., Wortman Vaughan, J., Wallach, H., Daumé III, H., and Crawford, K. (2021). Datasheets for Datasets. *Communications of the ACM*, 64(12), 86–92.
+- Jacovi, A., and Goldberg, Y. (2020). Towards Faithfully Interpretable NLP Systems: How Should We Define and Evaluate Faithfulness? *ACL 2020*.
+- Jansen, Y., Dragicevic, P., Isenberg, P., Alexander, J., Karnik, A., Kildal, J., Subramanian, S., and Hornbæk, K. (2015). Opportunities and Challenges for Data Physicalization. *CHI 2015*, 3227–3236.
+- Lei, T., Barzilay, R., and Jaakkola, T. (2016). Rationalizing Neural Predictions. *EMNLP 2016*.
+- Reagan, A. J., Mitchell, L., Kiley, D., Danforth, C. M., and Dodds, P. S. (2016). The emotional arcs of stories are dominated by six basic shapes. *EPJ Data Science*, 5, 31.
+- Rudin, C. (2019). Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead. *Nature Machine Intelligence*, 1, 206–215.
+- Sclar, M., Choi, Y., Tsvetkov, Y., and Suhr, A. (2024). Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design. *ICLR 2024*.
+- Turpin, M., Michael, J., Perez, E., and Bowman, S. R. (2023). Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting. *NeurIPS 2023*.

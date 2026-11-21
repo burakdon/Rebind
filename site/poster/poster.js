@@ -80,7 +80,9 @@ $('key').innerHTML = `<li class="ramp"><b>Yarn</b> &nbsp;cold ${'ABCDE'.split(''
 $('others').innerHTML = all.filter(x => x.b.slug !== LEAD).map(({ b, K: P }) => {
   const u = 1.62 / P.cast_on, t = scarf(P, u, false);
   return `<div class="book"><h3>${esc(b.title)}</h3><p class="small">${esc(b.author || '')}. ${b.pairs} passages, ${b.rows} rows, about ${Math.round(b.width_in)} × ${b.length_in} inches. ${b.undyed} passages undyed.</p><div class="strip">${t.svg}</div></div>`;
-}).join('');
+}).join('') + `<div class="note">
+  <p><b>The question.</b> Can a model’s reading of a whole book be shown so that anyone can trace what they see, by hand, back to the sentences behind it? And how steady is that reading?</p>
+  <p><b>What comes next.</b> People label a sample blind, to learn if the labels are right and not just steady. Readers try to find a scene from the scarf alone. Someone knits one. A closed-book mode gives a pattern without the text, for books still in copyright.</p></div>`;
 
 // ---- the rules, from the numbers the pattern was made with -------------------------------------------------
 const [a, b, c, d] = K.yarn_cuts, m = v => String(v).replace('-', '−');
@@ -106,9 +108,9 @@ const fragile = K.rows.filter(r => r.margin === 1).length, st = lead.C?.stabilit
 $('limits').innerHTML = [
   st && me ? `<b>Wording moves it more than names do.</b> Rewording the question changes about ${Math.round(100 * (1 - st.feeling.same))} in 100 feeling labels in ${esc(K.book.title)}; swapping every name changes about ${Math.round(100 * (1 - me.feeling.same))}. So there is no sign the model leans on recognising the book, though it may still know the text.` : '',
   `<b>No person has checked the labels.</b> The figures say how steady the model is, not whether it is right. The site lets anyone label a sample blind.`,
-  `<b>Thin margins.</b> In ${fragile} of ${K.rows.length} rows of the lead scarf, one changed label would change the yarn. Every row states its own margin.`,
-  `<b>The cut points are choices.</b> ${m(a)}, ${m(b)}, ${c} and ${d} were set by hand. Moving them changes the scarf, not the labels.`,
-  `<b>Not yet knitted.</b> Sizes come from a typical gauge, not a swatch. “He” and “she” leave no eyelet, because code cannot check who is meant.`,
+  `<b>Thin margins, hand-set cuts.</b> In ${fragile} of ${K.rows.length} rows of the lead scarf one changed label would change the yarn, and the cuts (${m(a)}, ${m(b)}, ${c}, ${d}) were set by hand. Every row states its margin.`,
+  `<b>A scarf looks surer than it is.</b> Off the screen only the undyed rows show doubt. Warm and cold are one model’s reading, not what a book means, and a row with a source is not a row that is right.`,
+  `<b>Not yet knitted.</b> Sizes come from a typical gauge. “He” and “she” leave no hole: code cannot check who is meant.`,
 ].filter(Boolean).map(x => `<li>${x}</li>`).join('');
 
 // ---- one row, unravelled ----------------------------------------------------------------------------------------
