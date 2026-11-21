@@ -1,10 +1,38 @@
 # Rebind
 
-*Books that AI cut apart, read back together as art.*
+*Don't rip books. Knit and wear them.*
 
-Rebind reads a whole book without destroying it and turns it into a 3D landscape in which every element, every decision and every pixel traces back to the passage it came from. Project 2 for AIPI 590 (Responsible AI / Explainable AI), Duke.
+To learn from a book, an AI cuts it into pieces and keeps no note of where each piece came from. Rebind has an AI read a book and hands back a knitting pattern for a scarf in which every row leads to the sentences it was made from. Project 2 for AIPI 590 (Responsible AI / Explainable AI), Duke.
 
-Status: reading pipeline done; first version of the map (stage 2 of 3).
+- **Live site:** https://burakdon.github.io/Rebind/ (the scarves, knitted on screen; click any row to unravel it)
+- **Poster:** `site/poster/` draws the 36 × 24 inch poster from the same data files; `poster/` holds the printed PDF
+- **Books so far:** A Christmas Carol, Pride and Prejudice, Alice's Adventures in Wonderland (all Project Gutenberg texts)
+
+## What it does
+
+1. A local model (`qwen3:30b` through Ollama, on a laptop) reads the book a passage at a time, without being told which book it is. It labels every sentence warm, cold or neither, and tense or calm, and says who is in the passage, citing the sentence that shows it.
+2. Code keeps a claim only if the sentence it cites exists and says so, then counts the labels by seven written rules (K1–K7, section 9 below). Nothing else decides a stitch: there is no score a person could not redo by hand.
+3. The count is a knitting pattern: one passage is one pair of rows, with a yarn, a texture and eyelets. On the site every row opens into its instructions, the sum that chose its yarn, how many labels would have to change to change it, and each sentence with its label.
+
+The explanation is the artefact itself, not something added afterwards: the scarf is a count of labels a reader can check, and the site shows the count.
+
+## Design decisions
+
+- **Local, open-weight model.** Nothing leaves the laptop, and every prompt and answer is kept in `out/<book>/runs/<run>/`.
+- **Labels a person can check in seconds**, not a 0–10 score. An earlier version used scores; they could not be explained.
+- **Read twice.** The model answers the same question in two wordings. Both are counted, and a row is left undyed when the two alone would pick yarns two or more apart, so the scarf shows where the model is unsure.
+- **Knitting sets the limits.** One yarn per row, a width a person can hold, a length a person can finish. The book is told at passage level because of that.
+- **One book file, many styles.** `book.json` holds the reading with nothing about how to draw it. The scarf, the weave and the survey map all draw from it.
+
+## Limitations
+
+- **No person has checked the labels.** The checks say how steady the model is, not whether it is right. `site/knit/check.html` lets anyone label a sample blind.
+- **Wording moves the labels.** Asked in other words, the model changes about one feeling label in three. The pooled count absorbs a steady lean, but in roughly a third of rows a single changed label would change the yarn.
+- **The cut points are choices.** The balance is cut into yarns at -0.5, -0.2, 0.2 and 0.5 by hand.
+- **Who is present is undercounted.** A passage that only says "he" or "she" leaves no eyelet, because code cannot check who is meant. Descriptions used as names ("the Ghost") are not told apart.
+- **Not yet knitted.** Sizes and yardage come from a typical gauge. No one has test-knitted the pattern, and frequent yarn changes may make it awkward to work.
+- **Memory of the text is not ruled out.** Swapping every name moves the labels less than rewording does, so the model is not leaning on the names, but it may still know these famous books.
+- **No readers' test yet** against a baseline such as an image model's picture of the same book.
 
 ## Run the reading pipeline
 
@@ -12,6 +40,7 @@ Needs Python 3.11+, [uv](https://docs.astral.sh/uv/) and, for local models, [Oll
 
 ```bash
 uv sync
+scripts/pipeline.sh a-christmas-carol                  # every step for one book, about 1½ hours; or step by step:
 uv run rebind segment                                  # passages with source offsets
 ollama pull olmo-3:7b-instruct
 uv run rebind read --chapters 1-3                      # cited facts, checked against the text
@@ -29,6 +58,8 @@ uv run rebind trace out/pride-and-prejudice/runs/<run> <fact-id>
 ```
 
 Another book: add `books/<slug>.json` and its text under `data/raw/`, then `scripts/pipeline.sh <slug>` runs every step in order and the scarf opens at `/knit/?book=<slug>`. By default the first read asks only who is in each passage (`rebind read --only characters`), which is all the scarf needs, and the places step is skipped; `FULL=1 scripts/pipeline.sh <slug>` reads everything, as the map and the weave need, and takes about twice as long. A Christmas Carol (`a-christmas-carol`, 138 passages) is the practice book; its full run took about 2½ hours on an M1 Pro, 1¾ of them the first read. Its scarf runs cold in Stave I, warm in Staves II and III, cold again in Stave IV and warm in Stave V, with 37 of its 138 passages undyed because the two readings are two or more yarns apart (the second wording reads warmer: 65 passages come out one or two yarns warmer, 7 colder). Its checks: asked in different words, a sentence keeps its feeling label 67 times in 100 (kappa 0.48) and its pace label 83 in 100 (kappa 0.66); with every name swapped, 89 in 100 (kappa 0.80) and 93 in 100 (kappa 0.86), so as with Pride and Prejudice the names move the labels less than the wording does. The practice book changed two rules. The ghosts and Scrooge's nephew are never named, so at first they had no column; now a description counts as a person when the book itself uses it as a name at least three times, either written with a capital ("the Ghost") or as a named person's relation ("Scrooge's nephew"). "the Ghost" and "the Spirit" stay two columns, and neither says which of the four ghosts is meant. And no passage of this book has a setting, because the place list is built from places the book names with a capital and it names almost none.
+
+A third book, Alice's Adventures in Wonderland (`alice-in-wonderland`, 131 passages), was run with the default who-only pipeline and no code changes, as a test on a book the rules were not written against. Its first read took 37 minutes. The cast came out as the ten columns a reader would expect (Alice, the Queen, the King, the White Rabbit, the Hatter, the March Hare, the Gryphon, the Mock Turtle, the Dormouse, the Mouse), with one wrong merge that the run itself flagged: "Footman" folded into the White Rabbit on the model's "knowledge of the novel". It is the least steady of the three: asked in other words a sentence keeps its feeling label 58 times in 100 (kappa 0.39) and its pace label 84 in 100 (kappa 0.68); with names swapped, 85 in 100 (kappa 0.76) and 90 in 100 (kappa 0.79). 47 of its 131 passages are undyed and in 74 a single changed label would change the yarn, so its scarf is mostly grey and undyed and shows no arc.
 
 Other models: `--model openai-compat:<model>@<url>` for any OpenAI-compatible server (LM Studio or llama.cpp, for example), with the key in `REBIND_API_KEY`.
 

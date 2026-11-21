@@ -1,0 +1,49 @@
+{
+  "backend": {
+    "spec": "ollama:qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "base_url": "http://localhost:11434/v1",
+    "server_version": "0.17.0",
+    "digest": "19e422b0231392335cfc49cfd172de7034bb1aeabb08aa307cce745c60b272fe",
+    "parameter_size": "30.5B",
+    "quantization": "Q4_K_M",
+    "context_length": 8192
+  },
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342
+  },
+  "reading": "b",
+  "swapped": false,
+  "system": "Below is one passage of a novel with its sentences numbered. Give each sentence two labels, going only by the words in front of you and not by anything else you may know about the book.\n\npace\n- calm: nothing hangs on the sentence.\n- tense: the sentence carries conflict, worry, suspense, or feeling that is being held in.\n\nfeeling\n- neither: no clear feeling between people either way, or it is impossible to say.\n- cold: unkind, scornful, angry, wounded, mocking or distant.\n- warm: fond, kind, glad, admiring or at ease.\n\nEvery sentence gets both labels, however short it is: its pace, then its feeling.",
+  "task": "<<<\n{numbered}\n>>>\n\nThere are {n} sentences. Label each one.",
+  "order": [
+    "pace",
+    "feeling"
+  ],
+  "feelings": [
+    "neither",
+    "cold",
+    "warm"
+  ],
+  "paces": [
+    "calm",
+    "tense"
+  ],
+  "swap_table": {},
+  "finished": "2026-11-21T17:40:44.607138+00:00",
+  "counts": {
+    "passages": 131,
+    "failed": 0,
+    "sentences": 1393,
+    "feeling": {
+      "neither": 239,
+      "warm": 669,
+      "cold": 485
+    },
+    "pace": {
+      "calm": 688,
+      "tense": 705
+    }
+  }
+}

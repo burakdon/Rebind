@@ -132,8 +132,11 @@ def stitches_after(cells: str) -> int:
     return cells.count("k") + cells.count("o") + cells.count("/")
 
 
+LEAD_BOOK = "a-christmas-carol"   # shown first on the front page and large on the poster
+
+
 def shelf(data_dir: Path) -> Path:
-    """books.json: every book that has a pattern, shortest first, for the site's front page."""
+    """books.json: every book that has a pattern, the lead book first and then shortest first."""
     books = []
     for f in sorted(Path(data_dir).glob("*/pattern.json")):
         K = json.loads(f.read_text())
@@ -142,7 +145,7 @@ def shelf(data_dir: Path) -> Path:
                       **{k: K["size"][k] for k in ("pairs", "rows", "width_in", "length_in")},
                       "yards": sum(y["yards"] for y in K["yarns"]),
                       "undyed": sum(r["unsure"] for r in K["rows"]), "people": [c["name"] for c in K["columns"]]})
-    books.sort(key=lambda b: b["pairs"])
+    books.sort(key=lambda b: (b["slug"] != LEAD_BOOK, b["pairs"]))
     (Path(data_dir) / "books.json").write_text(json.dumps(books, indent=1, ensure_ascii=False))
     return Path(data_dir) / "books.json"
 

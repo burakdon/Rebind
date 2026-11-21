@@ -1,0 +1,77 @@
+/* The poster is laid out in real inches: 36 by 24, landscape. On screen it is scaled to fit the window. */
+@page { size: 36in 24in; margin: 0; }
+:root { --paper: #f6efdf; --ink: #2b2620; --soft: #5f5343; --dim: #8a7c66; --rule: #b9a582; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #4a443c; }
+#frame { overflow: hidden; }
+#poster { position: relative; width: 36in; height: 24in; background: var(--paper); color: var(--ink); overflow: hidden;
+  font-family: "EB Garamond", Georgia, serif; font-size: 19pt; line-height: 1.34; transform-origin: 0 0;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@media print { html, body { background: var(--paper); } #poster { transform: none !important; } #frame { width: auto !important; height: auto !important; } }
+p { margin: 0; }
+h1, h2, h3, .brand { font-family: "IM Fell English SC", serif; font-weight: 400; margin: 0; }
+
+header { position: absolute; left: 1in; right: 1in; top: 0.8in; height: 3.5in; display: flex; justify-content: space-between; gap: 0.8in; }
+.brand { font-size: 26pt; letter-spacing: 0.2em; color: var(--dim); }
+h1 { font-size: 104pt; line-height: 1; letter-spacing: 0.02em; margin: 0.08in 0 0.2in; white-space: nowrap; }
+.lede { font-family: "IM Fell English", serif; font-style: italic; font-size: 30pt; line-height: 1.25; color: var(--soft); max-width: 24.5in; }
+.who { display: flex; gap: 0.3in; align-items: flex-start; width: 7.4in; flex: none; padding-top: 0.15in; }
+#qr { width: 2.5in; height: 2.5in; flex: none; }
+#qr svg { width: 100%; height: 100%; display: block; }
+.who .url { font-family: ui-monospace, Menlo, monospace; font-size: 15.5pt; word-break: break-all; }
+.who .by { font-size: 19pt; margin: 0.12in 0; }
+.small { font-size: 15.5pt; color: var(--soft); line-height: 1.3; }
+
+#lead { position: absolute; left: 1in; right: 1in; top: 4.55in; }
+#lead .cap { display: flex; align-items: baseline; gap: 0.35in; border-bottom: 1.5pt solid var(--ink); padding-bottom: 0.05in; margin-bottom: 0.2in; }
+h2 { font-size: 36pt; letter-spacing: 0.05em; }
+#lead .cap p { font-size: 19pt; color: var(--soft); }
+#lead-scarf { position: relative; height: 7.5in; }
+.scarf { position: absolute; }
+.scarf svg { display: block; filter: drop-shadow(0.03in 0.05in 0.05in rgba(40, 30, 15, 0.45)); }
+.tag { position: absolute; font-family: "IM Fell English", serif; font-style: italic; color: var(--soft); white-space: nowrap; line-height: 1; }
+.tag.num { font-family: "IM Fell English SC", serif; font-style: normal; color: var(--ink); }
+.tag.end { font-family: "IM Fell English SC", serif; font-style: normal; letter-spacing: 0.08em; color: var(--dim); }
+.key { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.08in 0.42in; font-size: 18pt; color: var(--soft); align-items: center; }
+.key i { display: inline-block; width: 0.48in; height: 0.2in; border: 1pt solid var(--ink); vertical-align: -0.02in; margin-right: 0.07in; }
+.key .ramp i { margin-right: 0.03in; }
+.key b { font-weight: 500; color: var(--ink); }
+
+#others { position: absolute; left: 1in; top: 13.3in; display: flex; gap: 0.7in; align-items: flex-start; }
+#others .book { position: relative; }
+#others h3 { font-size: 23pt; letter-spacing: 0.05em; }
+#others .small { margin-bottom: 0.08in; }
+#others .strip svg { display: block; filter: drop-shadow(0.02in 0.03in 0.03in rgba(40, 30, 15, 0.4)); }
+
+#cols { position: absolute; left: 1in; right: 1in; top: 15.95in; bottom: 0.9in; display: grid; grid-template-columns: 9.9in 9.6in 13.3in; gap: 0.6in; }
+#cols h2 { font-size: 31pt; border-bottom: 1.5pt solid var(--ink); padding-bottom: 0.04in; margin-bottom: 0.12in; }
+h3 { font-size: 22pt; letter-spacing: 0.05em; margin: 0.16in 0 0.05in; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; position: relative; padding-left: 0.5in; margin-bottom: 0.1in; font-size: 18pt; line-height: 1.3; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: -0.07in; font-family: "IM Fell English SC", serif; font-size: 36pt; color: var(--dim); }
+.steps b, .limits b { font-weight: 600; }
+.rules { margin: 0; padding: 0; list-style: none; font-size: 15.5pt; line-height: 1.28; columns: 2; column-gap: 0.3in; }
+.rules li { margin-bottom: 0.05in; padding-left: 0.42in; text-indent: -0.42in; break-inside: avoid; }
+.rules b { font-family: "IM Fell English SC", serif; font-weight: 400; display: inline-block; width: 0.42in; text-indent: 0; }
+
+#trust p { font-size: 18pt; line-height: 1.3; }
+table { border-collapse: collapse; width: 100%; font-size: 16.5pt; margin: 0.12in 0 0.14in; }
+th, td { text-align: left; padding: 0.045in 0.12in 0.045in 0; border-bottom: 0.75pt solid var(--rule); vertical-align: top; line-height: 1.2; }
+th { font-weight: 500; font-size: 14.5pt; color: var(--soft); border-bottom: 1.2pt solid var(--ink); }
+td.n, th.n { text-align: right; padding-right: 0.16in; white-space: nowrap; }
+.limits { margin: 0; padding-left: 0.26in; font-size: 16pt; line-height: 1.26; }
+.limits li { margin-bottom: 0.055in; }
+
+#example { background: #fffaf0; border: 1.5pt solid var(--ink); padding: 0.16in 0.26in 0.1in; position: relative; overflow: hidden; }
+#example h2 { border: 0; margin: 0; padding: 0; }
+#example .kicker { font-style: italic; color: var(--soft); font-size: 17.5pt; margin-bottom: 0.08in; }
+#example .rows { font-family: ui-monospace, Menlo, monospace; font-size: 13.5pt; background: #f3e9d2; border: 0.75pt solid var(--rule); padding: 0.07in 0.12in; line-height: 1.4; }
+#example .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.28in; margin-top: 0.1in; }
+#example h3 { margin: 0 0 0.04in; border-bottom: 0.75pt solid var(--rule); font-size: 19pt; }
+#example .sum { font-size: 16pt; line-height: 1.27; margin-bottom: 0.045in; }
+#example .sw { display: inline-block; width: 0.17in; height: 0.17in; border: 0.75pt solid var(--ink); vertical-align: -0.015in; margin-right: 0.06in; }
+#example .sent { font-size: 14.6pt; line-height: 1.22; padding-left: 0.1in; border-left: 0.07in solid; margin-bottom: 0.05in; }
+#example .sent span { font-family: ui-monospace, Menlo, monospace; font-size: 11pt; color: var(--soft); white-space: nowrap; }
+#lead-line { position: absolute; border-left: 1.5pt solid var(--ink); width: 0; }
+
+footer { position: absolute; left: 1in; right: 1in; bottom: 0.4in; font-size: 13.5pt; color: var(--soft); display: flex; justify-content: space-between; gap: 0.5in; border-top: 0.75pt solid var(--rule); padding-top: 0.07in; }

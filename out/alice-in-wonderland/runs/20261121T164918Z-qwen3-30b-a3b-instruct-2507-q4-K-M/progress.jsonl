@@ -1,0 +1,131 @@
+{"passage": "c01.p01", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T16:49:23.915466+00:00"}
+{"passage": "c01.p02", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 2, "character_rejected": 1}, "at": "2026-11-21T16:49:29.646375+00:00"}
+{"passage": "c01.p03", "call_errors": 0, "counts": {"repair_failed": 2, "character_verified": 1, "character_rejected": 2}, "at": "2026-11-21T16:49:36.436992+00:00"}
+{"passage": "c01.p04", "call_errors": 0, "counts": {"repair_failed": 2, "character_verified": 4, "character_rejected": 2}, "at": "2026-11-21T16:49:48.737112+00:00"}
+{"passage": "c01.p05", "call_errors": 0, "counts": {"repair_failed": 4, "character_verified": 2, "character_rejected": 4}, "at": "2026-11-21T16:49:58.644910+00:00"}
+{"passage": "c01.p06", "call_errors": 0, "counts": {"repair_failed": 5, "character_verified": 1, "character_rejected": 5}, "at": "2026-11-21T16:50:07.996581+00:00"}
+{"passage": "c01.p07", "call_errors": 0, "counts": {"repair_failed": 5, "character_verified": 1, "character_rejected": 5}, "at": "2026-11-21T16:50:16.212253+00:00"}
+{"passage": "c01.p08", "call_errors": 0, "counts": {"repair_failed": 5, "character_verified": 1, "character_rejected": 5}, "at": "2026-11-21T16:50:25.492495+00:00"}
+{"passage": "c01.p09", "call_errors": 0, "counts": {"repair_failed": 4, "character_verified": 1, "character_rejected": 4}, "at": "2026-11-21T16:50:33.881554+00:00"}
+{"passage": "c01.p10", "call_errors": 0, "counts": {"repair_failed": 6, "character_rejected": 6}, "at": "2026-11-21T16:50:43.164720+00:00"}
+{"passage": "c02.p01", "call_errors": 0, "counts": {"repair_failed": 3, "character_verified": 1, "character_rejected": 3}, "at": "2026-11-21T16:50:50.207778+00:00"}
+{"passage": "c02.p02", "call_errors": 0, "counts": {"repair_failed": 4, "character_verified": 2, "character_rejected": 4}, "at": "2026-11-21T16:51:00.450294+00:00"}
+{"passage": "c02.p03", "call_errors": 0, "counts": {"repair_failed": 4, "character_verified": 3, "character_rejected": 4}, "at": "2026-11-21T16:51:12.443912+00:00"}
+{"passage": "c02.p04", "call_errors": 0, "counts": {"repair_failed": 4, "character_verified": 2, "character_rejected": 4}, "at": "2026-11-21T16:51:20.263281+00:00"}
+{"passage": "c02.p05", "call_errors": 0, "counts": {"repair_failed": 6, "character_verified": 2, "character_rejected": 6}, "at": "2026-11-21T16:51:30.861239+00:00"}
+{"passage": "c02.p06", "call_errors": 0, "counts": {"repair_failed": 6, "character_verified": 1, "character_rejected": 6}, "at": "2026-11-21T16:51:41.628522+00:00"}
+{"passage": "c02.p07", "call_errors": 0, "counts": {"repair_failed": 7, "character_verified": 2, "character_rejected": 7}, "at": "2026-11-21T16:51:53.778264+00:00"}
+{"passage": "c02.p08", "call_errors": 0, "counts": {"repair_failed": 6, "character_verified": 3, "character_rejected": 6}, "at": "2026-11-21T16:52:06.137419+00:00"}
+{"passage": "c02.p09", "call_errors": 0, "counts": {"repair_failed": 7, "character_verified": 7, "character_rejected": 7}, "at": "2026-11-21T16:52:23.469227+00:00"}
+{"passage": "c02.p10", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 8, "character_rejected": 1}, "at": "2026-11-21T16:52:32.585688+00:00"}
+{"passage": "c03.p01", "call_errors": 0, "counts": {"repair_failed": 15, "character_verified": 3, "character_rejected": 15}, "at": "2026-11-21T16:52:55.654240+00:00"}
+{"passage": "c03.p02", "call_errors": 0, "counts": {"character_verified": 11}, "at": "2026-11-21T16:53:07.830478+00:00"}
+{"passage": "c03.p03", "call_errors": 0, "counts": {"repair_failed": 21, "character_verified": 5, "character_rejected": 21}, "at": "2026-11-21T16:53:41.465621+00:00"}
+{"passage": "c03.p04", "call_errors": 0, "counts": {"repair_failed": 20, "character_verified": 1, "character_rejected": 20}, "at": "2026-11-21T16:54:12.196206+00:00"}
+{"passage": "c03.p05", "call_errors": 0, "counts": {"repair_failed": 24, "character_rejected": 24, "character_verified": 2}, "at": "2026-11-21T16:54:49.880335+00:00"}
+{"passage": "c03.p06", "call_errors": 0, "counts": {"repair_failed": 19, "character_verified": 4, "character_rejected": 19}, "at": "2026-11-21T16:55:26.298549+00:00"}
+{"passage": "c03.p07", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 4, "character_rejected": 1}, "at": "2026-11-21T16:55:37.670066+00:00"}
+{"passage": "c03.p08", "call_errors": 0, "counts": {"repair_failed": 2, "character_verified": 8, "character_rejected": 2}, "at": "2026-11-21T16:55:52.896646+00:00"}
+{"passage": "c04.p01", "call_errors": 0, "counts": {"repair_failed": 21, "character_verified": 5, "character_rejected": 21}, "at": "2026-11-21T16:56:30.719381+00:00"}
+{"passage": "c04.p02", "call_errors": 0, "counts": {"repair_failed": 3, "character_rejected": 3, "character_verified": 2}, "at": "2026-11-21T16:56:43.279302+00:00"}
+{"passage": "c04.p03", "call_errors": 0, "counts": {"repair_failed": 27, "character_rejected": 27}, "at": "2026-11-21T16:57:21.094487+00:00"}
+{"passage": "c04.p04", "call_errors": 0, "counts": {"repair_failed": 24, "character_verified": 1, "character_rejected": 24}, "at": "2026-11-21T16:57:58.976787+00:00"}
+{"passage": "c04.p05", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T16:58:04.720252+00:00"}
+{"passage": "c04.p06", "call_errors": 0, "counts": {"repair_failed": 25, "character_verified": 4, "character_rejected": 25}, "at": "2026-11-21T16:58:46.016942+00:00"}
+{"passage": "c04.p07", "call_errors": 0, "counts": {"repair_failed": 1, "character_rejected": 1, "character_verified": 2}, "at": "2026-11-21T16:58:51.977370+00:00"}
+{"passage": "c04.p08", "call_errors": 0, "counts": {"repair_failed": 22, "character_verified": 3, "character_rejected": 22}, "at": "2026-11-21T16:59:23.711409+00:00"}
+{"passage": "c04.p09", "call_errors": 0, "counts": {"repair_failed": 26, "character_verified": 4, "character_rejected": 26}, "at": "2026-11-21T17:00:04.834954+00:00"}
+{"passage": "c04.p10", "call_errors": 0, "counts": {"repair_failed": 20, "character_verified": 4, "character_rejected": 20}, "at": "2026-11-21T17:00:37.862159+00:00"}
+{"passage": "c04.p11", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:00:42.850356+00:00"}
+{"passage": "c04.p12", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:00:50.153045+00:00"}
+{"passage": "c05.p01", "call_errors": 0, "counts": {"repair_failed": 27, "character_verified": 2, "character_rejected": 27}, "at": "2026-11-21T17:01:29.993878+00:00"}
+{"passage": "c05.p02", "call_errors": 0, "counts": {"character_verified": 2}, "at": "2026-11-21T17:01:35.857452+00:00"}
+{"passage": "c05.p03", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:01:43.171339+00:00"}
+{"passage": "c05.p04", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:01:48.079478+00:00"}
+{"passage": "c05.p05", "call_errors": 0, "counts": {"repair_failed": 2, "character_verified": 3, "character_rejected": 2}, "at": "2026-11-21T17:02:00.093557+00:00"}
+{"passage": "c05.p06", "call_errors": 0, "counts": {"repair_failed": 22, "character_verified": 2, "character_rejected": 22}, "at": "2026-11-21T17:02:32.440671+00:00"}
+{"passage": "c05.p07", "call_errors": 0, "counts": {"character_verified": 2}, "at": "2026-11-21T17:02:36.083979+00:00"}
+{"passage": "c05.p08", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:02:41.230907+00:00"}
+{"passage": "c05.p09", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:02:48.315244+00:00"}
+{"passage": "c05.p10", "call_errors": 0, "counts": {"repair_failed": 23, "character_verified": 2, "character_rejected": 23}, "at": "2026-11-21T17:03:21.944039+00:00"}
+{"passage": "c06.p01", "call_errors": 0, "counts": {"repair_failed": 2, "character_rejected": 2, "character_verified": 4}, "at": "2026-11-21T17:03:30.279951+00:00"}
+{"passage": "c06.p02", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 3, "character_rejected": 1}, "at": "2026-11-21T17:03:37.351561+00:00"}
+{"passage": "c06.p03", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 2, "character_rejected": 1}, "at": "2026-11-21T17:03:43.610003+00:00"}
+{"passage": "c06.p04", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 6, "character_rejected": 1}, "at": "2026-11-21T17:03:51.406985+00:00"}
+{"passage": "c06.p05", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:03:57.356026+00:00"}
+{"passage": "c06.p06", "call_errors": 0, "counts": {"repair_failed": 26, "character_verified": 4, "character_rejected": 26}, "at": "2026-11-21T17:04:33.495806+00:00"}
+{"passage": "c06.p07", "call_errors": 0, "counts": {"repair_failed": 8, "character_verified": 4, "character_rejected": 8}, "at": "2026-11-21T17:04:48.011403+00:00"}
+{"passage": "c06.p08", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 3, "character_rejected": 1}, "at": "2026-11-21T17:04:58.196633+00:00"}
+{"passage": "c06.p09", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 4, "character_rejected": 1}, "at": "2026-11-21T17:05:06.092350+00:00"}
+{"passage": "c06.p10", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:05:11.591102+00:00"}
+{"passage": "c06.p11", "call_errors": 0, "counts": {"repair_failed": 23, "character_verified": 2, "character_rejected": 23}, "at": "2026-11-21T17:05:42.886733+00:00"}
+{"passage": "c06.p12", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:05:49.390816+00:00"}
+{"passage": "c06.p13", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 2, "character_rejected": 1}, "at": "2026-11-21T17:05:55.772343+00:00"}
+{"passage": "c07.p01", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:06:03.230785+00:00"}
+{"passage": "c07.p02", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:06:07.682504+00:00"}
+{"passage": "c07.p03", "call_errors": 0, "counts": {"repair_failed": 25, "character_verified": 5, "character_rejected": 25}, "at": "2026-11-21T17:06:44.811473+00:00"}
+{"passage": "c07.p04", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:06:49.672994+00:00"}
+{"passage": "c07.p05", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:06:57.821968+00:00"}
+{"passage": "c07.p06", "call_errors": 0, "counts": {"character_verified": 7}, "at": "2026-11-21T17:07:05.800577+00:00"}
+{"passage": "c07.p07", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:07:13.204299+00:00"}
+{"passage": "c07.p08", "call_errors": 0, "counts": {"character_verified": 7}, "at": "2026-11-21T17:07:21.530851+00:00"}
+{"passage": "c07.p09", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:07:27.629965+00:00"}
+{"passage": "c07.p10", "call_errors": 0, "counts": {"character_verified": 7}, "at": "2026-11-21T17:07:35.151329+00:00"}
+{"passage": "c07.p11", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:07:40.631940+00:00"}
+{"passage": "c07.p12", "call_errors": 0, "counts": {"repair_failed": 24, "character_verified": 3, "character_rejected": 24}, "at": "2026-11-21T17:08:15.391485+00:00"}
+{"passage": "c08.p01", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:08:22.839114+00:00"}
+{"passage": "c08.p02", "call_errors": 0, "counts": {"repair_failed": 21, "character_verified": 8, "character_rejected": 21}, "at": "2026-11-21T17:08:54.954430+00:00"}
+{"passage": "c08.p03", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:09:00.921202+00:00"}
+{"passage": "c08.p04", "call_errors": 0, "counts": {"character_verified": 7}, "at": "2026-11-21T17:09:08.513770+00:00"}
+{"passage": "c08.p05", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 5, "character_rejected": 1}, "at": "2026-11-21T17:09:16.735818+00:00"}
+{"passage": "c08.p06", "call_errors": 0, "counts": {"repair_failed": 28, "character_verified": 2, "character_rejected": 28}, "at": "2026-11-21T17:09:57.035226+00:00"}
+{"passage": "c08.p07", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:10:02.688005+00:00"}
+{"passage": "c08.p08", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:10:07.650035+00:00"}
+{"passage": "c08.p09", "call_errors": 0, "counts": {"repair_failed": 28, "character_verified": 3, "character_rejected": 28}, "at": "2026-11-21T17:10:44.584181+00:00"}
+{"passage": "c08.p10", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 4, "character_rejected": 1}, "at": "2026-11-21T17:10:51.882066+00:00"}
+{"passage": "c08.p11", "call_errors": 0, "counts": {"repair_failed": 24, "character_verified": 9, "character_rejected": 24}, "at": "2026-11-21T17:11:25.755853+00:00"}
+{"passage": "c08.p12", "call_errors": 0, "counts": {"repair_failed": 5, "character_verified": 6, "character_rejected": 5}, "at": "2026-11-21T17:11:38.110603+00:00"}
+{"passage": "c09.p01", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 11, "character_rejected": 1}, "at": "2026-11-21T17:11:53.230022+00:00"}
+{"passage": "c09.p02", "call_errors": 0, "counts": {"repair_failed": 5, "character_verified": 3, "character_rejected": 5}, "at": "2026-11-21T17:12:09.217805+00:00"}
+{"passage": "c09.p03", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:12:14.479116+00:00"}
+{"passage": "c09.p04", "call_errors": 0, "counts": {"character_verified": 2}, "at": "2026-11-21T17:12:17.990445+00:00"}
+{"passage": "c09.p05", "call_errors": 0, "counts": {"repair_failed": 2, "character_verified": 4, "character_rejected": 2}, "at": "2026-11-21T17:12:30.192690+00:00"}
+{"passage": "c09.p06", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:12:36.094148+00:00"}
+{"passage": "c09.p07", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:12:41.483893+00:00"}
+{"passage": "c09.p08", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:12:46.640185+00:00"}
+{"passage": "c09.p09", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:12:52.133612+00:00"}
+{"passage": "c09.p10", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:12:58.164618+00:00"}
+{"passage": "c09.p11", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:13:03.668149+00:00"}
+{"passage": "c09.p12", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:13:08.933614+00:00"}
+{"passage": "c10.p01", "call_errors": 0, "counts": {"character_verified": 8}, "at": "2026-11-21T17:13:18.850694+00:00"}
+{"passage": "c10.p02", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:13:24.023015+00:00"}
+{"passage": "c10.p03", "call_errors": 0, "counts": {"character_verified": 9}, "at": "2026-11-21T17:13:33.329229+00:00"}
+{"passage": "c10.p04", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:13:38.562686+00:00"}
+{"passage": "c10.p05", "call_errors": 0, "counts": {"repair_failed": 1, "character_verified": 4, "character_rejected": 1}, "at": "2026-11-21T17:13:46.902795+00:00"}
+{"passage": "c10.p06", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:13:53.703568+00:00"}
+{"passage": "c10.p07", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:13:59.956449+00:00"}
+{"passage": "c10.p08", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:14:05.851914+00:00"}
+{"passage": "c10.p09", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:14:11.974351+00:00"}
+{"passage": "c10.p10", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:14:16.886172+00:00"}
+{"passage": "c10.p11", "call_errors": 0, "counts": {"repair_failed": 19, "character_rejected": 19, "character_verified": 2}, "at": "2026-11-21T17:14:43.802847+00:00"}
+{"passage": "c11.p01", "call_errors": 0, "counts": {"repair_failed": 27, "character_verified": 6, "character_rejected": 27}, "at": "2026-11-21T17:15:24.085281+00:00"}
+{"passage": "c11.p02", "call_errors": 0, "counts": {"repair_failed": 12, "character_verified": 7, "character_rejected": 12}, "at": "2026-11-21T17:15:46.041816+00:00"}
+{"passage": "c11.p03", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:15:50.950456+00:00"}
+{"passage": "c11.p04", "call_errors": 0, "counts": {"repair_failed": 1, "character_rejected": 1, "character_verified": 6}, "at": "2026-11-21T17:15:59.198229+00:00"}
+{"passage": "c11.p05", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:16:05.535565+00:00"}
+{"passage": "c11.p06", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:16:11.845564+00:00"}
+{"passage": "c11.p07", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:16:18.378640+00:00"}
+{"passage": "c11.p08", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:16:24.283604+00:00"}
+{"passage": "c11.p09", "call_errors": 0, "counts": {"character_verified": 7}, "at": "2026-11-21T17:16:31.433058+00:00"}
+{"passage": "c11.p10", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:16:36.986181+00:00"}
+{"passage": "c12.p01", "call_errors": 0, "counts": {"character_verified": 3}, "at": "2026-11-21T17:16:40.960193+00:00"}
+{"passage": "c12.p02", "call_errors": 0, "counts": {"character_verified": 5}, "at": "2026-11-21T17:16:46.569820+00:00"}
+{"passage": "c12.p03", "call_errors": 0, "counts": {"repair_failed": 24, "character_verified": 5, "character_rejected": 24}, "at": "2026-11-21T17:17:22.669292+00:00"}
+{"passage": "c12.p04", "call_errors": 0, "counts": {"character_verified": 6}, "at": "2026-11-21T17:17:30.039677+00:00"}
+{"passage": "c12.p05", "call_errors": 0, "counts": {"repair_failed": 19, "character_verified": 4, "character_rejected": 19}, "at": "2026-11-21T17:18:00.611809+00:00"}
+{"passage": "c12.p06", "call_errors": 0, "counts": {"character_verified": 4}, "at": "2026-11-21T17:18:05.263313+00:00"}
+{"passage": "c12.p07", "call_errors": 0, "counts": {"repair_failed": 22, "character_verified": 6, "character_rejected": 22}, "at": "2026-11-21T17:18:39.317923+00:00"}
+{"passage": "c12.p08", "call_errors": 0, "counts": {"repair_failed": 29, "character_verified": 4, "character_rejected": 29}, "at": "2026-11-21T17:19:20.540903+00:00"}
+{"passage": "c12.p09", "call_errors": 0, "counts": {"repair_failed": 15, "character_verified": 2, "character_rejected": 15}, "at": "2026-11-21T17:19:43.933609+00:00"}
+{"passage": "c12.p10", "call_errors": 0, "counts": {"repair_failed": 2, "character_verified": 9, "character_rejected": 2}, "at": "2026-11-21T17:19:55.674851+00:00"}
+{"passage": "c12.p11", "call_errors": 0, "counts": {"repair_failed": 1, "character_rejected": 1, "character_verified": 6}, "at": "2026-11-21T17:20:03.843249+00:00"}

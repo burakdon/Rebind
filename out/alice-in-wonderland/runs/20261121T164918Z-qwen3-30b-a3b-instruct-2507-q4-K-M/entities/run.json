@@ -1,0 +1,41 @@
+{
+  "source_run": "20261121T164918Z-qwen3-30b-a3b-instruct-2507-q4-K-M",
+  "backend": {
+    "spec": "ollama:qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "base_url": "http://localhost:11434/v1",
+    "server_version": "0.17.0",
+    "digest": "19e422b0231392335cfc49cfd172de7034bb1aeabb08aa307cce745c60b272fe",
+    "parameter_size": "30.5B",
+    "quantization": "Q4_K_M",
+    "context_length": 8192
+  },
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342,
+    "max_tokens": 3600
+  },
+  "anchor_min": 5,
+  "batch": 8,
+  "system_prompt": "You are building the cast list of a novel from names that a reader model wrote down passage by passage.\n\nSeveral names may refer to the same character: a nickname, a first name alone, a surname alone, a title, a married name. Different people often share a surname (Mr. Bennet, Mrs. Bennet and the Bennet daughters are different people), so never merge on a shared surname alone.\n\nSome names are not individual characters: groups of people (\"the officers\") or places, objects and other things the reader mislabelled (\"Pemberley\", \"the two third\"). Label them.\n\nFor every decision give `basis`, what it rests on. Choose \"knowledge of the novel\" whenever the example sentences shown do not themselves establish it.",
+  "anchor_task": "These names were each used for a character in at least {n} passages. For each name give:\n- `same_as`: the name in this list that is the fullest usual name of the same character. Give the name itself if it is that fullest name, or if no other name in the list refers to the same character or group.\n- `kind`: person, group, or not_a_person.\n\n{listing}",
+  "tail_task": "Known entities so far (id: canonical name, kind):\n{entities}\n\nFor each name below, give `same_as`: the id of the known entity it refers to, or \"new_person\", \"new_group\" or \"not_a_person\". Also give its `kind`.\n\n{listing}",
+  "started": "2026-11-21T17:20:05.027008+00:00",
+  "finished": "2026-11-21T17:24:54.486678+00:00",
+  "counts": {
+    "names": 153,
+    "entities": 137,
+    "person": 71,
+    "group": 17,
+    "not_a_person": 28,
+    "reference": 21,
+    "by_step": {
+      "R4": 27,
+      "M1": 21,
+      "M2": 77,
+      "R5": 27,
+      "R7": 1
+    },
+    "flagged": 18
+  }
+}

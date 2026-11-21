@@ -25,6 +25,31 @@
   ]
  },
  {
+  "slug": "alice-in-wonderland",
+  "title": "Alice's Adventures in Wonderland",
+  "author": "Lewis Carroll",
+  "chapter_word": "Chapter",
+  "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+  "pairs": 131,
+  "rows": 262,
+  "width_in": 8.2,
+  "length_in": 35,
+  "yards": 251,
+  "undyed": 47,
+  "people": [
+   "Dormouse",
+   "Gryphon",
+   "Hatter",
+   "White Rabbit",
+   "Alice",
+   "Queen",
+   "King",
+   "March Hare",
+   "Mock Turtle",
+   "Mouse"
+  ]
+ },
+ {
   "slug": "pride-and-prejudice",
   "title": "Pride and Prejudice",
   "author": "Jane Austen",

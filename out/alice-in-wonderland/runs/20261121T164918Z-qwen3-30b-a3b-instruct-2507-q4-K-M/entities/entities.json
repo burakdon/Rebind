@@ -1,0 +1,1525 @@
+[
+  {
+    "id": "alice",
+    "canonical": "Alice",
+    "kind": "person",
+    "mentions": 117,
+    "names": [
+      "Alice"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 12
+  },
+  {
+    "id": "queen",
+    "canonical": "Queen",
+    "kind": "person",
+    "mentions": 27,
+    "names": [
+      "Queen",
+      "Queen of Hearts"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 12
+  },
+  {
+    "id": "king",
+    "canonical": "King",
+    "kind": "person",
+    "mentions": 26,
+    "names": [
+      "King",
+      "King of Hearts"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 12
+  },
+  {
+    "id": "white-rabbit",
+    "canonical": "White Rabbit",
+    "kind": "person",
+    "mentions": 26,
+    "names": [
+      "White Rabbit",
+      "Footman"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 12
+  },
+  {
+    "id": "hatter",
+    "canonical": "Hatter",
+    "kind": "person",
+    "mentions": 22,
+    "names": [
+      "Hatter"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 11
+  },
+  {
+    "id": "march-hare",
+    "canonical": "March Hare",
+    "kind": "person",
+    "mentions": 21,
+    "names": [
+      "March Hare",
+      "March"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 12
+  },
+  {
+    "id": "gryphon",
+    "canonical": "Gryphon",
+    "kind": "person",
+    "mentions": 20,
+    "names": [
+      "Gryphon"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 12
+  },
+  {
+    "id": "mock-turtle",
+    "canonical": "Mock Turtle",
+    "kind": "person",
+    "mentions": 19,
+    "names": [
+      "Mock Turtle",
+      "Turtle"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 10
+  },
+  {
+    "id": "dormouse",
+    "canonical": "Dormouse",
+    "kind": "person",
+    "mentions": 15,
+    "names": [
+      "Dormouse"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 11
+  },
+  {
+    "id": "duchess",
+    "canonical": "Duchess",
+    "kind": "person",
+    "mentions": 13,
+    "names": [
+      "Duchess"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 12
+  },
+  {
+    "id": "mouse",
+    "canonical": "Mouse",
+    "kind": "person",
+    "mentions": 13,
+    "names": [
+      "Mouse"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 12
+  },
+  {
+    "id": "cheshire-cat",
+    "canonical": "Cheshire Cat",
+    "kind": "person",
+    "mentions": 13,
+    "names": [
+      "Cheshire Cat",
+      "cat"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 8
+  },
+  {
+    "id": "jury",
+    "canonical": "jury",
+    "kind": "group",
+    "mentions": 10,
+    "names": [
+      "jury",
+      "jurymen",
+      "jurors"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 12
+  },
+  {
+    "id": "caterpillar",
+    "canonical": "Caterpillar",
+    "kind": "person",
+    "mentions": 8,
+    "names": [
+      "Caterpillar"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 10
+  },
+  {
+    "id": "knave-of-hearts",
+    "canonical": "Knave of Hearts",
+    "kind": "person",
+    "mentions": 8,
+    "names": [
+      "Knave of Hearts",
+      "Knave"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 12
+  },
+  {
+    "id": "cook",
+    "canonical": "cook",
+    "kind": "person",
+    "mentions": 6,
+    "names": [
+      "cook"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 11
+  },
+  {
+    "id": "lizard",
+    "canonical": "Lizard",
+    "kind": "person",
+    "mentions": 6,
+    "names": [
+      "Lizard"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 12
+  },
+  {
+    "id": "soldiers",
+    "canonical": "soldiers",
+    "kind": "group",
+    "mentions": 6,
+    "names": [
+      "soldiers",
+      "officer",
+      "officer of the court",
+      "officers of the court",
+      "soldier"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 11
+  },
+  {
+    "id": "baby",
+    "canonical": "baby",
+    "kind": "not_a_person",
+    "mentions": 5,
+    "names": [
+      "baby"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "bill",
+    "canonical": "Bill",
+    "kind": "person",
+    "mentions": 5,
+    "names": [
+      "Bill"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 12
+  },
+  {
+    "id": "dinah",
+    "canonical": "Dinah",
+    "kind": "person",
+    "mentions": 5,
+    "names": [
+      "Dinah"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 4
+  },
+  {
+    "id": "lory",
+    "canonical": "Lory",
+    "kind": "person",
+    "mentions": 5,
+    "names": [
+      "Lory"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 3
+  },
+  {
+    "id": "dodo",
+    "canonical": "Dodo",
+    "kind": "person",
+    "mentions": 4,
+    "names": [
+      "Dodo"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 3
+  },
+  {
+    "id": "pigeon",
+    "canonical": "Pigeon",
+    "kind": "person",
+    "mentions": 4,
+    "names": [
+      "Pigeon"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "two",
+    "canonical": "Two",
+    "kind": "group",
+    "mentions": 3,
+    "names": [
+      "Two"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 8
+  },
+  {
+    "id": "flamingo",
+    "canonical": "flamingo",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "flamingo"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 9
+  },
+  {
+    "id": "pig",
+    "canonical": "pig",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "pig"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "guinea-pigs",
+    "canonical": "guinea-pigs",
+    "kind": "group",
+    "mentions": 3,
+    "names": [
+      "guinea-pigs",
+      "guinea-pig"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 12
+  },
+  {
+    "id": "children",
+    "canonical": "children",
+    "kind": "group",
+    "mentions": 3,
+    "names": [
+      "children",
+      "other little children",
+      "royal children"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 12
+  },
+  {
+    "id": "duck",
+    "canonical": "Duck",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Duck"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 10
+  },
+  {
+    "id": "whiting",
+    "canonical": "whiting",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "whiting"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "mary-ann",
+    "canonical": "Mary Ann",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Mary Ann"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "her-sister",
+    "canonical": "her sister",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "her sister"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 12
+  },
+  {
+    "id": "three-gardeners",
+    "canonical": "three gardeners",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "three gardeners"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 8
+  },
+  {
+    "id": "cats",
+    "canonical": "cats",
+    "kind": "not_a_person",
+    "mentions": 2,
+    "names": [
+      "cats"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "dogs",
+    "canonical": "dogs",
+    "kind": "not_a_person",
+    "mentions": 2,
+    "names": [
+      "dogs"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "hedgehog",
+    "canonical": "hedgehog",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "hedgehog"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 8
+  },
+  {
+    "id": "lobster",
+    "canonical": "Lobster",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Lobster"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "mabel",
+    "canonical": "Mabel",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Mabel"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "porpoise",
+    "canonical": "porpoise",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "porpoise"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "puppy",
+    "canonical": "puppy",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "puppy"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "serpent",
+    "canonical": "Serpent",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Serpent"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "turtles",
+    "canonical": "turtles",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "turtles"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "william-the-conqueror",
+    "canonical": "William the Conqueror",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "William the Conqueror"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "fish-footman",
+    "canonical": "Fish-Footman",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Fish-Footman"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "executioner",
+    "canonical": "executioner",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "executioner"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 8
+  },
+  {
+    "id": "eaglet",
+    "canonical": "Eaglet",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Eaglet"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 3
+  },
+  {
+    "id": "a-farmer",
+    "canonical": "a farmer",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "a farmer"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "a-little-bright-eyed-terrier",
+    "canonical": "a little bright-eyed terrier",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "a little bright-eyed terrier"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "boots-and-shoes",
+    "canonical": "boots and shoes",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "boots and shoes"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "duchess-s-cook",
+    "canonical": "Duchess’s cook",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Duchess’s cook"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "little-girl",
+    "canonical": "little girl",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "little girl"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "little-sister-of-hers",
+    "canonical": "little sister of hers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "little sister of hers"
+    ],
+    "first_chapter": 12,
+    "last_chapter": 12
+  },
+  {
+    "id": "my-dear",
+    "canonical": "my dear",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "my dear"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "old-crab",
+    "canonical": "old crab",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "old crab"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "the-caterpillar",
+    "canonical": "the Caterpillar",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Caterpillar"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-dream-of-wonderland-of-long-ago",
+    "canonical": "the dream of Wonderland of long ago",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the dream of Wonderland of long ago"
+    ],
+    "first_chapter": 12,
+    "last_chapter": 12
+  },
+  {
+    "id": "the-duchess",
+    "canonical": "the Duchess",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Duchess"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "the-earls-of-mercia-and-northumbria",
+    "canonical": "the earls of Mercia and Northumbria",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the earls of Mercia and Northumbria"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-english",
+    "canonical": "the English",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the English"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-master",
+    "canonical": "the master",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the master"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-moral",
+    "canonical": "the moral",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the moral"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "the-patriotic-archbishop-of-canterbury",
+    "canonical": "the patriotic archbishop of Canterbury",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the patriotic archbishop of Canterbury"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-pope",
+    "canonical": "the pope",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the pope"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-queen",
+    "canonical": "the Queen",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Queen"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "the-rabbit-s",
+    "canonical": "the Rabbit’s",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Rabbit’s"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-sage",
+    "canonical": "the sage",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the sage"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-young-man",
+    "canonical": "the young man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the young man"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-youth",
+    "canonical": "the youth",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the youth"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "their-eyes",
+    "canonical": "their eyes",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "their eyes"
+    ],
+    "first_chapter": 12,
+    "last_chapter": 12
+  },
+  {
+    "id": "young-crab",
+    "canonical": "young Crab",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "young Crab"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "ada",
+    "canonical": "Ada",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Ada"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "australia",
+    "canonical": "Australia",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "Australia"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "barley-sugar",
+    "canonical": "barley-sugar",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "barley-sugar"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "birds",
+    "canonical": "birds",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "birds"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "buttercup",
+    "canonical": "buttercup",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "buttercup"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "camomile",
+    "canonical": "camomile",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "camomile"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "child",
+    "canonical": "child",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "child"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "child-life",
+    "canonical": "child-life",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "child-life"
+    ],
+    "first_chapter": 12,
+    "last_chapter": 12
+  },
+  {
+    "id": "classics-master",
+    "canonical": "Classics master",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Classics master"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "conger-eel",
+    "canonical": "Conger-eel",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Conger-eel"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "croquet",
+    "canonical": "croquet",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "croquet"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "cur",
+    "canonical": "cur",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "cur"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "edwin",
+    "canonical": "Edwin",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Morcar"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "eggs",
+    "canonical": "eggs",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "eggs"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "father",
+    "canonical": "father",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "father"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "father-william",
+    "canonical": "Father William",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Father William"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "ferrets",
+    "canonical": "ferrets",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "ferrets"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "fish",
+    "canonical": "fish",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "seals"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "happy-summer-days",
+    "canonical": "happy summer days",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "happy summer days"
+    ],
+    "first_chapter": 12,
+    "last_chapter": 12
+  },
+  {
+    "id": "hookah",
+    "canonical": "hookah",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "hookah"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "jelly-fish",
+    "canonical": "jelly-fish",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "jelly-fish"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "mushroom",
+    "canonical": "mushroom",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "mushroom"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "mustard",
+    "canonical": "mustard",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "mustard"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "new-zealand",
+    "canonical": "New Zealand",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "New Zealand"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "owl",
+    "canonical": "Owl",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Owl"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "panther",
+    "canonical": "Panther",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "Panther"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "pat",
+    "canonical": "Pat",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Pat"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "pattering-of-footsteps",
+    "canonical": "pattering of footsteps",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "pattering of footsteps"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "people",
+    "canonical": "people",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "people"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "pepper",
+    "canonical": "pepper",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "pepper"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "pig-baby",
+    "canonical": "pig-baby",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "pig-baby"
+    ],
+    "first_chapter": 12,
+    "last_chapter": 12
+  },
+  {
+    "id": "rats",
+    "canonical": "rats",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "rats"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "rose-tree",
+    "canonical": "rose-tree",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "rose-tree"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 8
+  },
+  {
+    "id": "shingle",
+    "canonical": "shingle",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "shingle"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "soup",
+    "canonical": "soup",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "soup"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "stick",
+    "canonical": "stick",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "stick"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "stigand",
+    "canonical": "Stigand",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Stigand"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "tea",
+    "canonical": "tea",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "tea"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "thistle",
+    "canonical": "thistle",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "thistle"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "tillie",
+    "canonical": "Tillie",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Tillie"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "time",
+    "canonical": "Time",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Time"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "twinkle-twinkle-little-bat",
+    "canonical": "Twinkle, twinkle, little bat",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Twinkle, twinkle, little bat"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "twinkle-twinkle-twinkle-twinkle",
+    "canonical": "Twinkle, twinkle, twinkle, twinkle",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Twinkle, twinkle, twinkle, twinkle"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "vinegar",
+    "canonical": "vinegar",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "vinegar"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "water",
+    "canonical": "Water",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "Water"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "well",
+    "canonical": "Well",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "Well"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "judge",
+    "canonical": "judge",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "judge"
+    ],
+    "first_chapter": 11,
+    "last_chapter": 11
+  },
+  {
+    "id": "wine",
+    "canonical": "wine",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "wine"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "youth",
+    "canonical": "youth",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "youth"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "may",
+    "canonical": "May",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "May"
+    ],
+    "first_chapter": 6,
+    "last_chapter": 6
+  },
+  {
+    "id": "dinn",
+    "canonical": "Dinn",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Dinn"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "tortoise",
+    "canonical": "Tortoise",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Tortoise"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  },
+  {
+    "id": "elsie",
+    "canonical": "Elsie",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Elsie"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "five",
+    "canonical": "Five",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Five"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 8
+  },
+  {
+    "id": "lacie",
+    "canonical": "Lacie",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Lacie"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "snail",
+    "canonical": "snail",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "snail"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "treacle",
+    "canonical": "Treacle",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Treacle"
+    ],
+    "first_chapter": 7,
+    "last_chapter": 7
+  },
+  {
+    "id": "fury",
+    "canonical": "Fury",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Fury"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "seven",
+    "canonical": "Seven",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Seven"
+    ],
+    "first_chapter": 8,
+    "last_chapter": 8
+  },
+  {
+    "id": "magpie",
+    "canonical": "Magpie",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Magpie"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "lobsters",
+    "canonical": "lobsters",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "lobsters"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "shark",
+    "canonical": "Shark",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Shark"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "edwin-2",
+    "canonical": "Edwin",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Edwin"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "fish-2",
+    "canonical": "fish",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "fish"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "salmon",
+    "canonical": "salmon",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "salmon"
+    ],
+    "first_chapter": 10,
+    "last_chapter": 10
+  },
+  {
+    "id": "mock-turtle-soup",
+    "canonical": "Mock Turtle Soup",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Mock Turtle Soup"
+    ],
+    "first_chapter": 9,
+    "last_chapter": 9
+  }
+]

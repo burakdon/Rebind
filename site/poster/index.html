@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebind · Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="poster.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+</head>
+<body>
+<div id="frame">
+<div id="poster">
+  <header>
+    <div class="head">
+      <p class="brand">Rebind</p>
+      <h1>Don’t rip books. Knit and wear them.</h1>
+      <p class="lede">To learn from a book, an AI cuts it into pieces and keeps no note of where each piece came from. Rebind has an AI read a book and hands back a scarf pattern in which every row leads to the sentences it was made from.</p>
+    </div>
+    <div class="who">
+      <div id="qr"></div>
+      <div>
+        <p class="url" id="url"></p>
+        <p class="by" id="by"></p>
+        <p class="small">Scan to see the scarves knitted on screen, click any row, and print the pattern.</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="lead">
+    <div class="cap"><h2 id="lead-title"></h2><p id="lead-facts"></p></div>
+    <div id="lead-scarf"></div>
+    <ul class="key" id="key"></ul>
+  </section>
+
+  <section id="others"></section>
+
+  <section id="cols">
+    <div class="col" id="how">
+      <h2>How a book becomes a scarf</h2>
+      <ol class="steps">
+        <li><b>A model reads it.</b> A model running on a laptop reads a passage at a time, without being told which book it is. It labels every sentence warm, cold or neither, and tense or calm, and says who is there, pointing at the sentence that shows it.</li>
+        <li><b>Code checks and counts.</b> A claim is kept only if the sentence it points at exists and says so. Then the labels are counted by the rules below. Nothing else decides a stitch.</li>
+        <li><b>The count is a pattern.</b> One passage is one pair of rows, written as instructions a knitter can follow. Every row names its passage, so the scarf unravels back to the page.</li>
+      </ol>
+      <h3>The rules, in full</h3>
+      <ol class="rules" id="rules"></ol>
+    </div>
+    <div class="col" id="trust">
+      <h2>How far to trust it</h2>
+      <p>The labels are one model’s opinion of each sentence, so the poster reports how steady that opinion is. Each figure is how many times in 100 a sentence keeps its label.</p>
+      <table id="checks"></table>
+      <ul class="limits" id="limits"></ul>
+    </div>
+    <div class="col" id="example"></div>
+  </section>
+
+  <footer id="foot"></footer>
+  <div id="lead-line"></div>
+</div>
+</div>
+<script type="module" src="poster.js"></script>
+</body>
+</html>
