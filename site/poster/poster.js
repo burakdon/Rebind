@@ -100,8 +100,8 @@ $('checks').innerHTML = `<tr><th>Book</th><th class="n">Question<br>reworded</th
   + all.map(({ b, C }) => {
     const o = C && Object.values(C.other || {})[0], sw = C?.memory && C.readings['a-swapped'] >= C.readings.a ? C.memory : null;
     const cell = x => (x ? `${per(x.feeling.same)} · ${per(x.pace.same)}` : 'not run');
-    return `<tr><td>${esc(b.title)}</td><td class="n">${cell(C?.stability)}</td><td class="n">${cell(sw)}</td><td class="n">${o ? cell(o) + '*' : 'not run'}</td><td class="n">${b.undyed} of ${b.pairs}</td></tr>`;
-  }).join('') + `<tr><td colspan="5" style="border:0;font-size:14pt;color:#5f5343">Each cell: warm/cold/neither label · tense/calm label. A person: not checked for any book.${all.some(x => x.C && Object.keys(x.C.other || {}).length) ? ' *On a sample of passages.' : ''}</td></tr>`;
+    return `<tr><td>${esc(b.title)}</td><td class="n">${cell(C?.stability)}</td><td class="n">${cell(sw)}</td><td class="n">${o ? cell(o) + (o.passages < o.of ? '*' : '') : 'not run'}</td><td class="n">${b.undyed} of ${b.pairs}</td></tr>`;
+  }).join('') + `<tr><td colspan="5" style="border:0;font-size:14pt;color:#5f5343">Each cell: warm/cold/neither label · tense/calm label. A person: not checked for any book.${all.some(x => Object.values(x.C?.other || {}).some(o => o.passages < o.of)) ? ' *On a sample of passages.' : ''}</td></tr>`;
 const fragile = K.rows.filter(r => r.margin === 1).length, st = lead.C?.stability, me = lead.C?.memory;
 $('limits').innerHTML = [
   st && me ? `<b>Wording moves it more than names do.</b> Rewording the question changes about ${Math.round(100 * (1 - st.feeling.same))} in 100 feeling labels in ${esc(K.book.title)}; swapping every name changes about ${Math.round(100 * (1 - me.feeling.same))}. So there is no sign the model leans on recognising the book, though it may still know the text.` : '',

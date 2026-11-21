@@ -31,5 +31,19 @@
     "calm"
   ],
   "swap_table": {},
-  "started": "2026-11-21T18:03:36.223128+00:00"
+  "finished": "2026-11-21T19:12:37.842653+00:00",
+  "counts": {
+    "passages": 138,
+    "failed": 0,
+    "sentences": 1761,
+    "feeling": {
+      "cold": 691,
+      "neither": 347,
+      "warm": 723
+    },
+    "pace": {
+      "calm": 1150,
+      "tense": 611
+    }
+  }
 }
