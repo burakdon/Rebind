@@ -1,4 +1,6 @@
 # Publishes site/ to GitHub Pages whenever main changes. The site is static: no build step.
+# Two jobs, not one: when the upload and the deploy ran in the same job, the deploy often
+# looked for the uploaded files before they were listed and failed with "Found 0 artifact(s)".
 name: Publish site
 on:
   push:
@@ -12,16 +14,20 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
