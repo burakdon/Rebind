@@ -1,0 +1,228 @@
+"""The book as a knitting pattern: a scarf anyone can knit, where every row can be unravelled.
+
+A style over book.json (rebind tokenize); no model is called. Knitting sets the terms:
+one yarn per row, a width a person can hold, a length a person can finish. So the
+whole book is told at passage level, one pair of rows each.
+
+Nothing here rests on a score a person cannot check. The reader labels each sentence
+warm, cold or neither, and tense or calm (rebind label). A row's yarn and texture are
+counted from those labels by the rules below, so the reason for a row is the sum that
+produced it, and anyone can redo it by hand. The book is read twice, in different
+words, and the counts are taken over both readings together. Where the two readings,
+counted apart, would pick yarns two or more apart, the row is left undyed.
+
+pattern.json holds the rules (K1-K7), the materials, and every pair of rows as chart
+symbols and as written instructions, each with its tallies and the facts it rests on.
+"""
+
+from __future__ import annotations
+
+import json
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+
+from .source import ROOT
+
+EDGE = 3                 # stitches at each edge that are always knitted
+PEOPLE = 10              # columns
+UNIT = 3                 # one plain stitch, then the two an eyelet takes
+CAST_ON = EDGE + 1 + PEOPLE * UNIT + EDGE          # 37
+# Design choices, not learned: fixed after looking at how the first reading's balances
+# spread, so that all five yarns are used. Changing them changes the scarf, not the labels.
+YARN_CUTS = (-0.5, -0.2, 0.2, 0.5)       # balance = (warm - cold) / sentences
+RIDGED_SHARE = 0.5                        # share of sentences labelled tense
+YARNS = [  # key, name, colour on screen
+    ("A", "deep blue", "#35548c"),
+    ("B", "grey blue", "#7f98b3"),
+    ("C", "stone grey", "#9c978c"),
+    ("D", "rose", "#c8745f"),
+    ("E", "deep red", "#8c2531"),
+    ("U", "undyed", "#efe6d0"),
+]
+UNSURE = "U"
+UNSURE_GAP = 2           # yarns apart at which the two readings, counted apart, are taken to disagree
+# Worsted-weight yarn on 4.5 mm (US 7) needles. These are ordinary figures for that
+# weight, not measurements of this scarf: knit a swatch before trusting the size.
+GAUGE = {"stitches_per_4in": 18, "smooth_rows_per_4in": 24, "ridged_rows_per_4in": 36,
+         "yarn_inches_per_stitch": 0.85, "needles": "4.5 mm (US 7)", "yarn": "worsted weight",
+         "note": "Typical figures for worsted yarn; sizes and yardage are estimates until you swatch."}
+
+a_, b_, c_, d_ = YARN_CUTS
+RULES = {
+    "K1": "The scarf is knitted from the first chapter to the last. Every passage of the book is one pair of rows: "
+          "a right-side row and the row back.",
+    "K2": "The reader labels every sentence warm, cold or neither, and does so twice, with the question put in "
+          "different words. For a passage, take the warm labels minus the cold ones over both readings and divide "
+          f"by the number of labels. Yarn A if that is {a_} or less, B if below {b_}, C if below {c_}, "
+          f"D if below {d_}, E otherwise.",
+    "K3": "In both readings the reader also labels every sentence tense or calm. If at least "
+          f"{round(RIDGED_SHARE * 100)} in 100 of a passage's labels are tense, the row back is knitted, which "
+          "leaves a raised ridge you can feel; otherwise it is purled and the fabric is smooth. Three stitches at "
+          "each edge are always knitted so the scarf lies flat.",
+    "K4": f"The {PEOPLE} most-mentioned people each own a column. The most-mentioned is in the middle and the others "
+          "alternate outwards. A person is someone the reader named, or a description the book itself uses as a "
+          "name at least three times: one written with a capital (the Ghost), or a named person's relation "
+          "(Scrooge's nephew).",
+    "K5": "On the right-side row a person's column gets an eyelet (yarn over, knit two together) if the reader has "
+          "a verified fact that they are in that passage. Otherwise the column is knitted plain.",
+    "K6": "The first passage of every chapter has an eyelet in the edge, so chapters can be counted along one side.",
+    "K7": "The two readings are also counted apart. If on their own they would pick yarns two or more apart "
+          "(A and C, say), the passage is knitted in undyed yarn U: the answer depends too much on how the "
+          "question was put, so the scarf makes no claim.",
+}
+ONCE = {  # the same rules for a book that has only been read once so far
+    "K2": "The reader labels every sentence warm, cold or neither. For a passage, take the warm sentences minus the "
+          f"cold ones and divide by the number of sentences. Yarn A if that is {a_} or less, B if below {b_}, "
+          f"C if below {c_}, D if below {d_}, E otherwise.",
+    "K3": "The reader also labels every sentence tense or calm. If at least "
+          f"{round(RIDGED_SHARE * 100)} in 100 of a passage's sentences are tense, the row back is knitted, which "
+          "leaves a raised ridge you can feel; otherwise it is purled and the fabric is smooth. Three stitches at "
+          "each edge are always knitted so the scarf lies flat.",
+    "K7": "The book has been read only once so far, so nothing checks whether the labels depend on how the "
+          "question was put. A passage with no usable labels is knitted in undyed yarn U.",
+}
+ABBREVIATIONS = {"k": "knit", "p": "purl", "yo": "yarn over", "k2tog": "knit two together",
+                 "RS": "right side", "WS": "wrong side"}
+
+
+def yarn_for(balance: float) -> str:
+    a, b, c, d = YARN_CUTS
+    return "A" if balance <= a else "B" if balance < b else "C" if balance < c else "D" if balance < d else "E"
+
+
+def tally(feeling: list[int], pace: list[int]) -> dict | None:
+    """Count one passage's sentence labels (feeling 1 warm, 2 cold, 0 neither; pace 1 tense). None if unread."""
+    if not feeling or -1 in feeling or -1 in pace:
+        return None
+    n, warm, cold, tense = len(feeling), feeling.count(1), feeling.count(2), pace.count(1)
+    balance = (warm - cold) / n
+    return {"n": n, "warm": warm, "cold": cold, "neither": n - warm - cold, "tense": tense,
+            "balance": round(balance, 3), "yarn": yarn_for(balance), "ridged": tense / n >= RIDGED_SHARE}
+
+
+def margin(t: dict) -> int | None:
+    """Fewest feeling labels that would have to change for K2 to pick another yarn."""
+    for k in range(1, t["n"] + 1):
+        up = 2 * min(k, t["cold"]) + min(max(0, k - t["cold"]), t["neither"])      # cold->warm, then neither->warm
+        down = 2 * min(k, t["warm"]) + min(max(0, k - t["warm"]), t["neither"])
+        if any(yarn_for((t["warm"] - t["cold"] + d) / t["n"]) != t["yarn"] for d in (up, -down)):
+            return k
+    return None
+
+
+def written(cells: str) -> str:
+    """Chart symbols for a right-side row ('k', 'o' yarn over, '/' knit two together) as words."""
+    out, run = [], 0
+    for ch in cells:
+        if ch == "k":
+            run += 1
+            continue
+        if run:
+            out.append(f"k{run}")
+            run = 0
+        out.append("yo" if ch == "o" else "k2tog")
+    if run:
+        out.append(f"k{run}")
+    return ", ".join(out)
+
+
+def stitches_after(cells: str) -> int:
+    """Stitches on the needle after working the row: an eyelet makes one and takes one."""
+    return cells.count("k") + cells.count("o") + cells.count("/")
+
+
+def shelf(data_dir: Path) -> Path:
+    """books.json: every book that has a pattern, shortest first, for the site's front page."""
+    books = []
+    for f in sorted(Path(data_dir).glob("*/pattern.json")):
+        K = json.loads(f.read_text())
+        books.append({"slug": K["book"]["slug"], "title": K["book"]["title"], "author": K["book"].get("author"),
+                      "chapter_word": K["book"].get("chapter_word") or "Chapter", "model": K["run"]["model"],
+                      **{k: K["size"][k] for k in ("pairs", "rows", "width_in", "length_in")},
+                      "yards": sum(y["yards"] for y in K["yarns"]),
+                      "undyed": sum(r["unsure"] for r in K["rows"]), "people": [c["name"] for c in K["columns"]]})
+    books.sort(key=lambda b: b["pairs"])
+    (Path(data_dir) / "books.json").write_text(json.dumps(books, indent=1, ensure_ascii=False))
+    return Path(data_dir) / "books.json"
+
+
+def knit(book_json: Path, out_dir: Path | None = None, log=print) -> Path:
+    B = json.loads(Path(book_json).read_text())
+    S = B["sentences"]
+    twice = B.get("readings", {}).get("b", 0) > 0
+    people = B["people"][:PEOPLE]
+    # K4: most mentioned in the middle, the rest alternating outwards.
+    lane = {p["id"]: ((i + 1) // 2) * (1 if i % 2 else -1) for i, p in enumerate(people)}
+    across = sorted(people, key=lambda p: lane[p["id"]])
+    unit_of = {p["id"]: j for j, p in enumerate(across)}
+    first_cell = lambda j: EDGE + 1 + j * UNIT  # noqa: E731  (the yarn over; the k2tog is the next cell)
+    columns = [{"person": p["id"], "name": p["name"], "mentions": p["mentions"], "as": p.get("as", "name"),
+                "stitches": [first_cell(j) + 1, first_cell(j) + 2]} for j, p in enumerate(across)]
+
+    rows, seen_chapter, used = [], set(), Counter()
+    for n, p in enumerate(B["passages"], 1):
+        cells = ["k"] * CAST_ON
+        starts = p["chapter"] not in seen_chapter
+        seen_chapter.add(p["chapter"])
+        if starts:  # K6
+            cells[1], cells[2] = "o", "/"
+        here = [q for q in p["people"] if q["id"] in unit_of]
+        for q in here:  # K5
+            c = first_cell(unit_of[q["id"]])
+            cells[c], cells[c + 1] = "o", "/"
+        cells = "".join(cells)
+        s0, sn = p["sentences"]
+        ta = tally(S["feeling"][s0:s0 + sn], S["pace"][s0:s0 + sn])
+        tb = tally(S["feeling_b"][s0:s0 + sn], S["pace_b"][s0:s0 + sn]) if twice else None
+        # K2, K3: count over both readings together. K7: undyed if, apart, they are too far from each other.
+        both = tally(S["feeling"][s0:s0 + sn] + S["feeling_b"][s0:s0 + sn],
+                     S["pace"][s0:s0 + sn] + S["pace_b"][s0:s0 + sn]) if twice else ta
+        gap = abs("ABCDE".index(ta["yarn"]) - "ABCDE".index(tb["yarn"])) if ta and tb else None
+        unsure = both is None or (twice and gap >= UNSURE_GAP)
+        yarn = UNSURE if unsure else both["yarn"]
+        ridged = bool(both and both["ridged"])
+        used[yarn] += 1
+        rows.append({
+            "n": n, "passage": p["id"], "chapter": p["chapter"],
+            "chapter_label": B["chapters"][p["chapter"] - 1]["label"], "starts_chapter": starts,
+            "yarn": yarn, "unsure": unsure, "texture": "ridged" if ridged else "smooth",
+            "tally": {"a": ta, "b": tb, "both": both}, "gap": gap, "margin": margin(both) if both else None,
+            "rs": cells, "rs_text": written(cells),
+            "ws_text": f"k{CAST_ON}" if ridged else f"k{EDGE}, p{CAST_ON - 2 * EDGE}, k{EDGE}",
+            "eyelets": [{"person": q["id"], "called": q["called"], "facts": q["facts"], "spans": q["spans"]} for q in here],
+        })
+
+    g = GAUGE
+    smooth = sum(1 for r in rows if r["texture"] == "smooth")
+    ridged = len(rows) - smooth
+    length = smooth * 2 * 4 / g["smooth_rows_per_4in"] + ridged * 2 * 4 / g["ridged_rows_per_4in"]
+    yards = lambda pairs: round(pairs * 2 * CAST_ON * g["yarn_inches_per_stitch"] / 36 * 1.1)  # noqa: E731
+    cuts = [None, *YARN_CUTS, None]
+    doc = {
+        "book": B["book"], "run": B["run"], "generated": datetime.now(timezone.utc).isoformat(),
+        "rules": {k: v.replace("chapter", (B["book"].get("chapter_word") or "chapter").lower())
+                  for k, v in {**RULES, **({} if twice else ONCE)}.items()},
+        "abbreviations": ABBREVIATIONS, "gauge": g,
+        "cast_on": CAST_ON, "edge": EDGE, "yarn_cuts": list(YARN_CUTS), "ridged_share": RIDGED_SHARE,
+        "unsure_gap": UNSURE_GAP,
+        "readings": {"twice": twice, "unread": sum(r["tally"]["a"] is None for r in rows)},
+        "columns": columns, "chapter_stitches": [2, 3],
+        "yarns": [{"key": k, "name": name, "hex": hx, "pairs": used[k], "yards": yards(used[k]),
+                   "balance": [cuts[i], cuts[i + 1]] if k != UNSURE else None} for i, (k, name, hx) in enumerate(YARNS)],
+        "size": {"width_in": round(CAST_ON * 4 / g["stitches_per_4in"], 1), "length_in": round(length),
+                 "pairs": len(rows), "rows": 2 * len(rows), "stitches": 2 * len(rows) * CAST_ON,
+                 "smooth_pairs": smooth, "ridged_pairs": ridged},
+        "rows": rows,
+    }
+    out = Path(out_dir or ROOT / "site" / "data" / B["book"]["slug"])
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "pattern.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")))
+    shelf(out.parent)
+    s = doc["size"]
+    log(f"cast on {CAST_ON}, {s['pairs']} pairs of rows ({smooth} smooth, {ridged} ridged), about "
+        f"{s['width_in']} x {s['length_in']} in, {sum(y['yards'] for y in doc['yarns'])} yd: "
+        + ", ".join(f"{y['key']} {y['pairs']}" for y in doc["yarns"])
+        + (f"; {doc['readings']['unread']} passages not labelled yet" if doc["readings"]["unread"] else "")
+        + f" -> {out / 'pattern.json'}")
+    return out

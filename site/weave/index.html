@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebind · Pride and Prejudice, woven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="stage"></div>
+
+<header id="cartouche">
+  <h1 id="title">Pride and Prejudice</h1>
+  <p class="sub">The whole novel as one cloth. Every pass of the weft is one sentence.</p>
+  <p class="meta" id="meta"></p>
+</header>
+
+<nav id="tools">
+  <button id="home">Whole cloth</button>
+  <button id="legend-btn">How it was woven</button>
+</nav>
+
+<aside id="panel" hidden>
+  <button id="close" aria-label="Close">×</button>
+  <div id="panel-body"></div>
+</aside>
+
+<aside id="legend" hidden>
+  <button class="close-legend" aria-label="Close">×</button>
+  <h2>How this cloth was woven</h2>
+  <p>A local model (<span id="legend-model"></span>) read the book passage by passage. Code kept a fact only if the sentences it cited exist and say what it claims. The cloth is woven from those facts by the rules below, and nothing else is drawn.</p>
+  <ol id="rules"></ol>
+  <p class="hint">Scroll to come close enough to see the threads. Drag to move, right-drag to turn the cloth in the light. Click any stitch to read its sentence.</p>
+</aside>
+
+<div id="tip" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

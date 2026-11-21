@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebind · Pride and Prejudice, knitted</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../weave/style.css">
+<style>
+  #tools a { font-size: 15px; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); padding: 5px 11px; text-decoration: none; }
+  #cartouche { top: 8px; left: 8px; padding: 8px 12px 10px; background: rgba(13, 12, 11, 0.66); box-shadow: 0 0 22px 14px rgba(13, 12, 11, 0.66); }
+  #cartouche .brand { font-family: "IM Fell English SC", serif; letter-spacing: 0.16em; font-size: 13px; color: #8f8370; text-decoration: none; pointer-events: auto; }
+  #cartouche .brand:hover { color: var(--paper); }
+  #key { position: fixed; left: 16px; bottom: 14px; font-size: 14px; color: #cdbf9f; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 5px;
+    max-width: calc(100vw - 32px); padding: 5px 9px; background: rgba(13, 12, 11, 0.66); pointer-events: none; }
+  #key i { display: inline-block; width: 20px; height: 11px; border: 1px solid #000; }
+  #key .gap { margin-left: 12px; display: inline-flex; align-items: center; gap: 5px; }
+  @media (max-width: 640px) { #key { bottom: 104px; font-size: 12.5px; justify-content: center; left: 8px; right: 8px; max-width: none; } #key .gap { margin-left: 6px; } #key i { width: 14px; } }
+  #panel .rows { font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; background: #fff8e8; border: 1px solid var(--rule); padding: 8px 10px; margin: 8px 0; line-height: 1.5; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="stage"></div>
+
+<header id="cartouche">
+  <a class="brand" href="../">Rebind · all books</a>
+  <h1 id="title">Pride and Prejudice</h1>
+  <p class="sub">The whole book as a scarf you can knit. Every pair of rows is one passage.</p>
+  <p class="meta" id="meta"></p>
+</header>
+
+<nav id="tools">
+  <button id="home">Whole scarf</button>
+  <button id="legend-btn">How it was knitted</button>
+  <a href="pattern.html">The pattern, to print</a>
+</nav>
+
+<aside id="panel" hidden>
+  <button id="close" aria-label="Close">×</button>
+  <div id="panel-body"></div>
+</aside>
+
+<aside id="legend" hidden>
+  <button class="close-legend" aria-label="Close">×</button>
+  <h2>How this scarf was knitted</h2>
+  <p>A local model (<span id="legend-model"></span>) read the book passage by passage. Code kept a fact only if the sentences it cited exist and say what it claims. The pattern is written from those facts by the rules below, and what you see is that pattern knitted on screen.</p>
+  <ol id="rules"></ol>
+  <p class="hint">Scroll to come close enough to see the stitches. Drag to move, right-drag to turn the scarf in the light. Click any row to read its passage and its instructions.</p>
+</aside>
+
+<div id="key"></div>
+<div id="tip" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

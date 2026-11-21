@@ -1,0 +1,15 @@
+{
+  "slug": "a-christmas-carol",
+  "title": "A Christmas Carol",
+  "author": "Charles Dickens",
+  "gutenberg_id": 46,
+  "url": "https://gutenberg.pglaf.org/4/46/46-0.txt",
+  "file": "data/raw/pg46.txt",
+  "sha256": "38ac4a8048b0a7268ee3c19a0d2dedf6e3607a3578a445e9027d01b132c16b5a",
+  "edition_note": "Project Gutenberg #46 (most recently updated 2018-03-04), fetched from the Project Gutenberg mirror gutenberg.pglaf.org on 2026-11-19 while the main site was down for maintenance. Offsets in every output refer to this exact file.",
+  "chapter_pattern": "^STAVE ([IVXLC]+):[^\\r\\n]*\\r?$",
+  "chapter_word": "Stave",
+  "passage_words": 175,
+  "passage_max_words": 325,
+  "exclude": []
+}

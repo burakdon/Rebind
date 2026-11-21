@@ -248,12 +248,16 @@ def split_long(text: str, p: Span, max_words: int) -> list[Span]:
     return [s for s in (_strip(text, x) for x in out) if s]
 
 
-def passages(book: Book, target_words: int = 350, max_words: int = 650) -> list[Passage]:
+def passages(book: Book, target_words: int | None = None, max_words: int | None = None) -> list[Passage]:
     """Group whole paragraphs into passages of roughly `target_words`.
 
     Paragraphs are split only when one alone exceeds `max_words`, and then at
-    a sentence end, so every boundary is a natural break in the original.
+    a sentence end, so every boundary is a natural break in the original. The
+    sizes come from the book's config (350 and 650 words unless it says otherwise):
+    a short book is cut finer so it still makes a scarf of a wearable length.
     """
+    target_words = target_words or book.config.get("passage_words", 350)
+    max_words = max_words or book.config.get("passage_max_words", 650)
     holes = [s for s, _ in excluded_spans(book)]
     out: list[Passage] = []
     for ch in chapters(book):

@@ -3,47 +3,103 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rebind · Pride and Prejudice</title>
+<title>Rebind · Don't rip books. Knit them.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-} }
-</script>
+<style>
+  :root { --paper: #efe5cf; --soft: #cdbf9f; --dim: #8f8370; --rule: #4a4236; --wall: #0d0c0b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(ellipse at 50% 0%, #26221d 0%, var(--wall) 70%) fixed, var(--wall); color: var(--paper);
+    font-family: "EB Garamond", Georgia, serif; font-size: 18px; line-height: 1.5; }
+  main { max-width: 980px; margin: 0 auto; padding: 44px 16px 70px; }
+  .brand { font-family: "IM Fell English SC", serif; letter-spacing: 0.16em; color: var(--dim); font-size: 16px; margin: 0 0 22px; }
+  h1 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: clamp(34px, 6.4vw, 62px); line-height: 1.05; letter-spacing: 0.03em; margin: 0 0 14px; text-wrap: balance; }
+  .lede { font-family: "IM Fell English", serif; font-style: italic; font-size: clamp(18px, 2.4vw, 22px); color: var(--soft); max-width: 40em; margin: 0 0 8px; }
+  h2 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 23px; letter-spacing: 0.06em; margin: 54px 0 10px; padding-bottom: 5px; border-bottom: 1px solid var(--rule); }
+  p { max-width: 42em; }
+  a { color: var(--paper); }
+  .book { margin: 26px 0 34px; }
+  .book canvas { display: block; width: 100%; height: auto; box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6); }
+  .book h3 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 25px; letter-spacing: 0.06em; margin: 14px 0 0; }
+  .book .by { font-style: italic; color: var(--soft); margin: 0; }
+  .book .facts { color: var(--dim); font-size: 15.5px; margin: 2px 0 8px; max-width: none; }
+  .go { display: flex; gap: 8px; flex-wrap: wrap; }
+  .go a { font-size: 16px; border: 1px solid #6f6453; padding: 5px 12px; text-decoration: none; background: rgba(20, 18, 16, 0.8); }
+  .go a.first { background: var(--paper); color: #2b2620; border-color: var(--paper); }
+  .key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15.5px; color: var(--soft); margin: 10px 0 0; padding: 0; list-style: none; }
+  .key i { display: inline-block; width: 26px; height: 12px; vertical-align: -1px; margin-right: 6px; border: 1px solid #000; }
+  ol.steps { padding-left: 0; list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px 28px; }
+  ol.steps li { counter-increment: s; }
+  ol.steps li::before { content: counter(s); font-family: "IM Fell English SC", serif; font-size: 30px; color: var(--dim); display: block; line-height: 1; margin-bottom: 4px; }
+  ol.steps b { font-weight: 500; }
+  .small { color: var(--dim); font-size: 15.5px; }
+</style>
 </head>
 <body>
-<div id="stage"></div>
+<main>
+  <p class="brand">Rebind</p>
+  <h1>Don’t rip books.<br>Knit and wear them.</h1>
+  <p class="lede">To learn from a book, an AI cuts it into pieces and keeps no note of where each piece came from. Rebind has an AI read a book and hands back a scarf pattern in which every row leads to the sentences it was made from.</p>
 
-<header id="cartouche">
-  <h1 id="title">Pride and Prejudice</h1>
-  <p class="sub">A survey of the novel, read passage by passage. Every mark cites its sentence.</p>
-  <p class="meta" id="meta"></p>
-</header>
+  <h2>The books</h2>
+  <ul class="key" id="key"></ul>
+  <div id="books"><p class="small">Loading the books.</p></div>
 
-<nav id="tools">
-  <button data-view="oblique" class="on">Landscape</button>
-  <button data-view="plan">Map (print view)</button>
-  <button id="legend-btn">How it was drawn</button>
-</nav>
+  <h2>How a book becomes a scarf</h2>
+  <ol class="steps">
+    <li><b>A model reads it.</b> A model running on a laptop reads the book a passage at a time, without being told which book it is. It labels every sentence warm, cold or neither, and tense or calm, and says who is there, pointing at the sentence that shows it.</li>
+    <li><b>Code checks and counts.</b> A claim is kept only if the sentence it points at exists and says so. Then the labels are counted: warm against cold picks the yarn, tense sentences raise a ridge, and a person in the passage makes an eyelet in their column.</li>
+    <li><b>The count is a pattern.</b> One passage is one pair of rows. Click a row and it unravels into its instructions, the sum that chose its yarn, and every sentence with the label the model gave it.</li>
+  </ol>
 
-<aside id="panel" hidden>
-  <button id="close" aria-label="Close">×</button>
-  <div id="panel-body"></div>
-</aside>
+  <h2>How far to trust it</h2>
+  <p>The labels are one model’s opinion of each sentence. So the model is asked twice, in different words, and both answers are counted. Where the two answers alone would choose yarns two or more shades apart, the row is left undyed: the scarf makes no claim there. No person has checked the labels yet. Each scarf’s page gives its own numbers under “How it was knitted”, and lets you label a sample yourself.</p>
 
-<aside id="legend" hidden>
-  <button class="close-legend" aria-label="Close">×</button>
-  <h2>How this map was drawn</h2>
-  <p>A local model (<span id="legend-model"></span>) read the book in 314 passages. Code accepted a fact only if the sentences it cited exist and name what it claims. The map below is drawn from those facts by the rules listed here, and nothing else.</p>
-  <ol id="rules"></ol>
-  <p class="hint">Click anything: a path, a meeting, a letter, a place name, or bare ground. The panel shows which rule drew it and the sentences it comes from.</p>
-</aside>
+  <h2>Earlier studies</h2>
+  <p class="small">The same reading of Pride and Prejudice, drawn two other ways before the scarf: <a href="map/">as a survey map</a> and <a href="weave/">as woven cloth</a>.</p>
+</main>
+<script type="module">
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const books = await fetch('data/books.json').then(r => r.json());
+const patterns = await Promise.all(books.map(b => fetch(`data/${b.slug}/pattern.json`).then(r => r.json())));
 
-<div id="tip" hidden></div>
-<script type="module" src="app.js"></script>
+// one key for every scarf, from the first pattern's yarns
+const K0 = patterns[0], mean = { A: 'cold', B: '', C: 'neither', D: '', E: 'warm', U: 'the two readings too far apart' };
+document.getElementById('key').innerHTML = K0.yarns.filter(y => mean[y.key]).map(y => `<li><i style="background:${y.hex}"></i>${mean[y.key]}</li>`).join('')
+  + '<li>◦ a hole: that person is in the passage</li><li>a darker band: tense</li>';
+
+// Draw a scarf lying flat: one band per passage, as wide as its two rows are tall.
+function draw(cv, K) {
+  const unit = r => r.texture === 'ridged' ? 1 : 1.5, total = K.rows.reduce((s, r) => s + unit(r), 0);
+  const W = 1960, H = Math.max(120, Math.min(260, Math.round(W * K.cast_on / total))), x = cv.getContext('2d');
+  cv.width = W; cv.height = H;
+  let at = 0;
+  for (const r of K.rows) {
+    const w = unit(r) * W / total, hex = K.yarns.find(y => y.key === r.yarn).hex;
+    x.fillStyle = hex; x.fillRect(at, 0, w + 0.6, H);
+    if (r.texture === 'ridged') { x.fillStyle = 'rgba(0,0,0,0.17)'; x.fillRect(at, 0, w + 0.6, H); }
+    x.fillStyle = 'rgba(14,11,9,0.85)';
+    [...r.rs].forEach((c, i) => { if (c === 'o') { const y = (i + 1) / K.cast_on * H, d = Math.max(1.4, Math.min(w * 0.3, H / K.cast_on * 0.42)); x.beginPath(); x.arc(at + w * 0.3, y, d, 0, 7); x.fill(); } });
+    at += w;
+  }
+  // a little light across the width, so it reads as cloth and not as a bar chart
+  const g = x.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, 'rgba(0,0,0,0.3)'); g.addColorStop(0.12, 'rgba(255,255,255,0.05)'); g.addColorStop(0.88, 'rgba(0,0,0,0.05)'); g.addColorStop(1, 'rgba(0,0,0,0.36)');
+  x.fillStyle = g; x.fillRect(0, 0, W, H);
+}
+
+const root = document.getElementById('books'); root.innerHTML = '';
+books.forEach((b, i) => {
+  const K = patterns[i], a = document.createElement('div'), see = `knit/?book=${b.slug}`;
+  a.className = 'book';
+  a.innerHTML = `<a href="${see}"><canvas role="img" aria-label="${esc(b.title)} as a scarf, first page at the left"></canvas></a>
+    <h3>${esc(b.title)}</h3><p class="by">${esc(b.author || '')}</p>
+    <p class="facts">${b.pairs} passages, ${b.rows} rows, about ${b.width_in} × ${b.length_in} inches. ${b.undyed} of ${b.pairs} passages undyed. Columns: ${esc(b.people.join(', '))}.</p>
+    <div class="go"><a class="first" href="${see}">See it knitted</a><a href="knit/pattern.html?book=${b.slug}">The pattern, to print</a></div>`;
+  root.appendChild(a);
+  draw(a.querySelector('canvas'), K);
+});
+</script>
 </body>
 </html>

@@ -206,14 +206,22 @@ def _resume_state(out: Path, manifest: dict, book: Book, backend: Backend, plist
 
 
 def run(book: Book, plist: list[Passage], backend: Backend, out_root: Path | None = None, log=print,
-        resume: Path | None = None) -> Path:
+        resume: Path | None = None, only: list[str] | None = None) -> Path:
+    """`only` asks just the named tasks (e.g. ["characters"], which is all the scarf needs). The run records
+    which tasks it asked, and a resumed run asks the same ones."""
     started = datetime.now(timezone.utc)
+    unknown = set(only or []) - {t.key for t in TASKS}
+    if unknown:
+        raise ValueError(f"no such task: {sorted(unknown)}; choose from {[t.key for t in TASKS]}")
+    tasks = [t for t in TASKS if not only or t.key in only]
     repair_schema = inline_schema(Repairs)
     if resume:
         out = Path(resume)
         manifest = json.loads((out / "run.json").read_text())
         run_id = manifest["run_id"]
         done, cast, counts = _resume_state(out, manifest, book, backend, plist)
+        asked = {t["key"] for t in manifest["tasks"]}
+        tasks = [t for t in TASKS if t.key in asked]
         manifest.setdefault("resumed", []).append({"at": started.isoformat(), "passages_done": len(done)})
         log(f"resuming {run_id}: {len(done)} of {len(plist)} passages already read")
     else:
@@ -226,7 +234,7 @@ def run(book: Book, plist: list[Passage], backend: Backend, out_root: Path | Non
             "backend": backend.describe(),
             "prompt_version": prompt_version(),
             "system_prompt": SYSTEM,
-            "tasks": [{"key": t.key, "instruction": t.instruction, "schema": inline_schema(t.model)} for t in TASKS],
+            "tasks": [{"key": t.key, "instruction": t.instruction, "schema": inline_schema(t.model)} for t in tasks],
             "repair_prompt": REPAIR,
             "params": PARAMS,
             "checker": CHECKER,
@@ -261,7 +269,7 @@ def run(book: Book, plist: list[Passage], backend: Backend, out_root: Path | Non
             cast_here: list[str] = []
             ok = total = repaired = 0
             secs = 0.0
-            for task in TASKS:
+            for task in tasks:
                 call_id = f"{run_id}/{p.id}/{task.key}"
                 if task.key == "interactions" and len(cast_here) < 2:
                     continue

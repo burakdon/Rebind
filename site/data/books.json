@@ -1,0 +1,52 @@
+[
+ {
+  "slug": "a-christmas-carol",
+  "title": "A Christmas Carol",
+  "author": "Charles Dickens",
+  "chapter_word": "Stave",
+  "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+  "pairs": 138,
+  "rows": 276,
+  "width_in": 8.2,
+  "length_in": 37,
+  "yards": 266,
+  "undyed": 37,
+  "people": [
+   "Mrs. Cratchit",
+   "Scrooge's nephew",
+   "Bob Cratchit",
+   "Jacob Marley",
+   "Scrooge",
+   "the Ghost",
+   "the Spirit",
+   "Tiny Tim",
+   "Fezziwig",
+   "Peter"
+  ]
+ },
+ {
+  "slug": "pride-and-prejudice",
+  "title": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "chapter_word": "Chapter",
+  "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+  "pairs": 314,
+  "rows": 628,
+  "width_in": 8.2,
+  "length_in": 90,
+  "yards": 603,
+  "undyed": 54,
+  "people": [
+   "Mr. Collins",
+   "Lydia Bennet",
+   "Mr. Bingley",
+   "Mr. Darcy",
+   "Elizabeth Bennet",
+   "Jane Bennet",
+   "Mrs. Bennet",
+   "Mr. Wickham",
+   "Mr. Bennet",
+   "Miss Bingley"
+  ]
+ }
+]

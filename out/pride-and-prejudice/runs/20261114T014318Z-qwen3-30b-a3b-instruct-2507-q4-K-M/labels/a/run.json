@@ -1,0 +1,49 @@
+{
+  "backend": {
+    "spec": "ollama:qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+    "base_url": "http://localhost:11434/v1",
+    "server_version": "0.17.0",
+    "digest": "19e422b0231392335cfc49cfd172de7034bb1aeabb08aa307cce745c60b272fe",
+    "parameter_size": "30.5B",
+    "quantization": "Q4_K_M",
+    "context_length": 8192
+  },
+  "params": {
+    "temperature": 0.0,
+    "seed": 1342
+  },
+  "reading": "a",
+  "swapped": false,
+  "system": "You label each sentence of one passage from a novel. Judge each sentence by what it says and how it is said here. Do not use outside knowledge of the novel.\n\nFor every numbered sentence give two labels: its feeling, then its pace.\n\nfeeling:\n- warm: the sentence shows affection, kindness, pleasure, praise or ease between people.\n- cold: the sentence shows dislike, contempt, anger, hurt, mockery or distance between people.\n- neither: it shows neither, or you cannot tell.\n\npace:\n- tense: something is at stake or unsettled in the sentence: a conflict, a worry, suspense, or strong feeling held back.\n- calm: nothing is at stake in the sentence.\n\nLabel every sentence, including short ones.",
+  "task": "PASSAGE:\n<<<\n{numbered}\n>>>\n\nLabel sentences 1 to {n}.",
+  "order": [
+    "feeling",
+    "pace"
+  ],
+  "feelings": [
+    "warm",
+    "cold",
+    "neither"
+  ],
+  "paces": [
+    "tense",
+    "calm"
+  ],
+  "swap_table": {},
+  "finished": "2026-11-19T05:44:46.669314+00:00",
+  "counts": {
+    "passages": 314,
+    "failed": 0,
+    "sentences": 5836,
+    "feeling": {
+      "cold": 2625,
+      "warm": 2040,
+      "neither": 1171
+    },
+    "pace": {
+      "tense": 2663,
+      "calm": 3173
+    }
+  }
+}

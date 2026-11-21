@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebind · Check the reader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #2b2620; --soft: #6a5d4c; --rule: #b9a582; --paper: #fbf7ee; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "EB Garamond", Georgia, serif; font-size: 18px; line-height: 1.45; }
+  main { max-width: 720px; margin: 0 auto; padding: 26px 20px 60px; }
+  h1 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 30px; margin: 0 0 4px; }
+  h2 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 21px; margin: 24px 0 6px; border-bottom: 1px solid var(--rule); }
+  .note { color: var(--soft); font-size: 16px; }
+  dl { margin: 8px 0; font-size: 16px; } dt { font-weight: 500; float: left; width: 4.6em; } dd { margin: 0 0 3px 5em; }
+  #card { border: 1px solid var(--ink); background: #fff; padding: 18px 20px; margin: 16px 0 10px; min-height: 150px; }
+  #card .ctx { color: #9a8f7e; } #card .it { font-size: 21px; }
+  .choices { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; align-items: center; }
+  .choices span { width: 4.4em; color: var(--soft); font-size: 16px; }
+  button { font: inherit; font-size: 17px; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); padding: 6px 14px; cursor: pointer; }
+  button.on { background: var(--ink); color: var(--paper); }
+  button:disabled { opacity: 0.35; cursor: default; }
+  kbd { font-family: ui-monospace, Menlo, monospace; font-size: 12px; border: 1px solid var(--rule); padding: 0 4px; margin-left: 5px; }
+  #bar { height: 5px; background: #e6dcc6; margin: 10px 0; } #bar div { height: 5px; background: var(--ink); width: 0; }
+  table { border-collapse: collapse; font-size: 16px; margin: 8px 0; } td, th { padding: 4px 14px 4px 0; text-align: left; border-bottom: 1px solid #e6dcc6; }
+  #passage { white-space: pre-wrap; font-size: 15.5px; color: var(--soft); border-left: 2px solid var(--rule); padding-left: 10px; margin-top: 10px; }
+  #passage mark { background: #f1d27a; color: var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Check the reader</h1>
+  <p class="note">You label sentences from the book without seeing what the model said. At the end the page compares the two. Your answers stay in this browser until you download them. <a href="./">Back to the scarf</a></p>
+  <dl>
+    <dt>warm</dt><dd>affection, kindness, pleasure, praise or ease between people</dd>
+    <dt>cold</dt><dd>dislike, contempt, anger, hurt, mockery or distance between people</dd>
+    <dt>neither</dt><dd>neither of those, or you cannot tell</dd>
+    <dt>tense</dt><dd>something is at stake or unsettled: a conflict, a worry, suspense, or strong feeling held back</dd>
+    <dt>calm</dt><dd>nothing is at stake in the sentence</dd>
+  </dl>
+  <div id="bar"><div></div></div>
+  <p class="note" id="count"></p>
+  <div id="card"></div>
+  <div class="choices" id="feeling"><span>feeling</span></div>
+  <div class="choices" id="pace"><span>pace</span></div>
+  <div class="choices"><button id="back">Back</button><button id="context">Show the whole passage</button><button id="save">Download my labels</button></div>
+  <div id="passage" hidden></div>
+  <div id="result"></div>
+</main>
+<script type="module">
+const BOOK = new URLSearchParams(location.search).get('book') || 'pride-and-prejudice', DATA = `../data/${BOOK}/`;
+const [B, TXT] = await Promise.all(['book.json', 'text.json'].map(f => fetch(DATA + f).then(r => r.json())));
+const S = B.sentences, P = B.passages, Q = new URLSearchParams(location.search);
+const N = Math.min(S.start.length, parseInt(Q.get('n') || '150')), SEED = parseInt(Q.get('seed') || '1342');
+const FEEL = ['warm', 'cold', 'neither'], PACE = ['tense', 'calm'], CODE = { neither: 0, warm: 1, cold: 2, calm: 0, tense: 1 };
+// a fixed random sample of sentences that are at least four words long
+let state = SEED; const rnd = () => (state = (state * 1664525 + 1013904223) >>> 0) / 4294967296;
+const pool = [...S.start.keys()].filter(i => S.words[i] >= 4);
+for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+const sample = pool.slice(0, N), KEY = `rebind-check-${B.run.id}-${SEED}-${N}`;
+const mine = JSON.parse(localStorage.getItem(KEY) || '{}');
+let at = Math.min(sample.findIndex(i => !(mine[i]?.feeling && mine[i]?.pace)) >>> 0, N);
+const $ = id => document.getElementById(id), esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const text = i => { const p = P[S.passage[i]]; return TXT.passages[p.id].slice(S.start[i] - p.start, S.end[i] - p.start).replace(/\s*\r?\n\s*/g, ' '); };
+const same = (i, j) => j >= 0 && j < S.start.length && S.passage[i] === S.passage[j];
+
+function button(group, label, key) {
+  const b = document.createElement('button'); b.innerHTML = `${label}<kbd>${key}</kbd>`; b.dataset.v = label;
+  b.onclick = () => choose(group, label); $(group).appendChild(b);
+}
+FEEL.forEach((f, k) => button('feeling', f, k + 1)); button('pace', 'tense', 'T'); button('pace', 'calm', 'C');
+function choose(group, v) {
+  if (at >= N) return;
+  const i = sample[at]; (mine[i] ??= {})[group] = v; localStorage.setItem(KEY, JSON.stringify(mine));
+  if (mine[i].feeling && mine[i].pace) { at++; }
+  show();
+}
+function show() {
+  const done = sample.filter(i => mine[i]?.feeling && mine[i]?.pace).length;
+  $('bar').firstElementChild.style.width = (100 * done / N) + '%';
+  $('count').textContent = at < N ? `Sentence ${at + 1} of ${N}` : `All ${N} labelled.`;
+  $('back').disabled = at === 0; $('passage').hidden = true;
+  if (at >= N) { $('card').innerHTML = '<p>Done. Thank you. The comparison is below; download your labels to keep it.</p>'; result(); return; }
+  const i = sample[at], p = P[S.passage[i]];
+  $('card').innerHTML = `<p class="note">${B.book.chapter_word || 'Chapter'} ${B.chapters[p.chapter - 1].label}</p><p><span class="ctx">${same(i, i - 1) ? esc(text(i - 1)) + ' ' : ''}</span><span class="it">${esc(text(i))}</span><span class="ctx">${same(i, i + 1) ? ' ' + esc(text(i + 1)) : ''}</span></p>`;
+  for (const g of ['feeling', 'pace']) for (const b of $(g).querySelectorAll('button')) b.classList.toggle('on', mine[i]?.[g] === b.dataset.v);
+  $('result').innerHTML = '';
+}
+$('back').onclick = () => { if (at > 0) { at--; const i = sample[at]; delete mine[i]; show(); } };
+$('context').onclick = () => {
+  if (at >= N) return;
+  const i = sample[at], p = P[S.passage[i]], t = TXT.passages[p.id], a = S.start[i] - p.start, b = S.end[i] - p.start;
+  $('passage').innerHTML = esc(t.slice(0, a)) + '<mark>' + esc(t.slice(a, b)) + '</mark>' + esc(t.slice(b)); $('passage').hidden = !$('passage').hidden;
+};
+addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  if (['1', '2', '3'].includes(k)) choose('feeling', FEEL[k - 1]); else if (k === 't') choose('pace', 'tense'); else if (k === 'c') choose('pace', 'calm');
+});
+$('save').onclick = () => {
+  const out = { book: B.book.slug, run: B.run.id, seed: SEED, n: N, saved: new Date().toISOString(),
+    labels: sample.filter(i => mine[i]?.feeling && mine[i]?.pace).map(i => ({ sentence: i, start: S.start[i], passage: P[S.passage[i]].id, ...mine[i] })) };
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' }));
+  a.download = 'handcheck.json'; a.click();
+};
+// agreement and Cohen's kappa between your labels and a reading
+function compare(key, col, names) {
+  const pairs = sample.filter(i => mine[i]?.[key] && S[col][i] >= 0).map(i => [CODE[mine[i][key]], S[col][i]]);
+  if (!pairs.length) return null;
+  const n = pairs.length, k = names.length, agree = pairs.filter(([a, b]) => a === b).length / n;
+  let chance = 0;
+  for (let v = 0; v < k; v++) chance += (pairs.filter(([a]) => a === v).length / n) * (pairs.filter(([, b]) => b === v).length / n);
+  return { n, agree, kappa: chance === 1 ? 1 : (agree - chance) / (1 - chance) };
+}
+function result() {
+  const rows = [['feeling', 'feeling', 'first reading'], ['feeling', 'feeling_b', 'second reading'], ['pace', 'pace', 'first reading'], ['pace', 'pace_b', 'second reading']]
+    .map(([key, col, name]) => [key, name, compare(key, col, key === 'feeling' ? [0, 1, 2] : [0, 1])]).filter(r => r[2]);
+  $('result').innerHTML = `<h2>You and the reader</h2><table><tr><th>Label</th><th>Against</th><th>Sentences</th><th>Same label</th><th>Kappa</th></tr>${rows.map(([k, name, c]) =>
+    `<tr><td>${k}</td><td>${name}</td><td>${c.n}</td><td>${Math.round(100 * c.agree)} in 100</td><td>${c.kappa.toFixed(2)}</td></tr>`).join('')}</table>
+    <p class="note">Kappa is agreement beyond what chance would give: 0 is chance, 1 is perfect. Download your labels and put the file at <code>data/handcheck.json</code> in the project, then run <code>uv run rebind check</code> to record this with the other checks.</p>`;
+}
+show();
+</script>
+</body>
+</html>

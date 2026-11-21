@@ -13,8 +13,8 @@ const GRID = [900, 600];    // terrain resolution (columns, rows)
 
 await Promise.all(['96px "IM Fell English SC"', 'italic 96px "IM Fell English"'].map(f => document.fonts.load(f)));
 const [L, TEXT] = await Promise.all([
-  fetch(`data/${SLUG}/layout.json`).then(r => r.json()),
-  fetch(`data/${SLUG}/text.json`).then(r => r.json()),
+  fetch(`../data/${SLUG}/layout.json`).then(r => r.json()),
+  fetch(`../data/${SLUG}/text.json`).then(r => r.json()),
 ]);
 const W = L.sheet.w, H = L.sheet.h;
 const P = L.passages;

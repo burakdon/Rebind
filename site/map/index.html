@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebind · Pride and Prejudice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="stage"></div>
+
+<header id="cartouche">
+  <h1 id="title">Pride and Prejudice</h1>
+  <p class="sub">A survey of the novel, read passage by passage. Every mark cites its sentence.</p>
+  <p class="meta" id="meta"></p>
+</header>
+
+<nav id="tools">
+  <button data-view="oblique" class="on">Landscape</button>
+  <button data-view="plan">Map (print view)</button>
+  <button id="legend-btn">How it was drawn</button>
+</nav>
+
+<aside id="panel" hidden>
+  <button id="close" aria-label="Close">×</button>
+  <div id="panel-body"></div>
+</aside>
+
+<aside id="legend" hidden>
+  <button class="close-legend" aria-label="Close">×</button>
+  <h2>How this map was drawn</h2>
+  <p>A local model (<span id="legend-model"></span>) read the book in 314 passages. Code accepted a fact only if the sentences it cited exist and name what it claims. The map below is drawn from those facts by the rules listed here, and nothing else.</p>
+  <ol id="rules"></ol>
+  <p class="hint">Click anything: a path, a meeting, a letter, a place name, or bare ground. The panel shows which rule drew it and the sentences it comes from.</p>
+</aside>
+
+<div id="tip" hidden></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

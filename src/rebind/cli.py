@@ -1,4 +1,4 @@
-"""Command line: segment, read, trace, summary, recheck, resolve, locate, compose, compare."""
+"""Command line: segment, read, trace, summary, recheck, resolve, locate, label, tokenize, knit, check, compose, compare."""
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from . import compose, entities, extract, setting, source
+from . import checks, compose, entities, extract, knit, labels, setting, source, tokens
 from .backends import from_spec
 
 
@@ -57,7 +57,8 @@ def cmd_read(args):
         backend = from_spec(args.model)
     print(f"reading {len(ps)} passages of {book.title} with {backend.spec} (prompt {extract.prompt_version()})",
           flush=True)
-    out = extract.run(book, ps, backend, resume=args.resume, log=lambda s: print(s, flush=True))
+    only = [k.strip() for k in args.only.split(",")] if args.only and not args.resume else None
+    out = extract.run(book, ps, backend, resume=args.resume, only=only, log=lambda s: print(s, flush=True))
     m = json.loads((out / "run.json").read_text())
     print(f"\nrun written to {out}")
     print(json.dumps(m["counts"], indent=2))
@@ -152,6 +153,31 @@ def cmd_compose(args):
     compose.compose(run, source.load_book(m["book"]["slug"]))
 
 
+def cmd_tokenize(args):
+    run = Path(args.run)
+    m = json.loads((run / "run.json").read_text())
+    tokens.tokenize(run, source.load_book(m["book"]["slug"]))
+
+
+def cmd_label(args):
+    run = Path(args.run)
+    m = json.loads((run / "run.json").read_text())
+    out = labels.label(run, source.load_book(m["book"]["slug"]), from_spec(args.model or m["backend"]["spec"]),
+                       reading=args.reading, swapped=args.swapped, limit=args.limit, tag=args.tag, stride=args.stride,
+                       log=lambda s: print(s, flush=True))
+    print(json.dumps(json.loads((out / "run.json").read_text())["counts"], indent=2))
+
+
+def cmd_check(args):
+    run = Path(args.run)
+    m = json.loads((run / "run.json").read_text())
+    checks.check(run, source.ROOT / "site" / "data" / m["book"]["slug"] / "book.json", hand=source.ROOT / args.hand)
+
+
+def cmd_knit(args):
+    knit.knit(source.ROOT / "site" / "data" / args.book / "book.json")
+
+
 def cmd_resolve(args):
     run = Path(args.run)
     spec = args.model or json.loads((run / "run.json").read_text())["backend"]["spec"]
@@ -175,6 +201,8 @@ def main():
     r.add_argument("--chapters", help="e.g. 1-3 or 1,34,58")
     r.add_argument("--limit", type=int)
     r.add_argument("--resume", metavar="RUN_DIR", help="continue a stopped run where it left off")
+    r.add_argument("--only", help="ask only these tasks, e.g. 'characters', which is all the scarf needs "
+                                  "(tasks: characters, interactions, setting, events)")
     r.set_defaults(fn=cmd_read)
     t = sub.add_parser("trace", help="show a fact against the source text")
     t.add_argument("run")
@@ -195,6 +223,25 @@ def main():
     lo.add_argument("run")
     lo.add_argument("--model", help="defaults to the model that did the reading")
     lo.set_defaults(fn=cmd_locate)
+    tk = sub.add_parser("tokenize", help="gather the reading into one style-neutral book.json (no model calls)")
+    tk.add_argument("run")
+    tk.set_defaults(fn=cmd_tokenize)
+    lb = sub.add_parser("label", help="label every sentence warm/cold/neither and tense/calm")
+    lb.add_argument("run")
+    lb.add_argument("--reading", choices=["a", "b"], default="a", help="b asks the same question in other words")
+    lb.add_argument("--swapped", action="store_true", help="replace character and place names with neutral ones")
+    lb.add_argument("--limit", type=int)
+    lb.add_argument("--model", help="defaults to the model that did the reading")
+    lb.add_argument("--tag", help="folder suffix for another model's labels, e.g. olmo")
+    lb.add_argument("--stride", type=int, default=1, help="do every Nth passage first, then the rest")
+    lb.set_defaults(fn=cmd_label)
+    ck = sub.add_parser("check", help="stability, memory and hand checks of the sentence labels")
+    ck.add_argument("run")
+    ck.add_argument("--hand", default="data/handcheck.json", help="hand labels saved from site/knit/check.html")
+    ck.set_defaults(fn=cmd_check)
+    kn = sub.add_parser("knit", help="write the knitting pattern from book.json (no model calls)")
+    kn.add_argument("--book", default="pride-and-prejudice")
+    kn.set_defaults(fn=cmd_knit)
     co = sub.add_parser("compose", help="lay the reading out as a map for the site")
     co.add_argument("run")
     co.set_defaults(fn=cmd_compose)

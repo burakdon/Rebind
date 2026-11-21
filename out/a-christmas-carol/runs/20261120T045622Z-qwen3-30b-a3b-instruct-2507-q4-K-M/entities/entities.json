@@ -1,0 +1,3128 @@
+[
+  {
+    "id": "scrooge",
+    "canonical": "Scrooge",
+    "kind": "person",
+    "mentions": 106,
+    "names": [
+      "Scrooge",
+      "Ebenezer Scrooge",
+      "Ebenezer",
+      "Master Scrooge",
+      "Mr. Scrooge"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-ghost",
+    "canonical": "the Ghost",
+    "kind": "reference",
+    "mentions": 56,
+    "names": [
+      "the Ghost"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-spirit",
+    "canonical": "the Spirit",
+    "kind": "reference",
+    "mentions": 29,
+    "names": [
+      "the Spirit"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 5
+  },
+  {
+    "id": "jacob-marley",
+    "canonical": "Jacob Marley",
+    "kind": "person",
+    "mentions": 29,
+    "names": [
+      "Jacob Marley",
+      "Marley"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 5
+  },
+  {
+    "id": "bob-cratchit",
+    "canonical": "Bob Cratchit",
+    "kind": "person",
+    "mentions": 18,
+    "names": [
+      "Bob Cratchit"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "tiny-tim",
+    "canonical": "Tiny Tim",
+    "kind": "person",
+    "mentions": 17,
+    "names": [
+      "Tiny Tim",
+      "Tim"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "scrooge-s-nephew",
+    "canonical": "Scrooge's nephew",
+    "kind": "reference",
+    "mentions": 13,
+    "names": [
+      "Scrooge's nephew"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 5
+  },
+  {
+    "id": "mrs-cratchit",
+    "canonical": "Mrs. Cratchit",
+    "kind": "person",
+    "mentions": 12,
+    "names": [
+      "Mrs. Cratchit"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "fezziwig",
+    "canonical": "Fezziwig",
+    "kind": "person",
+    "mentions": 12,
+    "names": [
+      "Fezziwig",
+      "Mrs. Fezziwig"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-gentleman",
+    "canonical": "the gentleman",
+    "kind": "reference",
+    "mentions": 10,
+    "names": [
+      "the gentleman"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-clerk",
+    "canonical": "the clerk",
+    "kind": "reference",
+    "mentions": 9,
+    "names": [
+      "the clerk"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-fire",
+    "canonical": "the fire",
+    "kind": "reference",
+    "mentions": 9,
+    "names": [
+      "the fire"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-boy",
+    "canonical": "the boy",
+    "kind": "reference",
+    "mentions": 8,
+    "names": [
+      "the boy"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 5
+  },
+  {
+    "id": "peter",
+    "canonical": "Peter",
+    "kind": "person",
+    "mentions": 8,
+    "names": [
+      "Peter",
+      "Master Peter"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "scrooge-s-niece",
+    "canonical": "Scrooge's niece",
+    "kind": "reference",
+    "mentions": 7,
+    "names": [
+      "Scrooge's niece"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-children",
+    "canonical": "the children",
+    "kind": "reference",
+    "mentions": 7,
+    "names": [
+      "the children"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 4
+  },
+  {
+    "id": "scrooge-s-former-self",
+    "canonical": "Scrooge's former self",
+    "kind": "reference",
+    "mentions": 6,
+    "names": [
+      "Scrooge's former self"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-nephew",
+    "canonical": "the nephew",
+    "kind": "reference",
+    "mentions": 6,
+    "names": [
+      "the nephew"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-two-young-cratchits",
+    "canonical": "the two young Cratchits",
+    "kind": "group",
+    "mentions": 6,
+    "names": [
+      "the two young Cratchits"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-table",
+    "canonical": "the table",
+    "kind": "reference",
+    "mentions": 5,
+    "names": [
+      "the table"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "dick-wilkins",
+    "canonical": "Dick Wilkins",
+    "kind": "person",
+    "mentions": 5,
+    "names": [
+      "Dick Wilkins"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "martha",
+    "canonical": "Martha",
+    "kind": "person",
+    "mentions": 5,
+    "names": [
+      "Martha"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "topper",
+    "canonical": "Topper",
+    "kind": "person",
+    "mentions": 5,
+    "names": [
+      "Topper"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "old-joe",
+    "canonical": "old Joe",
+    "kind": "reference",
+    "mentions": 4,
+    "names": [
+      "old Joe"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-fiddler",
+    "canonical": "the fiddler",
+    "kind": "reference",
+    "mentions": 4,
+    "names": [
+      "the fiddler"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-old-man",
+    "canonical": "the old man",
+    "kind": "reference",
+    "mentions": 4,
+    "names": [
+      "the old man"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-woman",
+    "canonical": "the woman",
+    "kind": "reference",
+    "mentions": 4,
+    "names": [
+      "the woman"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-child",
+    "canonical": "the child",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the child"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-family",
+    "canonical": "the family",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the family"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-father",
+    "canonical": "the father",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the father"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-ghost-of-christmas-present",
+    "canonical": "the Ghost of Christmas Present",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the Ghost of Christmas Present"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-phantom",
+    "canonical": "the Phantom",
+    "kind": "reference",
+    "mentions": 3,
+    "names": [
+      "the Phantom"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 4
+  },
+  {
+    "id": "mrs-dilber",
+    "canonical": "Mrs. Dilber",
+    "kind": "person",
+    "mentions": 3,
+    "names": [
+      "Mrs. Dilber"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "christmas",
+    "canonical": "Christmas",
+    "kind": "group",
+    "mentions": 3,
+    "names": [
+      "Christmas",
+      "eternity",
+      "immortal creatures"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 3
+  },
+  {
+    "id": "idle-people",
+    "canonical": "idle people",
+    "kind": "group",
+    "mentions": 3,
+    "names": [
+      "idle people",
+      "men",
+      "millions"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 3
+  },
+  {
+    "id": "little-bob",
+    "canonical": "little Bob",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "little Bob"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-baby",
+    "canonical": "the baby",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the baby"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-chestnuts",
+    "canonical": "the chestnuts",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "the chestnuts"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-ghost-of-christmas-past",
+    "canonical": "the Ghost of Christmas Past",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the Ghost of Christmas Past"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-girl",
+    "canonical": "the girl",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the girl"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-girls",
+    "canonical": "the girls",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "the girls"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-husband",
+    "canonical": "the husband",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the husband"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-jug",
+    "canonical": "the jug",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the jug"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-man",
+    "canonical": "the man",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the man"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-man-in-faded-black",
+    "canonical": "the man in faded black",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the man in faded black"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-old-gentleman",
+    "canonical": "the old gentleman",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the old gentleman"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-pudding",
+    "canonical": "the pudding",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the pudding"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-shirt",
+    "canonical": "the shirt",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the shirt"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-son",
+    "canonical": "the son",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the son"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-uncle",
+    "canonical": "the uncle",
+    "kind": "reference",
+    "mentions": 2,
+    "names": [
+      "the uncle"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "fred",
+    "canonical": "Fred",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Fred"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 5
+  },
+  {
+    "id": "joe",
+    "canonical": "Joe",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Joe"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "miss-belinda",
+    "canonical": "Miss Belinda",
+    "kind": "person",
+    "mentions": 2,
+    "names": [
+      "Miss Belinda"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "christmas-holly",
+    "canonical": "Christmas holly",
+    "kind": "group",
+    "mentions": 2,
+    "names": [
+      "Christmas holly",
+      "Ignorance"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "a-fictitious-turkey-glued-on-a-wooden-platter",
+    "canonical": "a fictitious turkey, glued on a wooden platter",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "a fictitious turkey, glued on a wooden platter"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "a-group-of-handsome-girls",
+    "canonical": "a group of handsome girls",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "a group of handsome girls"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "a-man-laden-with-christmas-toys-and-presents",
+    "canonical": "a man laden with Christmas toys and presents",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "a man laden with Christmas toys and presents"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "another-generation-beyond-that",
+    "canonical": "another generation beyond that",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "another generation beyond that"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "any-cratchit",
+    "canonical": "any Cratchit",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "any Cratchit"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "cratchit-s-wife",
+    "canonical": "Cratchit's wife",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Cratchit's wife"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "hamlet-s-father",
+    "canonical": "Hamlet's Father",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Hamlet's Father"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "her-husband",
+    "canonical": "her husband",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "her husband"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "his-hungry-brothers",
+    "canonical": "his hungry brothers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "his hungry brothers"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "old-fezziwig",
+    "canonical": "old Fezziwig",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "old Fezziwig"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "old-scratch",
+    "canonical": "Old Scratch",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Old Scratch"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "one-life-s-opportunity",
+    "canonical": "one life's opportunity",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "one life's opportunity"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "scrooge-s-niece-s-sisters",
+    "canonical": "Scrooge's niece's sisters",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Scrooge's niece's sisters"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "scrooge-s-niece-by-marriage",
+    "canonical": "Scrooge's niece, by marriage",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "Scrooge's niece, by marriage"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "some-people",
+    "canonical": "some people",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "some people"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-almonds",
+    "canonical": "the almonds",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the almonds"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-apples",
+    "canonical": "the apples",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the apples"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-ass",
+    "canonical": "the ass",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the ass"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-axe",
+    "canonical": "the axe",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the axe"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-back-yard",
+    "canonical": "the back-yard",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the back-yard"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-baker",
+    "canonical": "the baker",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the baker"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-beaming",
+    "canonical": "the beaming",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the beaming"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-beaming-looks",
+    "canonical": "the beaming looks",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the beaming looks"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-big-one",
+    "canonical": "the big one",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the big one"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-blankets",
+    "canonical": "the blankets",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the blankets"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-blind-men-s-dogs",
+    "canonical": "the blind men's dogs",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the blind men's dogs"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-bold-young-brood",
+    "canonical": "the bold young brood",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the bold young brood"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-bones",
+    "canonical": "the bones",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the bones"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-boy-from-over-the-way",
+    "canonical": "the boy from over the way",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the boy from over the way"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-braided-hair",
+    "canonical": "the braided hair",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the braided hair"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-brandy",
+    "canonical": "the brandy",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the brandy"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-bridle",
+    "canonical": "the bridle",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the bridle"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-candied-fruits",
+    "canonical": "the candied fruits",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the candied fruits"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-canisters",
+    "canonical": "the canisters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the canisters"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-cat",
+    "canonical": "the cat",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the cat"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-chair",
+    "canonical": "the chair",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the chair"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-chairs",
+    "canonical": "the chairs",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the chairs"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-charwoman",
+    "canonical": "the charwoman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the charwoman"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-chief-mourner",
+    "canonical": "the chief mourner",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the chief mourner"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-child-who-fetched-scrooge-from-the-boarding-school",
+    "canonical": "the child who fetched Scrooge from the boarding-school",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the child who fetched Scrooge from the boarding-school"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-children-s-children",
+    "canonical": "the children's children",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the children's children"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-chimneys",
+    "canonical": "the chimneys",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the chimneys"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-christmas-daws",
+    "canonical": "the Christmas daws",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Christmas daws"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-circle",
+    "canonical": "the circle",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the circle"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-city",
+    "canonical": "the city",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the city"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-clergyman",
+    "canonical": "the clergyman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the clergyman"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-cloth",
+    "canonical": "the cloth",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the cloth"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-collar",
+    "canonical": "the collar",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the collar"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-compound",
+    "canonical": "the compound",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the compound"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-cook",
+    "canonical": "the cook",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the cook"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-copper",
+    "canonical": "the copper",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the copper"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-counter",
+    "canonical": "the counter",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the counter"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-country",
+    "canonical": "the Country",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Country"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-curtains",
+    "canonical": "the curtains",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the curtains"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-custard-cup",
+    "canonical": "the custard-cup",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the custard-cup"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-customers",
+    "canonical": "the customers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the customers"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-daughter",
+    "canonical": "the daughter",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the daughter"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-dead-man",
+    "canonical": "the dead man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the dead man"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-dessert",
+    "canonical": "the dessert",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the dessert"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-dolls-frying-pan",
+    "canonical": "the dolls frying-pan",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the dolls frying-pan"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-dust",
+    "canonical": "the dust",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the dust"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-elder",
+    "canonical": "the elder",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the elder"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-every-one",
+    "canonical": "the every one",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the every one"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-evil-spirit",
+    "canonical": "the Evil Spirit",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Evil Spirit"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-fair-young-girl",
+    "canonical": "the fair young girl",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the fair young girl"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-fellow-prentice",
+    "canonical": "the fellow-'prentice",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the fellow-'prentice"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-fifty-cooks-and-butlers",
+    "canonical": "the fifty cooks and butlers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the fifty cooks and butlers"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-figs",
+    "canonical": "the figs",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the figs"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-fire-irons",
+    "canonical": "the fire-irons",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the fire-irons"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-first-speaker",
+    "canonical": "the first speaker",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the first speaker"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-first-woman",
+    "canonical": "the first woman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the first woman"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-flour",
+    "canonical": "the flour",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the flour"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-french-plums",
+    "canonical": "the French plums",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the French plums"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-friends",
+    "canonical": "the friends",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the friends"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-fruiterers",
+    "canonical": "the fruiterers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the fruiterers"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-future",
+    "canonical": "the Future",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Future"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-gentlemen",
+    "canonical": "the gentlemen",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the gentlemen"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-ghost-of-christmas-yet-to-come",
+    "canonical": "the Ghost of Christmas Yet To Come",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Ghost of Christmas Yet To Come"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-girl-from-next-door-but-one",
+    "canonical": "the girl from next door but one",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the girl from next door but one"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-golden-goblets",
+    "canonical": "the golden goblets",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the golden goblets"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-good-of-which-it-is-susceptible",
+    "canonical": "the good of which it is susceptible",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the good of which it is susceptible"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-good-old-city",
+    "canonical": "the good old city",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the good old city"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-goose",
+    "canonical": "the goose",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the goose"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-grave",
+    "canonical": "the grave",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the grave"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-grocer",
+    "canonical": "the Grocer",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Grocer"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-grocer-s-people",
+    "canonical": "the Grocer's people",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Grocer's people"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-half",
+    "canonical": "the half",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the half"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-half-drunken-woman",
+    "canonical": "the half-drunken woman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the half-drunken woman"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-hearth",
+    "canonical": "the hearth",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the hearth"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-helmsman",
+    "canonical": "the helmsman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the helmsman"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-hob",
+    "canonical": "the hob",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the hob"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-hot-stuff",
+    "canonical": "the hot stuff",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the hot stuff"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-housemaid",
+    "canonical": "the housemaid",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the housemaid"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-hung-up-mistletoe",
+    "canonical": "the hung-up mistletoe",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the hung-up mistletoe"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-insect",
+    "canonical": "the Insect",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Insect"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-jolly-old-gentlemen",
+    "canonical": "the jolly old gentlemen",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the jolly old gentlemen"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-knocker",
+    "canonical": "the knocker",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the knocker"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-lamplight",
+    "canonical": "the lamplight",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the lamplight"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-lamplighter",
+    "canonical": "the lamplighter",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the lamplighter"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-lashes-of-her-downcast-eyes",
+    "canonical": "the lashes of her downcast eyes",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the lashes of her downcast eyes"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-last-of-all",
+    "canonical": "the last of all",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the last of all"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-laundress",
+    "canonical": "the laundress",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the laundress"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-leaf",
+    "canonical": "the leaf",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the leaf"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-lightest-licence-of-a-child",
+    "canonical": "the lightest licence of a child",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the lightest licence of a child"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-lighthouse",
+    "canonical": "the lighthouse",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the lighthouse"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-little-girl",
+    "canonical": "the little girl",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the little girl"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-little-sphere",
+    "canonical": "the little sphere",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the little sphere"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-little-stool",
+    "canonical": "the little stool",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the little stool"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-little-tailor",
+    "canonical": "the little tailor",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the little tailor"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-look-out",
+    "canonical": "the look-out",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the look-out"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-loophole",
+    "canonical": "the loophole",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the loophole"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-lord",
+    "canonical": "the lord",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the lord"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-lord-mayor",
+    "canonical": "the Lord Mayor",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Lord Mayor"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-man-in-foreign-garments",
+    "canonical": "the man in foreign garments",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the man in foreign garments"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-man-who-was-put-down-in-his-drawers-asleep-at-the-gate-of-damascus",
+    "canonical": "the man who was put down in his drawers, asleep, at the Gate of Damascus",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the man who was put down in his drawers, asleep, at the Gate of Damascus"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-married-sisters",
+    "canonical": "the married sisters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the married sisters"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-men",
+    "canonical": "the men",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the men"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-milkman",
+    "canonical": "the milkman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the milkman"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-mother",
+    "canonical": "the mother",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the mother"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-multitude",
+    "canonical": "the multitude",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the multitude"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-officers",
+    "canonical": "the officers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the officers"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-old-ghost",
+    "canonical": "the old ghost",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the old ghost"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-old-man-with-the-pipe",
+    "canonical": "the old man with the pipe",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the old man with the pipe"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-one-as-big-as-me",
+    "canonical": "the one as big as me",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the one as big as me"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-one-with-the-roses",
+    "canonical": "the one with the roses",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the one with the roses"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-onion",
+    "canonical": "the onion",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the onion"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-oranges",
+    "canonical": "the oranges",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the oranges"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-other-spices",
+    "canonical": "the other spices",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the other spices"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-other-woman",
+    "canonical": "the other woman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the other woman"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-parks",
+    "canonical": "the Parks",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Parks"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-parlour",
+    "canonical": "the parlour",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the parlour"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-parrot",
+    "canonical": "the Parrot",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Parrot"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-past",
+    "canonical": "the Past",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Past"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-people",
+    "canonical": "the people",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the people"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-piano",
+    "canonical": "the piano",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the piano"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-pipe",
+    "canonical": "the pipe",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the pipe"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-plump-one-with-the-lace-tucker",
+    "canonical": "the plump one with the lace tucker",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the plump one with the lace tucker"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-plump-sister",
+    "canonical": "the plump sister",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the plump sister"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-polished-hearts",
+    "canonical": "the polished hearts",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the polished hearts"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-poor",
+    "canonical": "the Poor",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Poor"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-portly-gentleman",
+    "canonical": "the portly gentleman",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the portly gentleman"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-portly-gentlemen",
+    "canonical": "the portly gentlemen",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the portly gentlemen"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-postboy",
+    "canonical": "the postboy",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the postboy"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-pot-of-porter",
+    "canonical": "the pot of porter",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the pot of porter"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-poulterer-s",
+    "canonical": "the Poulterer's",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Poulterer's"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-poulterer-s-man",
+    "canonical": "the poulterer's man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the poulterer's man"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-poulterers",
+    "canonical": "the poulterers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the poulterers"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-precious-little-shoe",
+    "canonical": "the precious little shoe",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the precious little shoe"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-present",
+    "canonical": "the Present",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Present"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-prize-turkey",
+    "canonical": "the prize Turkey",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the prize Turkey"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-raisins",
+    "canonical": "the raisins",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the raisins"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-rats",
+    "canonical": "the rats",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the rats"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-re-echoed",
+    "canonical": "the re-echoed",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the re-echoed"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-ribbons",
+    "canonical": "the ribbons",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the ribbons"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-rocks",
+    "canonical": "the rocks",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the rocks"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-room-above",
+    "canonical": "the room above",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the room above"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-sage",
+    "canonical": "the sage",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the sage"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-saucepan",
+    "canonical": "the saucepan",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the saucepan"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-scales",
+    "canonical": "the scales",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the scales"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-schoolmaster",
+    "canonical": "the schoolmaster",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the schoolmaster"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-screen-of-rags",
+    "canonical": "the screen of rags",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the screen of rags"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-sea",
+    "canonical": "the sea",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the sea"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-shadows",
+    "canonical": "the shadows",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the shadows"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-ship",
+    "canonical": "the ship",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the ship"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-shop",
+    "canonical": "the shop",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the shop"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-shopkeepers",
+    "canonical": "the shopkeepers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the shopkeepers"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-shovel-full",
+    "canonical": "the shovel-full",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the shovel-full"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-side",
+    "canonical": "the side",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the side"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-single-man",
+    "canonical": "the single man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the single man"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-sister",
+    "canonical": "the sister",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the sister"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-sisters",
+    "canonical": "the sisters",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the sisters"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-six-young-followers",
+    "canonical": "the six young followers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the six young followers"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-sky",
+    "canonical": "the sky",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the sky"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-spanish-friars",
+    "canonical": "the Spanish Friars",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the Spanish Friars"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-spectre",
+    "canonical": "the spectre",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the spectre"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-stair-rod",
+    "canonical": "the stair-rod",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the stair-rod"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-sticks-of-cinnamon",
+    "canonical": "the sticks of cinnamon",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the sticks of cinnamon"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-stone",
+    "canonical": "the stone",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the stone"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-storm-birds",
+    "canonical": "the storm-birds",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the storm-birds"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-sultan-s-groom",
+    "canonical": "the Sultan's Groom",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Sultan's Groom"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-surplus",
+    "canonical": "the surplus",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the surplus"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-taken",
+    "canonical": "the taken",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the taken"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-tank",
+    "canonical": "the Tank",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Tank"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-things-that-would-have-been",
+    "canonical": "the things that would have been",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the things that would have been"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-three-miss-fezziwigs",
+    "canonical": "the three Miss Fezziwigs",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the three Miss Fezziwigs"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-time",
+    "canonical": "the Time",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the Time"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-tumblers",
+    "canonical": "the tumblers",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the tumblers"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-twine-and-roller",
+    "canonical": "the twine and roller",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the twine and roller"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-two-other-people",
+    "canonical": "the two other people",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the two other people"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-two-persons",
+    "canonical": "the two persons",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the two persons"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-unconscious-company",
+    "canonical": "the unconscious company",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the unconscious company"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-undertaker",
+    "canonical": "the undertaker",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the undertaker"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-undertaker-s-man",
+    "canonical": "the undertaker's man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the undertaker's man"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-wandering-spirits",
+    "canonical": "the wandering Spirits",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the wandering Spirits"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "the-wash-house",
+    "canonical": "the wash-house",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the wash-house"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-waves-of-hair",
+    "canonical": "the waves of hair",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the waves of hair"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-wicker-baskets",
+    "canonical": "the wicker baskets",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the wicker baskets"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-wife",
+    "canonical": "the wife",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the wife"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-wind",
+    "canonical": "the wind",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the wind"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "the-woman-with-the-heavy-bundle",
+    "canonical": "the woman with the heavy bundle",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the woman with the heavy bundle"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-wood",
+    "canonical": "the wood",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the wood"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-wretched-man",
+    "canonical": "the wretched man",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the wretched man"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "the-wretched-woman-with-an-infant",
+    "canonical": "the wretched woman with an infant",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the wretched woman with an infant"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "the-young-brigands",
+    "canonical": "the young brigands",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the young brigands"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-young-girl",
+    "canonical": "the young girl",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the young girl"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-young-men-and-women-employed-in-the-business",
+    "canonical": "the young men and women employed in the business",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "the young men and women employed in the business"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "the-younger-self",
+    "canonical": "the younger self",
+    "kind": "reference",
+    "mentions": 1,
+    "names": [
+      "the younger self"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "those-who-are-badly-off",
+    "canonical": "those who are badly off",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "those who are badly off"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "ages-of-incessant-labour",
+    "canonical": "ages of incessant labour",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "ages of incessant labour"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "ali-baba",
+    "canonical": "Ali Baba",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Ali Baba"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "belle",
+    "canonical": "Belle",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Belle"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "caroline",
+    "canonical": "Caroline",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Caroline"
+    ],
+    "first_chapter": 4,
+    "last_chapter": 4
+  },
+  {
+    "id": "christian-spirit",
+    "canonical": "Christian spirit",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Christian spirit"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "father",
+    "canonical": "Father",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Father"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "friday",
+    "canonical": "Friday",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Friday"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "great-britain",
+    "canonical": "Great Britain",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "Great Britain"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "joe-miller",
+    "canonical": "Joe Miller",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Joe Miller"
+    ],
+    "first_chapter": 5,
+    "last_chapter": 5
+  },
+  {
+    "id": "mortal-life",
+    "canonical": "mortal life",
+    "kind": "not_a_person",
+    "mentions": 1,
+    "names": [
+      "mortal life"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "orson",
+    "canonical": "Orson",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Valentine"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "prisons",
+    "canonical": "prisons",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "prisons"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "robin-crusoe",
+    "canonical": "Robin Crusoe",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Robin Crusoe"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "saint-dunstan",
+    "canonical": "Saint Dunstan",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Saint Dunstan"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "space-of-regret",
+    "canonical": "space of regret",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "space of regret"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "vast-means-of-usefulness",
+    "canonical": "vast means of usefulness",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "vast means of usefulness"
+    ],
+    "first_chapter": 1,
+    "last_chapter": 1
+  },
+  {
+    "id": "want",
+    "canonical": "Want",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Want"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "workhouses",
+    "canonical": "workhouses",
+    "kind": "group",
+    "mentions": 1,
+    "names": [
+      "workhouses"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "orson-2",
+    "canonical": "Orson",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Orson"
+    ],
+    "first_chapter": 2,
+    "last_chapter": 2
+  },
+  {
+    "id": "master-peter-cratchit",
+    "canonical": "Master Peter Cratchit",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Master Peter Cratchit"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  },
+  {
+    "id": "belinda-cratchit",
+    "canonical": "Belinda Cratchit",
+    "kind": "person",
+    "mentions": 1,
+    "names": [
+      "Belinda Cratchit"
+    ],
+    "first_chapter": 3,
+    "last_chapter": 3
+  }
+]
