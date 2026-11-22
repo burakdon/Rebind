@@ -29,6 +29,11 @@
   .go a.first { background: var(--paper); color: #2b2620; border-color: var(--paper); }
   .key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15.5px; color: var(--soft); margin: 10px 0 0; padding: 0; list-style: none; }
   .key i { display: inline-block; width: 26px; height: 12px; vertical-align: -1px; margin-right: 6px; border: 1px solid #000; }
+  .pick { margin: 6px 0 2px; max-width: none; }
+  .pick select { font: inherit; font-size: 16px; background: var(--paper); color: #2b2620; border: 0; padding: 3px 6px; margin: 0 8px 0 4px; }
+  .book .dyed { color: var(--soft); font-size: 15.5px; margin: 6px 0 0; max-width: none; }
+  .book .dyed .sw { margin-right: 8px; white-space: nowrap; }
+  .book .dyed i { display: inline-block; width: 22px; height: 11px; vertical-align: -1px; border: 1px solid #000; margin-right: 2px; }
   ol.steps { padding-left: 0; list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px 28px; }
   ol.steps li { counter-increment: s; }
   ol.steps li::before { content: counter(s); font-family: "IM Fell English SC", serif; font-size: 30px; color: var(--dim); display: block; line-height: 1; margin-bottom: 4px; }
@@ -43,6 +48,7 @@
   <p class="lede">To learn from a book, an AI cuts it into pieces and keeps no note of where each piece came from. Rebind has an AI read a book and hands back a scarf pattern in which every row leads to the sentences it was made from.</p>
 
   <h2>The books</h2>
+  <p class="pick"><label>Colours <select id="palette"></select></label> <span class="small">The colours are a choice. Changing them moves no stitch.</span></p>
   <ul class="key" id="key"></ul>
   <div id="books"><p class="small">Loading the books.</p></div>
 
@@ -61,12 +67,15 @@
 </main>
 <script type="module">
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+import { chosen, dye, loadPalettes, picker, swatches } from './palette.js';
 const books = await fetch('data/books.json').then(r => r.json());
 const patterns = await Promise.all(books.map(b => fetch(`data/${b.slug}/pattern.json`).then(r => r.json())));
 
-// one key for every scarf, from the first pattern's yarns
-const K0 = patterns[0], mean = { A: 'cold', B: '', C: 'neither', D: '', E: 'warm', U: 'the two readings too far apart' };
-document.getElementById('key').innerHTML = K0.yarns.filter(y => mean[y.key]).map(y => `<li><i style="background:${y.hex}"></i>${mean[y.key]}</li>`).join('')
+// Each book is dyed in its own palette unless the visitor picks one for all of them.
+const PALETTES = await loadPalettes('data/'), OWN = patterns.map(K => K.palette?.name);
+patterns.forEach(K => dye(K, PALETTES, chosen()));
+picker(document.getElementById('palette'), PALETTES, 'Each book’s own');
+document.getElementById('key').innerHTML = '<li>cool colour: cold</li><li>grey: neither</li><li>warm colour: warm</li><li>cream: the two readings too far apart</li>'
   + '<li>◦ a hole: that person is in the passage</li><li>a darker band: tense</li>';
 
 // Draw a scarf lying flat: one band per passage, as wide as its two rows are tall.
@@ -95,6 +104,7 @@ books.forEach((b, i) => {
   a.className = 'book';
   a.innerHTML = `<a href="${see}"><canvas role="img" aria-label="${esc(b.title)} as a scarf, first page at the left"></canvas></a>
     <h3>${esc(b.title)}</h3><p class="by">${esc(b.author || '')}</p>
+    <p class="dyed"><span class="sw">cold ${swatches(K).slice(0, 5).join('')} warm ${swatches(K)[5]} undyed</span> ${esc(K.palette?.name || '')}${K.palette && !K.palette.borrowed ? `, after ${esc(K.palette.from)}` : K.palette ? ` (its own: ${esc(OWN[i])})` : ''}</p>
     <p class="facts">${b.pairs} passages, ${b.rows} rows, about ${b.width_in} × ${b.length_in} inches. ${b.undyed} of ${b.pairs} passages undyed. Columns: ${esc(b.people.join(', '))}.</p>
     <div class="go"><a class="first" href="${see}">See it knitted</a><a href="knit/pattern.html?book=${b.slug}">The pattern, to print</a></div>`;
   root.appendChild(a);

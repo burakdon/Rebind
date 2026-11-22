@@ -8,6 +8,7 @@
   "sha256": "3f6bb9d6f78e0293b56acd4714dd68cb7d6d1d293402031ce9d5a216bcaf9d75",
   "edition_note": "Project Gutenberg #1342, the 1894 George Allen illustrated edition (updated 2026-09-01). Offsets in every output refer to this exact file.",
   "chapter_pattern": "^(?:CHAPTER|Chapter) ([IVXLC]+)\\.?\\]?[ \\t]*\\r?$",
+  "palette": "coats",
   "exclude": [
     {"pattern": "CHISWICK PRESS:.*?LONDON\\.", "why": "Printer's colophon after the last chapter, not part of the novel."}
   ]

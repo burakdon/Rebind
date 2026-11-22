@@ -10,6 +10,7 @@
   "width_in": 8.2,
   "length_in": 37,
   "yards": 266,
+  "palette": "evergreen-gold",
   "undyed": 37,
   "people": [
    "Mrs. Cratchit",
@@ -35,6 +36,7 @@
   "width_in": 8.2,
   "length_in": 35,
   "yards": 251,
+  "palette": "violet-marmalade",
   "undyed": 47,
   "people": [
    "Dormouse",
@@ -60,6 +62,7 @@
   "width_in": 8.2,
   "length_in": 90,
   "yards": 603,
+  "palette": "coats",
   "undyed": 54,
   "people": [
    "Mr. Collins",

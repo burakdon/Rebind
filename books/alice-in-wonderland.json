@@ -8,6 +8,7 @@
   "sha256": "a3a27f8edbf7fcd9b8ba8435494440e24952deaa3e2f2d65192d4cb7ca403754",
   "edition_note": "Project Gutenberg #11 (The Millennium Fulcrum Edition 3.0), fetched from the Project Gutenberg mirror gutenberg.pglaf.org on 2026-11-21 while the main site was down for maintenance. Offsets in every output refer to this exact file.",
   "chapter_pattern": "^CHAPTER ([IVXLC]+)\\.\\n[^\\n]+$",
+  "palette": "violet-marmalade",
   "chapter_word": "Chapter",
   "passage_words": 175,
   "passage_max_words": 325,

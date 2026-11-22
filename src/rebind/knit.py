@@ -32,14 +32,43 @@ CAST_ON = EDGE + 1 + PEOPLE * UNIT + EDGE          # 37
 # spread, so that all five yarns are used. Changing them changes the scarf, not the labels.
 YARN_CUTS = (-0.5, -0.2, 0.2, 0.5)       # balance = (warm - cold) / sentences
 RIDGED_SHARE = 0.5                        # share of sentences labelled tense
-YARNS = [  # key, name, colour on screen
-    ("A", "deep blue", "#35548c"),
-    ("B", "grey blue", "#7f98b3"),
-    ("C", "stone grey", "#9c978c"),
-    ("D", "rose", "#c8745f"),
-    ("E", "deep red", "#8c2531"),
-    ("U", "undyed", "#efe6d0"),
-]
+# The dye is a design choice too, and the only thing here that differs from book to book. Each book
+# names its palette in books/<slug>.json. A palette is five yarns from cold to warm: a dark and a light
+# cool colour, a grey, a light and a dark warm colour. All three were checked so that no two yarns, the
+# undyed one included, are confused under red-green colour blindness (the first blue-to-red palette failed
+# that: its rose and its grey could not be told apart).
+PALETTES = {
+    "evergreen-gold": {
+        "name": "Evergreen and candle gold", "from": "the book's holly and its gold",
+        "yarns": [("evergreen", "#12463f"), ("sea green", "#84c8b2"), ("pewter grey", "#868a8c"),
+                  ("candle gold", "#deae36"), ("dark amber", "#9c5806")]},
+    "violet-marmalade": {
+        "name": "Violet and marmalade", "from": "a dream colour, and the jar Alice takes as she falls",
+        "yarns": [("deep violet", "#5a3391"), ("lilac", "#b3a0e6"), ("stone grey", "#8f8b82"),
+                  ("apricot", "#f2a26a"), ("marmalade", "#bd5015")]},
+    "coats": {
+        "name": "Blue coat and red coat", "from": "Bingley's blue coat and the officers' red ones",
+        "yarns": [("deep blue", "#2c4f96"), ("sky blue", "#8fb3e6"), ("stone grey", "#8f8b82"),
+                  ("salmon", "#f0a48e"), ("scarlet", "#a11f2d")]},
+}
+DEFAULT_PALETTE = "coats"
+UNDYED = ("undyed", "#efe6d0")
+PALETTE_NOTE = ("The colours are a choice, not a count: no book names colours often enough to count them. "
+                "In every palette cold is the cool colour and warm the warm one, and undyed is cream.")
+
+
+def yarns_of(palette: str) -> list[tuple[str, str, str]]:
+    """key, name, colour on screen: A to E from cold to warm, then U."""
+    return [(k, name, hx) for k, (name, hx) in zip("ABCDEU", [*PALETTES[palette]["yarns"], UNDYED])]
+
+
+def palette_for(slug: str) -> str:
+    """The palette a book names in its settings file, or the default."""
+    f = ROOT / "books" / f"{slug}.json"
+    key = json.loads(f.read_text()).get("palette") if f.exists() else None
+    return key if key in PALETTES else DEFAULT_PALETTE
+
+
 UNSURE = "U"
 UNSURE_GAP = 2           # yarns apart at which the two readings, counted apart, are taken to disagree
 # Worsted-weight yarn on 4.5 mm (US 7) needles. These are ordinary figures for that
@@ -143,10 +172,15 @@ def shelf(data_dir: Path) -> Path:
         books.append({"slug": K["book"]["slug"], "title": K["book"]["title"], "author": K["book"].get("author"),
                       "chapter_word": K["book"].get("chapter_word") or "Chapter", "model": K["run"]["model"],
                       **{k: K["size"][k] for k in ("pairs", "rows", "width_in", "length_in")},
-                      "yards": sum(y["yards"] for y in K["yarns"]),
+                      "yards": sum(y["yards"] for y in K["yarns"]), "palette": K.get("palette", {}).get("key", DEFAULT_PALETTE),
                       "undyed": sum(r["unsure"] for r in K["rows"]), "people": [c["name"] for c in K["columns"]]})
     books.sort(key=lambda b: (b["slug"] != LEAD_BOOK, b["pairs"]))
     (Path(data_dir) / "books.json").write_text(json.dumps(books, indent=1, ensure_ascii=False))
+    # palettes.json: every palette, so the site can show any book in any of them.
+    (Path(data_dir) / "palettes.json").write_text(json.dumps({"note": PALETTE_NOTE, "palettes": [
+        {"key": key, "name": P["name"], "from": P["from"],
+         "yarns": [{"key": k, "name": name, "hex": hx} for k, name, hx in yarns_of(key)]}
+        for key, P in PALETTES.items()]}, indent=1, ensure_ascii=False))
     return Path(data_dir) / "books.json"
 
 
@@ -202,6 +236,7 @@ def knit(book_json: Path, out_dir: Path | None = None, log=print) -> Path:
     length = smooth * 2 * 4 / g["smooth_rows_per_4in"] + ridged * 2 * 4 / g["ridged_rows_per_4in"]
     yards = lambda pairs: round(pairs * 2 * CAST_ON * g["yarn_inches_per_stitch"] / 36 * 1.1)  # noqa: E731
     cuts = [None, *YARN_CUTS, None]
+    palette = palette_for(B["book"]["slug"])
     doc = {
         "book": B["book"], "run": B["run"], "generated": datetime.now(timezone.utc).isoformat(),
         "rules": {k: v.replace("chapter", (B["book"].get("chapter_word") or "chapter").lower())
@@ -211,8 +246,11 @@ def knit(book_json: Path, out_dir: Path | None = None, log=print) -> Path:
         "unsure_gap": UNSURE_GAP,
         "readings": {"twice": twice, "unread": sum(r["tally"]["a"] is None for r in rows)},
         "columns": columns, "chapter_stitches": [2, 3],
+        "palette": {"key": palette, "name": PALETTES[palette]["name"], "from": PALETTES[palette]["from"],
+                    "note": PALETTE_NOTE},
         "yarns": [{"key": k, "name": name, "hex": hx, "pairs": used[k], "yards": yards(used[k]),
-                   "balance": [cuts[i], cuts[i + 1]] if k != UNSURE else None} for i, (k, name, hx) in enumerate(YARNS)],
+                   "balance": [cuts[i], cuts[i + 1]] if k != UNSURE else None}
+                  for i, (k, name, hx) in enumerate(yarns_of(palette))],
         "size": {"width_in": round(CAST_ON * 4 / g["stitches_per_4in"], 1), "length_in": round(length),
                  "pairs": len(rows), "rows": 2 * len(rows), "stitches": 2 * len(rows) * CAST_ON,
                  "smooth_pairs": smooth, "ridged_pairs": ridged},

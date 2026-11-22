@@ -1,0 +1,116 @@
+{
+ "note": "The colours are a choice, not a count: no book names colours often enough to count them. In every palette cold is the cool colour and warm the warm one, and undyed is cream.",
+ "palettes": [
+  {
+   "key": "evergreen-gold",
+   "name": "Evergreen and candle gold",
+   "from": "the book's holly and its gold",
+   "yarns": [
+    {
+     "key": "A",
+     "name": "evergreen",
+     "hex": "#12463f"
+    },
+    {
+     "key": "B",
+     "name": "sea green",
+     "hex": "#84c8b2"
+    },
+    {
+     "key": "C",
+     "name": "pewter grey",
+     "hex": "#868a8c"
+    },
+    {
+     "key": "D",
+     "name": "candle gold",
+     "hex": "#deae36"
+    },
+    {
+     "key": "E",
+     "name": "dark amber",
+     "hex": "#9c5806"
+    },
+    {
+     "key": "U",
+     "name": "undyed",
+     "hex": "#efe6d0"
+    }
+   ]
+  },
+  {
+   "key": "violet-marmalade",
+   "name": "Violet and marmalade",
+   "from": "a dream colour, and the jar Alice takes as she falls",
+   "yarns": [
+    {
+     "key": "A",
+     "name": "deep violet",
+     "hex": "#5a3391"
+    },
+    {
+     "key": "B",
+     "name": "lilac",
+     "hex": "#b3a0e6"
+    },
+    {
+     "key": "C",
+     "name": "stone grey",
+     "hex": "#8f8b82"
+    },
+    {
+     "key": "D",
+     "name": "apricot",
+     "hex": "#f2a26a"
+    },
+    {
+     "key": "E",
+     "name": "marmalade",
+     "hex": "#bd5015"
+    },
+    {
+     "key": "U",
+     "name": "undyed",
+     "hex": "#efe6d0"
+    }
+   ]
+  },
+  {
+   "key": "coats",
+   "name": "Blue coat and red coat",
+   "from": "Bingley's blue coat and the officers' red ones",
+   "yarns": [
+    {
+     "key": "A",
+     "name": "deep blue",
+     "hex": "#2c4f96"
+    },
+    {
+     "key": "B",
+     "name": "sky blue",
+     "hex": "#8fb3e6"
+    },
+    {
+     "key": "C",
+     "name": "stone grey",
+     "hex": "#8f8b82"
+    },
+    {
+     "key": "D",
+     "name": "salmon",
+     "hex": "#f0a48e"
+    },
+    {
+     "key": "E",
+     "name": "scarlet",
+     "hex": "#a11f2d"
+    },
+    {
+     "key": "U",
+     "name": "undyed",
+     "hex": "#efe6d0"
+    }
+   ]
+  }
+ ]
+}

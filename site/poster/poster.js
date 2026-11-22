@@ -11,6 +11,9 @@ const get = f => fetch(f).then(r => (r.ok ? r.json() : null)).catch(() => null);
 const books = await get('../data/books.json');
 const LEAD = Q.get('book') || books[0].slug;
 const all = await Promise.all(books.map(async b => ({ b, K: await get(`../data/${b.slug}/pattern.json`), C: await get(`../data/${b.slug}/checks.json`) })));
+// The poster shows each book in its own colours; ?palette=<key> dyes them all alike. Nothing is remembered here.
+const PAL = await get('../data/palettes.json'), wanted = PAL?.palettes.find(p => p.key === Q.get('palette'));
+if (wanted) for (const { K: P } of all) { for (const y of P.yarns) Object.assign(y, wanted.yarns.find(v => v.key === y.key)); P.palette = { ...P.palette, ...wanted }; }
 const lead = all.find(x => x.b.slug === LEAD), K = lead.K;
 const [B, TXT] = await Promise.all([get(`../data/${LEAD}/book.json`), get(`../data/${LEAD}/text.json`)]);
 await document.fonts.ready;
@@ -58,14 +61,15 @@ $('by').textContent = AUTHOR;
 const CW = (K.book.chapter_word || 'Chapter'), S = K.size;
 $('lead-title').textContent = K.book.title;
 $('lead-facts').textContent = `${K.book.author}. ${S.pairs} passages, ${S.rows} rows, cast on ${K.cast_on}: about ${Math.round(S.width_in)} × ${S.length_in} inches in worsted yarn. First page at the left, last page at the right.`;
-const box = $('lead-scarf'), NAMES = 1.75, AVAIL = 34 - NAMES - 0.95;
+const LEFT = 27.05, box = $('lead-scarf'), NAMES = 1.75, AVAIL = LEFT - NAMES - 0.3;   // LEFT: the width of #left in poster.css
 const pre = scarf(K, 1, false), unit = Math.min(AVAIL / pre.LEN, 6.9 / pre.W);
 const big = scarf(K, unit, true), top = 0.05;
 const holder = document.createElement('div'); holder.className = 'scarf'; holder.style.cssText = `left:${NAMES}in;top:${top}in`; holder.innerHTML = big.svg; box.appendChild(holder);
+box.style.height = `${top + big.W * unit + 0.6}in`;
 const tag = (cls, html, css) => { const d = document.createElement('div'); d.className = 'tag ' + cls; d.innerHTML = html; d.style.cssText = css; box.appendChild(d); return d; };
 for (const c of K.columns) {
   const y = top + (big.W - (c.stitches[0] + 0.5)) * unit;
-  tag('', esc(c.name), `right:${34 - NAMES + 0.12}in;top:${y - 0.09}in;font-size:15.5pt`);
+  tag('', esc(c.name), `right:${LEFT - NAMES + 0.12}in;top:${y - 0.09}in;font-size:15.5pt`);
 }
 K.rows.forEach((r, n) => {
   if (!r.starts_chapter) return;
@@ -79,10 +83,8 @@ $('key').innerHTML = `<li class="ramp"><b>Yarn</b> &nbsp;cold ${'ABCDE'.split(''
 // ---- the other books ---------------------------------------------------------------------------------------
 $('others').innerHTML = all.filter(x => x.b.slug !== LEAD).map(({ b, K: P }) => {
   const u = 1.62 / P.cast_on, t = scarf(P, u, false);
-  return `<div class="book"><h3>${esc(b.title)}</h3><p class="small">${esc(b.author || '')}. ${b.pairs} passages, ${b.rows} rows, about ${Math.round(b.width_in)} × ${b.length_in} inches. ${b.undyed} passages undyed.</p><div class="strip">${t.svg}</div></div>`;
-}).join('') + `<div class="note">
-  <p><b>The question.</b> Can a model’s reading of a whole book be shown so that anyone can trace what they see, by hand, back to the sentences behind it? And how steady is that reading?</p>
-  <p><b>What comes next.</b> People label a sample blind, to learn if the labels are right and not just steady. Readers try to find a scene from the scarf alone. Someone knits one. A closed-book mode gives a pattern without the text, for books still in copyright.</p></div>`;
+  return `<div class="book"><h3>${esc(b.title)} <span class="mini">${'ABCDE'.split('').map(k => `<i style="background:${P.yarns.find(y => y.key === k).hex}"></i>`).join('')}</span></h3><p class="small">${esc(b.author || '')}. ${b.pairs} passages, ${b.rows} rows, about ${Math.round(b.width_in)} × ${b.length_in} inches. ${b.undyed} passages undyed.</p><div class="strip">${t.svg}</div></div>`;
+}).join('');
 
 // ---- the rules, from the numbers the pattern was made with -------------------------------------------------
 const [a, b, c, d] = K.yarn_cuts, m = v => String(v).replace('-', '−');
@@ -108,7 +110,7 @@ const fragile = K.rows.filter(r => r.margin === 1).length, st = lead.C?.stabilit
 $('limits').innerHTML = [
   st && me ? `<b>Wording moves it more than names do.</b> Rewording the question changes about ${Math.round(100 * (1 - st.feeling.same))} in 100 feeling labels in ${esc(K.book.title)}; swapping every name changes about ${Math.round(100 * (1 - me.feeling.same))}. So there is no sign the model leans on recognising the book, though it may still know the text.` : '',
   `<b>No person has checked the labels.</b> The figures say how steady the model is, not whether it is right. The site lets anyone label a sample blind.`,
-  `<b>Thin margins, hand-set cuts.</b> In ${fragile} of ${K.rows.length} rows of the lead scarf one changed label would change the yarn, and the cuts (${m(a)}, ${m(b)}, ${c}, ${d}) were set by hand. Every row states its margin.`,
+  `<b>Thin margins, hand-set cuts.</b> In ${fragile} of ${K.rows.length} rows of the lead scarf one changed label would change the yarn, and the cuts (${m(a)}, ${m(b)}, ${c}, ${d}) and each book’s colours were chosen by hand. Every row states its margin.`,
   `<b>A scarf looks surer than it is.</b> Off the screen only the undyed rows show doubt. Warm and cold are one model’s reading, not what a book means, and a row with a source is not a row that is right.`,
   `<b>Not yet knitted.</b> Sizes come from a typical gauge. “He” and “she” leave no hole: code cannot check who is meant.`,
 ].filter(Boolean).map(x => `<li>${x}</li>`).join('');

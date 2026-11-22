@@ -3,11 +3,14 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { chosen, dye, loadPalettes, picker } from '../palette.js';
 
 const Q = new URLSearchParams(location.search);
 const num = (k, d) => (Q.has(k) ? parseFloat(Q.get(k)) : d);
 const BOOK = Q.get('book') || 'pride-and-prejudice', DATA = `../data/${BOOK}/`;
 const [K, B, TXT] = await Promise.all(['pattern.json', 'book.json', 'text.json'].map(f => fetch(DATA + f).then(r => r.json())));
+const PALETTES = await loadPalettes('../data/'), OWN_DYE = K.palette?.name;
+dye(K, PALETTES, chosen());   // the visitor's choice of colours; the book's own unless they picked another
 const CHECKS = await fetch(DATA + 'checks.json').then(r => r.ok ? r.json() : null).catch(() => null);
 await Promise.all([document.fonts.load('32px "IM Fell English SC"'), document.fonts.load('italic 32px "IM Fell English"')]).catch(() => {});
 const passage = Object.fromEntries(B.passages.map(p => [p.id, p]));
@@ -234,6 +237,8 @@ $('meta').textContent = `${S.pairs} passages, ${S.rows} rows, about ${Math.round
 $('key').innerHTML = `<span>cold</span>${'ABCDE'.split('').map(k => `<i style="background:${yarn[k].hex}" title="yarn ${k}, ${yarn[k].name}"></i>`).join('')}<span>warm</span>
   <span class="gap"><i style="background:${yarn.U.hex}"></i>the two readings too far apart</span><span class="gap">ridge: tense</span><span class="gap">hole: that person is there</span>`;
 $('legend-model').textContent = K.run.model;
+picker($('palette'), PALETTES, 'This book’s own');
+if (K.palette) $('dye').textContent = `The colours here are “${K.palette.name}”${K.palette.borrowed ? `, borrowed from another book (this book’s own are “${OWN_DYE}”)` : `, after ${K.palette.from}`}. ${K.palette.note} You can change them at the top of the page; no stitch moves.`;
 $('rules').innerHTML = Object.entries(K.rules).map(([k, v]) => `<li value="${k.slice(1)}">${esc(v)}</li>`).join('');
 const legend = $('legend'), panel = $('panel'), tip = $('tip');
 // How far to trust it: the counted checks, in plain words.

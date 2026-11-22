@@ -22,11 +22,11 @@ h1 { font-size: 104pt; line-height: 1; letter-spacing: 0.02em; margin: 0.08in 0 
 .who .by { font-size: 19pt; margin: 0.12in 0; }
 .small { font-size: 15.5pt; color: var(--soft); line-height: 1.3; }
 
-#lead { position: absolute; left: 1in; right: 1in; top: 4.55in; }
+#left { position: absolute; left: 1in; top: 4.55in; width: 27.05in; }   /* the same width as LEFT in poster.js */
 #lead .cap { display: flex; align-items: baseline; gap: 0.35in; border-bottom: 1.5pt solid var(--ink); padding-bottom: 0.05in; margin-bottom: 0.2in; }
 h2 { font-size: 36pt; letter-spacing: 0.05em; }
 #lead .cap p { font-size: 19pt; color: var(--soft); }
-#lead-scarf { position: relative; height: 7.5in; }
+#lead-scarf { position: relative; }
 .scarf { position: absolute; }
 .scarf svg { display: block; filter: drop-shadow(0.03in 0.05in 0.05in rgba(40, 30, 15, 0.45)); }
 .tag { position: absolute; font-family: "IM Fell English", serif; font-style: italic; color: var(--soft); white-space: nowrap; line-height: 1; }
@@ -37,15 +37,24 @@ h2 { font-size: 36pt; letter-spacing: 0.05em; }
 .key .ramp i { margin-right: 0.03in; }
 .key b { font-weight: 500; color: var(--ink); }
 
-#others { position: absolute; left: 1in; right: 2.55in; top: 13.3in; display: flex; gap: 0.7in; align-items: flex-start; }
+#others { display: flex; gap: 0.7in; align-items: flex-start; margin-top: 0.3in; }
 #others .book { flex: none; }
-#others .note { flex: 1; min-width: 0; font-size: 16pt; line-height: 1.26; border-left: 1.5pt solid var(--ink); padding-left: 0.22in; }
-#others .note p + p { margin-top: 0.09in; }
-#others .note b, .refs b { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 1.12em; letter-spacing: 0.04em; margin-right: 0.06in; }
+#note { display: grid; grid-template-columns: 10.4in 15.3in; gap: 0.5in; margin-top: 0.24in; font-size: 16.5pt; line-height: 1.27; }
+#note b, .refs b { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 1.12em; letter-spacing: 0.04em; margin-right: 0.06in; }
 .refs { font-size: 13.5pt; line-height: 1.25; color: var(--soft); margin-top: 0.1in; border-top: 0.75pt solid var(--rule); padding-top: 0.06in; }
+
+#why { position: absolute; right: 1in; top: 4.55in; width: 6.4in; }
+#why h2 { border-bottom: 1.5pt solid var(--ink); padding-bottom: 0.05in; margin-bottom: 0.2in; }
+#why p { font-size: 17.5pt; line-height: 1.31; margin-bottom: 0.13in; }
+#why .photos { display: grid; grid-template-columns: 3.36in 2.94in; grid-template-rows: 2.52in 2.52in; gap: 0.1in; margin-top: 0.2in; }
+#why .photos img { width: 100%; height: 100%; object-fit: cover; display: block; border: 1pt solid var(--ink); }
+#why .photos .tall { grid-row: 1 / 3; }
+#why p.small { font-size: 14pt; font-style: italic; margin-top: 0.08in; }
 #others .book { position: relative; }
 #others h3 { font-size: 23pt; letter-spacing: 0.05em; }
 #others .small { margin-bottom: 0.08in; }
+#others .mini { white-space: nowrap; margin-left: 0.1in; letter-spacing: 0; }
+#others .mini i { display: inline-block; width: 0.24in; height: 0.14in; border: 0.75pt solid var(--ink); vertical-align: -0.01in; margin-right: 0.02in; }
 #others .strip svg { display: block; filter: drop-shadow(0.02in 0.03in 0.03in rgba(40, 30, 15, 0.4)); }
 
 #cols { position: absolute; left: 1in; right: 1in; top: 15.95in; bottom: 0.9in; display: grid; grid-template-columns: 9.9in 9.6in 13.3in; gap: 0.6in; }
