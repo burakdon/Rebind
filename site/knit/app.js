@@ -230,8 +230,15 @@ function home() {
   }
   controls.update();
 }
-function resize() { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); }
-addEventListener('resize', resize); resize(); home();
+// A page opened in a tab that is not showing can have no size yet. Dividing by that gave the camera a
+// position that is not a number, and the scarf never appeared. So wait for a real size, then frame the scarf once.
+let sized = false;
+function resize() {
+  if (!innerWidth || !innerHeight) return;
+  renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+  if (!sized) { sized = true; home(); }
+}
+addEventListener('resize', resize); document.addEventListener('visibilitychange', resize); home(); resize();
 document.getElementById('home').onclick = () => { Q.delete('at'); home(); };
 
 // ---- every row explains itself -----------------------------------------------------------------------------
