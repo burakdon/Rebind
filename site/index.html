@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rebind · Don't rip books. Knit them.</title>
+<title>Rebind · Stop ripping books</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -44,8 +44,8 @@
 <body>
 <main>
   <p class="brand">Rebind</p>
-  <h1>Don’t rip books.<br>Knit and wear them.</h1>
-  <p class="lede">To learn from a book, an AI cuts it into pieces and keeps no note of where each piece came from. Rebind has an AI read a book and hands back a scarf pattern in which every row leads to the sentences it was made from.</p>
+  <h1>I don’t mind the IPO,<br>but stop ripping books…</h1>
+  <p class="lede">To learn from a book, big AI cuts it into pieces and keeps no note of where each piece came from. Rebind has an AI model that reads a book and hands back a scarf pattern in which every row leads to the sentences it was made from, fully traceable.</p>
 
   <h2>The books</h2>
   <p class="pick"><label>Colours <select id="palette"></select></label> <span class="small">The colours are a choice. Changing them moves no stitch.</span></p>
@@ -106,7 +106,7 @@ books.forEach((b, i) => {
     <h3>${esc(b.title)}</h3><p class="by">${esc(b.author || '')}</p>
     <p class="dyed"><span class="sw">cold ${swatches(K).slice(0, 5).join('')} warm ${swatches(K)[5]} undyed</span> ${esc(K.palette?.name || '')}${K.palette && !K.palette.borrowed ? `, after ${esc(K.palette.from)}` : K.palette ? ` (its own: ${esc(OWN[i])})` : ''}</p>
     <p class="facts">${b.pairs} passages, ${b.rows} rows, about ${b.width_in} × ${b.length_in} inches. ${b.undyed} of ${b.pairs} passages undyed. Columns: ${esc(b.people.join(', '))}.</p>
-    <div class="go"><a class="first" href="${see}">See it knitted</a><a href="knit/pattern.html?book=${b.slug}">The pattern, to print</a></div>`;
+    <div class="go"><a class="first" href="${see}">See it knitted</a><a href="knit/pattern.html?book=${b.slug}">The pattern, to print</a><a href="${see}&mode=texture">In one yarn, texture only</a></div>`;
   root.appendChild(a);
   draw(a.querySelector('canvas'), K);
 });

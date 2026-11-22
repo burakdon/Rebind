@@ -11,6 +11,9 @@ const BOOK = Q.get('book') || 'pride-and-prejudice', DATA = `../data/${BOOK}/`;
 const [K, B, TXT] = await Promise.all(['pattern.json', 'book.json', 'text.json'].map(f => fetch(DATA + f).then(r => r.json())));
 const PALETTES = await loadPalettes('../data/'), OWN_DYE = K.palette?.name;
 dye(K, PALETTES, chosen());   // the visitor's choice of colours; the book's own unless they picked another
+// ?mode=texture: the same pattern in one yarn, where stitches say what colours said (K.texture, row.tx)
+const TX = Q.get('mode') === 'texture' && K.texture ? K.texture : null, RULES = TX ? { ...K.rules, ...TX.rules } : K.rules;
+const PROBES = await fetch(DATA + 'probes.json').then(r => r.ok ? r.json() : null).catch(() => null);
 const CHECKS = await fetch(DATA + 'checks.json').then(r => r.ok ? r.json() : null).catch(() => null);
 await Promise.all([document.fonts.load('32px "IM Fell English SC"'), document.fonts.load('italic 32px "IM Fell English"')]).catch(() => {});
 const passage = Object.fromEntries(B.passages.map(p => [p.id, p]));
@@ -21,17 +24,20 @@ const hex = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), pars
 // ---- the fabric: one texel per stitch ----------------------------------------------------------------
 // Two rows per passage. Seen from the right side: the right-side row is knit stitches (V) with eyelets;
 // the row back shows as V again where it was purled (smooth) and as bumps where it was knitted (ridged).
-const W = K.cast_on, R = K.rows.length * 2, TABLE = [14, 11, 9];
+const W = TX ? TX.cast_on : K.cast_on, R = K.rows.length * 2, TABLE = [14, 11, 9];
 const V = 0, BUMP = 1, HOLE = 2, LEAN = 3;
 const shown = new Uint8Array(W * R * 4), stitch = new Uint8Array(W * R * 4), rowH = new Float32Array(R);
 K.rows.forEach((row, n) => {
-  const col = hex(yarn[row.yarn].hex), ridged = row.texture === 'ridged', h = ridged ? 0.5 : 0.75;
+  // In one yarn a short, ridged pair of rows is a passage the readings disagree on; in colour it is a tense one.
+  const cells = TX ? row.tx.rs : row.rs, col = hex(TX ? TX.yarn.hex : yarn[row.yarn].hex);
+  const ridged = TX ? row.unsure : row.texture === 'ridged', h = ridged ? 0.5 : 0.75;
   for (let half = 0; half < 2; half++) {
     const r = n * 2 + half; rowH[r] = h;
     for (let c = 0; c < W; c++) {
-      const sym = row.rs[c], edge = c < K.edge || c >= W - K.edge;
-      const kind = half === 0 ? (sym === 'o' ? HOLE : sym === '/' ? LEAN : V) : (ridged || edge ? BUMP : V);
-      const o = (r * W + c) * 4, dim = kind === HOLE ? 0 : kind === BUMP ? 0.8 : 1;
+      const sym = cells[c], edge = c < K.edge || c >= W - K.edge, twist = sym === 'X' || sym === 'x';
+      // The row back is worked as the stitches face, so a purl shows as a bump on both rows of the pair.
+      const kind = half === 0 ? (sym === 'o' ? HOLE : sym === '/' || twist ? LEAN : sym === 'p' ? BUMP : V) : (ridged || edge || sym === 'p' ? BUMP : V);
+      const o = (r * W + c) * 4, dim = kind === HOLE ? 0 : kind === BUMP ? (TX ? 0.56 : 0.8) : twist ? 0.72 : 1;
       for (let k = 0; k < 3; k++) { shown[o + k] = kind === HOLE ? TABLE[k] : col[k] * dim; stitch[o + k] = col[k]; }
       shown[o + 3] = 255; stitch[o + 3] = kind * 32 + (ridged ? 128 : 0);
     }
@@ -232,14 +238,19 @@ document.getElementById('home').onclick = () => { Q.delete('at'); home(); };
 const $ = id => document.getElementById(id), esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 const S = K.size, CW = K.book.chapter_word || 'Chapter';
 document.title = `Rebind · ${K.book.title}, knitted`; $('title').textContent = K.book.title;
-for (const a of document.querySelectorAll('#tools a')) a.href = `pattern.html?book=${BOOK}`;
-$('meta').textContent = `${S.pairs} passages, ${S.rows} rows, about ${Math.round(S.width_in)} × ${S.length_in} inches. Click any row to unravel it.`;
-$('key').innerHTML = `<span>cold</span>${'ABCDE'.split('').map(k => `<i style="background:${yarn[k].hex}" title="yarn ${k}, ${yarn[k].name}"></i>`).join('')}<span>warm</span>
+$('to-pattern').href = `pattern.html?book=${BOOK}${TX ? '&mode=texture' : ''}`;
+$('mode').href = `?book=${BOOK}${TX ? '' : '&mode=texture'}`; $('mode').textContent = TX ? 'In colour' : 'One yarn, texture only';
+if (TX) { $('palette').closest('label').remove(); document.querySelector('#cartouche .sub').textContent = 'The whole book as a scarf in one yarn. Every pair of rows is one passage, told in stitches alone.'; }
+$('meta').textContent = `${S.pairs} passages, ${S.rows} rows, about ${Math.round((TX || K).size.width_in)} × ${(TX || K).size.length_in} inches. Click any row to unravel it.`;
+$('key').innerHTML = TX
+  ? `<span>smooth: warm</span><span class="gap">rough (purled): cold</span><span class="gap">a flat ridge: the two readings too far apart</span><span class="gap">rope crossed: tense</span><span class="gap">hole: that person is there</span>`
+  : `<span>cold</span>${'ABCDE'.split('').map(k => `<i style="background:${yarn[k].hex}" title="yarn ${k}, ${yarn[k].name}"></i>`).join('')}<span>warm</span>
   <span class="gap"><i style="background:${yarn.U.hex}"></i>the two readings too far apart</span><span class="gap">ridge: tense</span><span class="gap">hole: that person is there</span>`;
 $('legend-model').textContent = K.run.model;
-picker($('palette'), PALETTES, 'This book’s own');
-if (K.palette) $('dye').textContent = `The colours here are “${K.palette.name}”${K.palette.borrowed ? `, borrowed from another book (this book’s own are “${OWN_DYE}”)` : `, after ${K.palette.from}`}. ${K.palette.note} You can change them at the top of the page; no stitch moves.`;
-$('rules').innerHTML = Object.entries(K.rules).map(([k, v]) => `<li value="${k.slice(1)}">${esc(v)}</li>`).join('');
+if (!TX) picker($('palette'), PALETTES, 'This book’s own');
+if (TX) $('dye').textContent = `This is the one-yarn scarf: ${TX.yarn.name}. ${TX.yarn.note} It makes the same claims as the coloured scarf, row for row, and can be read by touch.`;
+else if (K.palette) $('dye').textContent = `The colours here are “${K.palette.name}”${K.palette.borrowed ? `, borrowed from another book (this book’s own are “${OWN_DYE}”)` : `, after ${K.palette.from}`}. ${K.palette.note} You can change them at the top of the page; no stitch moves.`;
+$('rules').innerHTML = Object.entries(RULES).map(([k, v]) => `<li value="${k.slice(1)}">${esc(v)}</li>`).join('');
 const legend = $('legend'), panel = $('panel'), tip = $('tip');
 // How far to trust it: the counted checks, in plain words.
 (function sure() {
@@ -258,30 +269,37 @@ const legend = $('legend'), panel = $('panel'), tip = $('tip');
 $('legend-btn').onclick = () => { legend.hidden = !legend.hidden; };
 legend.querySelector('.close-legend').onclick = () => { legend.hidden = true; };
 $('close').onclick = () => { panel.hidden = true; scarf.material.uniforms.pick.value.y = 0; };
-const sw = h => `<span class="sw" style="background:${h}"></span>`;
-const rule = k => `<div class="rule"><b>Rule ${k}.</b> ${esc(K.rules[k])}</div>`;
+const sw = h => (TX ? '' : `<span class="sw" style="background:${h}"></span>`);
+const rule = k => `<div class="rule"><b>Rule ${k}.</b> ${esc(RULES[k])}</div>`;
 const quotes = (p, spans, n = 2) => spans.slice(0, n).map(([a, b]) => `<blockquote>${esc(TXT.passages[p.id].slice(a - p.start, b - p.start).replace(/\s*\r?\n\s*/g, ' '))}</blockquote>`).join('');
 
-const FEEL = ['neither', 'warm', 'cold'], PACE = ['calm', 'tense'], CHIP = ['#9c978c', '#c8745f', '#35548c'];
+const FEEL = ['neither', 'warm', 'cold'], PACE = ['calm', 'tense'], CHIP = [yarn.C.hex, yarn.D.hex, yarn.A.hex];
 const pct = (a, n) => Math.round(100 * a / n);
+const NOUN = TX ? 'class' : 'yarn';
+const WORKED = { A: 'every stitch purled, the roughest', B: 'three stitches in four purled', C: 'every other stitch purled', D: 'one stitch in four purled', E: 'every stitch knitted, smooth' };
 function sum(t, unit = 'sentences') {
   const d = t.warm - t.cold;
-  return `${t.n} ${unit}: ${t.warm} warm, ${t.cold} cold, ${t.neither} neither. (${t.warm} − ${t.cold}) ÷ ${t.n} = ${(d / t.n).toFixed(2).replace('-', '−')}, which is yarn ${t.yarn}.`;
+  return `${t.n} ${unit}: ${t.warm} warm, ${t.cold} cold, ${t.neither} neither. (${t.warm} − ${t.cold}) ÷ ${t.n} = ${(d / t.n).toFixed(2).replace('-', '−')}, which is ${NOUN} ${t.yarn}.`;
 }
 function why(r) {
   const a = r.tally.a, b = r.tally.b, t = r.tally.both, y = yarn[r.yarn];
-  if (!t) return `<h3>Why this yarn</h3><p>${sw(y.hex)}The reader gave no usable labels for this passage, so it is undyed.</p>${rule('K7')}`;
-  let h = `<h3>Why this yarn</h3>`;
+  const head = TX ? 'Why this texture' : 'Why this yarn', as = k => (TX ? `as class ${k}: ${WORKED[k]}` : `in yarn ${k} (${esc(yarn[k].name)})`);
+  const blank = TX ? 'both rows are knitted plain, a flat ridge,' : 'the row is knitted undyed';
+  if (!t) return `<h3>${head}</h3><p>${sw(y.hex)}The reader gave no usable labels for this passage, so ${blank}.</p>${rule('K7')}`;
+  let h = `<h3>${head}</h3>`;
   if (b) {
     h += `<p>${sw(yarn[a.yarn].hex)}<b>First reading.</b> ${sum(a)}</p><p>${sw(yarn[b.yarn].hex)}<b>Second reading.</b> ${sum(b)}</p>
       <p>${sw(yarn[t.yarn].hex)}<b>Both together.</b> ${sum(t, 'labels')}</p>
-      <p>${sw(y.hex)}${r.unsure ? `Counted apart, the readings pick yarns ${a.yarn} and ${b.yarn}, which are ${r.gap} apart. That is too far, so the row is knitted undyed and the scarf makes no claim here.`
-        : r.gap === 0 ? `Counted apart, both readings pick yarn ${a.yarn} too, so the row is knitted in yarn ${r.yarn} (${esc(y.name)}).`
-        : `Counted apart, the readings pick neighbouring yarns, ${a.yarn} and ${b.yarn}, so the row is knitted in the yarn of both together, ${r.yarn} (${esc(y.name)}).`}</p>`;
-  } else h += `<p>${sw(y.hex)}${sum(a)}</p>`;
-  if (r.margin) h += `<p>Change ${r.margin === 1 ? 'one label' : r.margin + ' labels'} out of ${t.n} and the count would pick a different yarn.</p>`;
-  h += `${rule('K2')}${rule('K7')}<h3>Why it is ${r.texture}</h3>
-    <p>${t.tense} of ${t.n} ${b ? 'labels' : 'sentences'} are tense (${pct(t.tense, t.n)} in 100)${b ? `: ${a.tense} of ${a.n} in the first reading and ${b.tense} of ${b.n} in the second` : ''}. A ridge needs ${Math.round(K.ridged_share * 100)} in 100, so the row back is ${r.texture === 'ridged' ? 'knitted and leaves a ridge' : 'purled and the fabric is smooth'}.</p>${rule('K3')}`;
+      <p>${sw(y.hex)}${r.unsure ? `Counted apart, the readings pick ${NOUN === 'class' ? 'classes' : 'yarns'} ${a.yarn} and ${b.yarn}, which are ${r.gap} apart. That is too far, so ${blank} and the scarf makes no claim here.`
+        : r.gap === 0 ? `Counted apart, both readings pick ${NOUN} ${a.yarn} too, so the row is knitted ${as(r.yarn)}.`
+        : `Counted apart, the readings pick neighbours, ${a.yarn} and ${b.yarn}, so the row is knitted ${as(r.yarn)}, the ${NOUN} of both together.`}</p>`;
+  } else h += `<p>${sw(y.hex)}${sum(a)}${TX && !r.unsure ? ` The row is knitted ${as(r.yarn)}.` : ''}</p>`;
+  if (r.margin) h += `<p>Change ${r.margin === 1 ? 'one label' : r.margin + ' labels'} out of ${t.n} and the count would pick a different ${NOUN}.</p>`;
+  const tense = r.texture === 'ridged', need = Math.round(K.ridged_share * 100);
+  const counted = `${t.tense} of ${t.n} ${b ? 'labels' : 'sentences'} are tense (${pct(t.tense, t.n)} in 100)${b ? `: ${a.tense} of ${a.n} in the first reading and ${b.tense} of ${b.n} in the second` : ''}.`;
+  h += `${rule('K2')}${rule('K7')}` + (TX
+    ? `<h3>Why the rope is ${tense ? 'crossed' : 'straight'}</h3><p>${counted} A crossing needs ${need} in 100, so the two rope stitches are ${tense ? 'crossed on this row' : 'knitted straight'}.</p>`
+    : `<h3>Why it is ${r.texture}</h3><p>${counted} A ridge needs ${need} in 100, so the row back is ${tense ? 'knitted and leaves a ridge' : 'purled and the fabric is smooth'}.</p>`) + rule('K3');
   return h;
 }
 function unravel(r, p) {
@@ -307,14 +325,14 @@ function rowAt(e) {
 function tipText(h) {
   const r = h.row, who = r.eyelets.map(e => person[e.person].name);
   const col = h.column ? ` · ${h.column.name}${who.includes(h.column.name) ? ': eyelet' : ': plain'}` : '';
-  return `Rows ${r.n * 2 - 1}–${r.n * 2} · ${CW} ${r.chapter_label} · yarn ${r.yarn}${r.unsure ? ' (unsure)' : ''}, ${r.texture}${col}`;
+  return `Rows ${r.n * 2 - 1}–${r.n * 2} · ${CW} ${r.chapter_label} · ${TX ? (r.unsure ? 'flat ridge: unsure' : `class ${r.yarn}`) + (r.texture === 'ridged' ? ', rope crossed' : '') : `yarn ${r.yarn}${r.unsure ? ' (unsure)' : ''}, ${r.texture}`}${col}`;
 }
 function explain(h) {
   const r = h.row, p = passage[r.passage], y = yarn[r.yarn];
   scarf.material.uniforms.pick.value.set(h.n, 1);
   let html = `<h2>${CW} ${r.chapter_label}${p.at?.place ? ' · ' + esc(p.at.place) : ''}</h2>
     <p class="kicker">Rows ${r.n * 2 - 1} and ${r.n * 2} of ${S.rows}: passage ${r.n} of ${S.pairs} <span class="fact">${r.passage}</span></p>
-    <div class="rows">With yarn ${r.yarn} (${esc(y.name)}):<br>Row ${r.n * 2 - 1} (RS): ${esc(r.rs_text)}.<br>Row ${r.n * 2} (WS): ${esc(r.ws_text)}.</div>
+    <div class="rows">${TX ? 'In the one yarn' : `With yarn ${r.yarn} (${esc(y.name)})`}:<br>Row ${r.n * 2 - 1} (RS): ${esc((TX ? r.tx : r).rs_text)}.<br>Row ${r.n * 2} (WS): ${esc((TX ? r.tx : r).ws_text)}.</div>
     ${why(r)}
     <h3>The eyelets</h3>`;
   if (r.starts_chapter) html += `<p>Stitches 2–3: the chapter begins here.</p>${rule('K6')}`;
@@ -324,6 +342,10 @@ function explain(h) {
     html += `<p><b>${esc(c.name)}</b>, stitches ${c.stitches.join('–')}: called ${e.called.map(x => `“${esc(x)}”`).join(', ')} here. <span class="fact">${e.facts.join(' ')}</span></p>${quotes(p, e.spans, 1)}`;
   }
   html += `${rule('K5')}<h3>Unravel this row</h3><p>Every sentence of the passage, with the label the reader gave it. These are what the tallies above count.</p>${unravel(r, p)}`;
+  const pr = PROBES?.passages[r.passage];
+  if (pr) html += `<h3>How firmly these labels hold</h3><p>For this passage each of its ${pr.words} words was left out once and the first reading's question asked again. ${pr.holds} of the ${pr.sentences.length} labels never changed.</p>`
+    + pr.sentences.filter(q => q.flips.length).map(q => `<p>Sentence ${q.n} (${q.feeling}, ${q.pace}) changes for ${q.flips.length} of its ${q.words} words: ${q.flips.map(x => `“${esc(x.word)}” gives ${x.feeling}, ${x.pace}`).join('; ')}.</p>`).join('')
+    + `<p class="fact">Asked twice with nothing left out, the answer ${pr.repeats ? 'was the same' : 'differed'}. Leaving a word out of one sentence changed the label of another ${pr.spill.changes} times in ${pr.spill.chances}. This shows how fragile a label is, not why the model gave it.</p>`;
   $('panel-body').innerHTML = html; panel.hidden = false; panel.scrollTop = 0;
 }
 let down = null;

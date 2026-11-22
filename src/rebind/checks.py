@@ -38,7 +38,7 @@ def agreement(pairs: list[tuple[int, int]]) -> dict | None:
     same = sum(a == b for a, b in pairs) / n
     left, right = Counter(a for a, _ in pairs), Counter(b for _, b in pairs)
     chance = sum(left[v] * right[v] for v in left) / (n * n)
-    return {"n": n, "same": round(same, 4), "kappa": round((same - chance) / (1 - chance), 4) if chance < 1 else 1.0,
+    return {"n": n, "same": round(same, 6), "kappa": round((same - chance) / (1 - chance), 4) if chance < 1 else 1.0,
             "table": {f"{a}>{b}": c for (a, b), c in sorted(Counter(pairs).items())}}
 
 
@@ -60,7 +60,7 @@ def _rows(x: dict, y: dict) -> dict | None:
     if not yarn:
         return None
     return {"yarn": agreement(yarn), "ridge": agreement(ridge),
-            "yarn_within_one": round(sum(abs(a - b) <= 1 for a, b in yarn) / len(yarn), 4)}
+            "yarn_within_one": round(sum(abs(a - b) <= 1 for a, b in yarn) / len(yarn), 6)}
 
 
 def compare(x: dict, y: dict) -> dict | None:

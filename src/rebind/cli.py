@@ -7,7 +7,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from . import checks, compose, entities, extract, knit, labels, setting, source, tokens
+from . import checks, compose, entities, extract, knit, labels, probe, setting, source, tokens
 from .backends import from_spec
 
 
@@ -174,6 +174,23 @@ def cmd_check(args):
     checks.check(run, source.ROOT / "site" / "data" / m["book"]["slug"] / "book.json", hand=source.ROOT / args.hand)
 
 
+def cmd_probe(args):
+    run = Path(args.run)
+    m = json.loads((run / "run.json").read_text())
+    if not args.summary:   # --summary needs no model: it only reads the results already saved
+        probe.probe(run, source.load_book(m["book"]["slug"]), from_spec(args.model or m["backend"]["spec"]), args.passage)
+    out = probe.publish(run, m["book"]["slug"], (args.model or m["backend"]["spec"]).split(":", 1)[1])
+    for pid, s in json.loads(out.read_text())["passages"].items():
+        print(f"{pid}: {s['words']} words left out one at a time; {s['holds']} of {len(s['sentences'])} labels never change; "
+              f"asked twice unchanged, the answer {'repeats' if s['repeats'] else 'DOES NOT repeat'}; "
+              f"{s['spill']['changes']} of {s['spill']['chances']} labels of other sentences moved")
+        for t in s["sentences"]:
+            if t["flips"]:
+                print(f"  sentence {t['n']} ({t['feeling']}, {t['pace']}): {len(t['flips'])} of {t['words']} words change it: "
+                      + ", ".join(f"{x['word']} -> {x['feeling']} {x['pace']}" for x in t["flips"]))
+    print(f"-> {out}")
+
+
 def cmd_knit(args):
     knit.knit(source.ROOT / "site" / "data" / args.book / "book.json")
 
@@ -239,6 +256,13 @@ def main():
     ck.add_argument("run")
     ck.add_argument("--hand", default="data/handcheck.json", help="hand labels saved from site/knit/check.html")
     ck.set_defaults(fn=cmd_check)
+
+    pr = sub.add_parser("probe", help="leave each word of one passage out in turn and see which labels change")
+    pr.add_argument("run")
+    pr.add_argument("passage", help="a passage id, e.g. c05.p12")
+    pr.add_argument("--model", help="defaults to the model that did the reading")
+    pr.add_argument("--summary", action="store_true", help="only rewrite probes.json from results already saved")
+    pr.set_defaults(fn=cmd_probe)
     kn = sub.add_parser("knit", help="write the knitting pattern from book.json (no model calls)")
     kn.add_argument("--book", default="pride-and-prejudice")
     kn.set_defaults(fn=cmd_knit)

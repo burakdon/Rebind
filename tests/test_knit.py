@@ -86,3 +86,26 @@ def test_every_stitch_comes_from_the_reading(tmp_path):
             else:
                 assert r["yarn"] == "U" and r["unsure"] and r["texture"] == "smooth"
     assert sum(y["pairs"] for y in K["yarns"]) == len(K["rows"])
+
+
+def test_a_probe_leaves_out_one_word_and_keeps_the_closing_mark():
+    from rebind import probe
+    assert probe.without("Scrooge was better than his word.", 2) == "Scrooge was than his word."
+    assert probe.without("Scrooge was better than his word.", 5) == "Scrooge was better than his."
+    assert probe.without("May that be truly said of us, and all of us!", 6) == "May that be truly said of and all of us!"
+
+
+def test_a_probe_summary_counts_only_what_its_results_say(tmp_path):
+    import json as j
+    from rebind import probe
+    rows = [{"sentence": 0, "word": -1, "removed": None, "feeling": ["warm", "cold"], "pace": ["calm", "tense"]},
+            {"sentence": 0, "word": -2, "removed": None, "feeling": ["warm", "cold"], "pace": ["calm", "tense"]},
+            {"sentence": 1, "word": 0, "removed": "Kind", "feeling": ["cold", "cold"], "pace": ["calm", "tense"]},
+            {"sentence": 1, "word": 1, "removed": "words.", "feeling": ["warm", "neither"], "pace": ["calm", "tense"]},
+            {"sentence": 2, "word": 0, "removed": "No.", "feeling": ["warm", "cold"], "pace": ["calm", "tense"]}]
+    f = tmp_path / "p.jsonl"
+    f.write_text("".join(j.dumps(r) + "\n" for r in rows))
+    s = probe.summary(f)
+    assert s["words"] == 3 and s["repeats"] and s["holds"] == 1
+    assert s["sentences"][0]["flips"] == [{"word": "Kind", "feeling": "cold", "pace": "calm"}] and not s["sentences"][1]["flips"]
+    assert s["spill"] == {"changes": 1, "chances": 3}      # leaving out "words." moved the other sentence

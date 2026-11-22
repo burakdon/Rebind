@@ -1,0 +1,115 @@
+{
+ "model": "qwen3:30b-a3b-instruct-2507-q4_K_M",
+ "method": "Each word of the passage is left out once and the question of the first reading asked again.",
+ "passages": {
+  "c05.p12": {
+   "words": 213,
+   "repeats": true,
+   "holds": 6,
+   "sentences": [
+    {
+     "n": 1,
+     "feeling": "warm",
+     "pace": "calm",
+     "words": 6,
+     "flips": [
+      {
+       "word": "Scrooge",
+       "feeling": "cold",
+       "pace": "tense"
+      },
+      {
+       "word": "better",
+       "feeling": "cold",
+       "pace": "calm"
+      },
+      {
+       "word": "word",
+       "feeling": "cold",
+       "pace": "calm"
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "feeling": "warm",
+     "pace": "calm",
+     "words": 20,
+     "flips": []
+    },
+    {
+     "n": 3,
+     "feeling": "warm",
+     "pace": "calm",
+     "words": 35,
+     "flips": []
+    },
+    {
+     "n": 4,
+     "feeling": "cold",
+     "pace": "tense",
+     "words": 81,
+     "flips": [
+      {
+       "word": "he",
+       "feeling": "neither",
+       "pace": "tense"
+      },
+      {
+       "word": "little",
+       "feeling": "neither",
+       "pace": "tense"
+      },
+      {
+       "word": "them",
+       "feeling": "neither",
+       "pace": "tense"
+      },
+      {
+       "word": "such",
+       "feeling": "neither",
+       "pace": "tense"
+      },
+      {
+       "word": "these",
+       "feeling": "neither",
+       "pace": "tense"
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "feeling": "warm",
+     "pace": "calm",
+     "words": 11,
+     "flips": []
+    },
+    {
+     "n": 6,
+     "feeling": "warm",
+     "pace": "calm",
+     "words": 38,
+     "flips": []
+    },
+    {
+     "n": 7,
+     "feeling": "warm",
+     "pace": "calm",
+     "words": 11,
+     "flips": []
+    },
+    {
+     "n": 8,
+     "feeling": "warm",
+     "pace": "calm",
+     "words": 11,
+     "flips": []
+    }
+   ],
+   "spill": {
+    "changes": 3,
+    "chances": 1491
+   }
+  }
+ }
+}

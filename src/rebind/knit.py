@@ -111,6 +111,82 @@ ONCE = {  # the same rules for a book that has only been read once so far
     "K7": "The book has been read only once so far, so nothing checks whether the labels depend on how the "
           "question was put. A passage with no usable labels is knitted in undyed yarn U.",
 }
+# ---- the same scarf in one yarn -------------------------------------------------------------------------
+# For a knitter with a single ball of yarn, or a reader who goes by touch. Nothing is decided again: the
+# class K2 gives a passage (A to E, or U) and K3's tense or calm are knitted as stitches instead of colours.
+#   cold is rough and warm is smooth: the colder the class, the more of the row is purled;
+#   a rope of two knit stitches runs up one side and is crossed on a tense passage;
+#   a passage the readings disagree on is two plain knitted rows, a flat ridge that says nothing.
+ROPE = 4                                   # purl 1, the two rope stitches, purl 1
+TX_CAST_ON = CAST_ON + ROPE                # 41
+PURLED = {"A": 4, "B": 3, "C": 2, "D": 1, "E": 0}      # stitches purled in every four, on the right side
+TX_RULES = {
+    "K2": "One yarn. The reader labels every sentence warm, cold or neither, twice, and the count picks a class "
+          f"exactly as in the coloured scarf: A if the balance is {a_} or less, B if below {b_}, C if below {c_}, "
+          f"D if below {d_}, E otherwise. The class says how much of the right-side row is purled: A all of it, "
+          "B three stitches in four, C every other stitch, D one in four, E none. So a cold passage is rough "
+          "under the hand and a warm one is smooth. On the row back, work each stitch as it faces you (knit the "
+          "knits, purl the purls). The purls shift along on every other passage, so the scarf does not pull in "
+          "like ribbing.",
+    "K3": "Two knit stitches near one edge make a rope, with a purl stitch on each side of it. If at least "
+          f"{round(RIDGED_SHARE * 100)} in 100 of a passage's labels are tense, cross the two (a right twist) on "
+          "the right-side row; otherwise knit them straight. So the rope twists where the book is tense. "
+          "Three stitches at each edge are always knitted so the scarf lies flat.",
+    "K7": "The two readings are also counted apart. If on their own they would pick classes two or more apart "
+          "(A and C, say), both rows of the passage are knitted plain, which leaves one flat ridge with no "
+          "pattern in it: the scarf makes no claim.",
+}
+TX_ONCE = {"K7": "The book has been read only once so far, so nothing checks whether the labels depend on how the "
+                 "question was put. A passage with no usable labels is two plain knitted rows."}
+TX_ABBREVIATIONS = {"RT": "right twist: knit the second stitch on the left needle without slipping it off, "
+                          "then knit the first, and slip both off together"}
+
+
+def texture_row(cells: str, yarn: str, tense: bool, n: int) -> tuple[str, str, str]:
+    """One passage in one yarn: the right-side row as chart symbols and in words, and the row back in words.
+
+    `cells` is the coloured scarf's right-side row, whose eyelets are kept where they are. Symbols: k knit,
+    p purl, o yarn over, / knit two together, X x the two stitches of a right twist.
+    """
+    row = list(cells[:CAST_ON - EDGE])
+    if yarn != UNSURE:
+        for c in range(EDGE, CAST_ON - EDGE):
+            if row[c] != "k":
+                continue
+            # C is knit one, purl one, moved over by one on every other passage; B and D move over by two
+            k = (c - EDGE + (n % 2) * (1 if PURLED[yarn] == 2 else 2)) % 4
+            purl = {0: False, 1: k == 0, 2: k % 2 == 0, 3: k != 0, 4: True}[PURLED[yarn]]
+            if purl:
+                row[c] = "p"
+    rs = "".join(row) + "p" + ("Xx" if tense else "kk") + "p" + "k" * EDGE
+    # the row back, read from the other edge: a stitch knitted on the right side is purled, and so on
+    back = []
+    for c in range(TX_CAST_ON - 1, -1, -1):
+        inner = EDGE <= c < CAST_ON - EDGE
+        back.append("k" if c < EDGE or c >= TX_CAST_ON - EDGE or rs[c] == "p" or (inner and yarn == UNSURE) else "p")
+    return rs, written_tx(rs), written_tx("".join(back))
+
+
+def written_tx(cells: str) -> str:
+    """Chart symbols as words, with runs of knit and purl counted."""
+    out, i = [], 0
+    while i < len(cells):
+        ch = cells[i]
+        if ch in "kp":
+            j = i
+            while j < len(cells) and cells[j] == ch:
+                j += 1
+            out.append(f"{ch}{j - i}")
+            i = j
+        elif ch == "X":
+            out.append("RT")
+            i += 2
+        else:
+            out.append("yo" if ch == "o" else "k2tog")
+            i += 1
+    return ", ".join(out)
+
+
 ABBREVIATIONS = {"k": "knit", "p": "purl", "yo": "yarn over", "k2tog": "knit two together",
                  "RS": "right side", "WS": "wrong side"}
 
@@ -227,6 +303,7 @@ def knit(book_json: Path, out_dir: Path | None = None, log=print) -> Path:
             "tally": {"a": ta, "b": tb, "both": both}, "gap": gap, "margin": margin(both) if both else None,
             "rs": cells, "rs_text": written(cells),
             "ws_text": f"k{CAST_ON}" if ridged else f"k{EDGE}, p{CAST_ON - 2 * EDGE}, k{EDGE}",
+            "tx": dict(zip(("rs", "rs_text", "ws_text"), texture_row(cells, yarn, ridged, n))),
             "eyelets": [{"person": q["id"], "called": q["called"], "facts": q["facts"], "spans": q["spans"]} for q in here],
         })
 
@@ -254,6 +331,19 @@ def knit(book_json: Path, out_dir: Path | None = None, log=print) -> Path:
         "size": {"width_in": round(CAST_ON * 4 / g["stitches_per_4in"], 1), "length_in": round(length),
                  "pairs": len(rows), "rows": 2 * len(rows), "stitches": 2 * len(rows) * CAST_ON,
                  "smooth_pairs": smooth, "ridged_pairs": ridged},
+        "texture": {
+            "cast_on": TX_CAST_ON, "rope_stitches": [CAST_ON - EDGE + 2, CAST_ON - EDGE + 3],
+            "rules": {k: v.replace("chapter", (B["book"].get("chapter_word") or "chapter").lower())
+                      for k, v in {**TX_RULES, **({} if twice else TX_ONCE)}.items()},
+            "abbreviations": TX_ABBREVIATIONS, "purled_in_four": PURLED,
+            "yarn": {"name": "one light, smooth yarn", "hex": "#e9dcc0",
+                     "note": "Texture shows best in a light, plain yarn; a dark or fuzzy one hides it."},
+            "size": {"width_in": round(TX_CAST_ON * 4 / g["stitches_per_4in"], 1),
+                     "length_in": round(sum(2 * 4 / g["ridged_rows_per_4in" if r["unsure"] else "smooth_rows_per_4in"]
+                                            for r in rows)),
+                     "stitches": 2 * len(rows) * TX_CAST_ON, "twisted_pairs": sum(r["texture"] == "ridged" for r in rows),
+                     "yards": round(len(rows) * 2 * TX_CAST_ON * g["yarn_inches_per_stitch"] / 36 * 1.1)},
+        },
         "rows": rows,
     }
     out = Path(out_dir or ROOT / "site" / "data" / B["book"]["slug"])

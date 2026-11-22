@@ -15,7 +15,7 @@ const all = await Promise.all(books.map(async b => ({ b, K: await get(`../data/$
 const PAL = await get('../data/palettes.json'), wanted = PAL?.palettes.find(p => p.key === Q.get('palette'));
 if (wanted) for (const { K: P } of all) { for (const y of P.yarns) Object.assign(y, wanted.yarns.find(v => v.key === y.key)); P.palette = { ...P.palette, ...wanted }; }
 const lead = all.find(x => x.b.slug === LEAD), K = lead.K;
-const [B, TXT] = await Promise.all([get(`../data/${LEAD}/book.json`), get(`../data/${LEAD}/text.json`)]);
+const [B, TXT, PROBES] = await Promise.all([get(`../data/${LEAD}/book.json`), get(`../data/${LEAD}/text.json`), get(`../data/${LEAD}/probes.json`)]);
 await document.fonts.ready;
 
 const hexOf = Object.fromEntries(K.yarns.map(y => [y.key, y.hex]));
@@ -132,6 +132,9 @@ for (let i = s0; i < s0 + sn; i++) {
 const verdict = r.unsure ? `Counted apart the readings pick ${t.a.yarn} and ${t.b.yarn}, too far apart, so the row is left undyed.`
   : r.gap === 0 ? `Counted apart, both readings pick ${t.a.yarn} too. The row is knitted in yarn ${r.yarn}, ${esc(y.name)}.`
   : `Counted apart the readings pick neighbours, ${t.a.yarn} and ${t.b.yarn}. The row takes the yarn of both together: ${r.yarn}, ${esc(y.name)}.`;
+// How firmly the labels hold: each word left out once (rebind probe), if this passage has been probed.
+const pr = PROBES?.passages[r.passage], nth = k => ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'][k - 1] || `${k}th`;
+const firm = !pr ? '' : `<p class="firm"><b>Each word left out once:</b> ${pr.holds} of ${pr.sentences.length} labels never change${pr.sentences.filter(q => q.flips.length).map((q, i) => `${i ? ',' : ';'} the ${nth(q.n)} ${i ? '' : 'flips '}for ${q.flips.length} of its ${q.words}${i ? '' : ' words'}`).join('')}. This shows how firmly a label holds, not why.</p>`;
 $('example').innerHTML = `<h2>One row, unravelled</h2>
   <p class="kicker">Rows ${r.n * 2 - 1} and ${r.n * 2} of ${S.rows}: ${CW.toLowerCase()} ${esc(r.chapter_label)}, passage ${r.n} of ${S.pairs}. On the site, every row opens like this.</p>
   <div class="rows">Yarn ${r.yarn} (${esc(y.name)}). Row ${r.n * 2 - 1} (right side): ${esc(r.rs_text)}.<br>Row ${r.n * 2} (wrong side): ${esc(r.ws_text)}.</div>
@@ -146,7 +149,7 @@ $('example').innerHTML = `<h2>One row, unravelled</h2>
     <h3 style="margin-top:0.1in">The holes</h3>
     ${r.eyelets.map(e => { const col = K.columns.find(q => q.person === e.person); const [x0, x1] = e.spans[0]; return `<p class="sum"><b>${esc(col.name)}</b>, stitches ${col.stitches.join('–')}: named in “${esc(cut(text.slice(x0 - p.start, x1 - p.start).replace(/\s*\r?\n\s*/g, ' '), 70))}”</p>`; }).join('')}
   </div><div>
-    <h3>Its ${sn} sentences, each with its label</h3>${sents}
+    <h3>Its ${sn} sentences, each with its label</h3>${sents}${firm}
   </div></div>`;
 
 $('foot').innerHTML = `<span>Reader: ${esc(K.run.model.split(':')[0])} (open weights), run on a MacBook with Ollama. No text leaves the laptop, and every prompt and answer is kept in the repository.</span><span>Texts: Project Gutenberg. Code: github.com/burakdon/Rebind</span>`;
