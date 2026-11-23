@@ -12,7 +12,7 @@
   #tools a { font-size: 15px; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); padding: 5px 11px; text-decoration: none; }
   #tools { max-width: 58vw; }
   @media (max-width: 640px) { #tools { max-width: none; } }
-  #tools a#mode { background: rgba(20, 18, 16, 0.8); color: var(--paper); border-color: #6f6453; }
+  #tools a#mode, #tools a#puffy { background: rgba(20, 18, 16, 0.8); color: var(--paper); border-color: #6f6453; }
   #tools .dye { font-size: 15px; color: var(--paper); background: rgba(20, 18, 16, 0.8); border: 1px solid #6f6453; padding: 4px 6px 4px 11px; display: inline-flex; align-items: center; gap: 7px; }
   #tools .dye select { font: inherit; font-size: 15px; background: var(--paper); color: var(--ink); border: 0; padding: 2px 4px; max-width: 46vw; }
   #cartouche { top: 8px; left: 8px; padding: 8px 12px 10px; background: rgba(13, 12, 11, 0.66); box-shadow: 0 0 22px 14px rgba(13, 12, 11, 0.66); }
@@ -36,7 +36,7 @@
 <div id="stage"></div>
 
 <header id="cartouche">
-  <a class="brand" href="../">Rebind · all books</a>
+  <a class="brand" href="../#books">Rebind · all books</a>
   <h1 id="title">Pride and Prejudice</h1>
   <p class="sub">The whole book as a scarf you can knit. Every pair of rows is one passage.</p>
   <p class="meta" id="meta"></p>
@@ -47,6 +47,7 @@
   <button id="legend-btn">How it was knitted</button>
   <a href="pattern.html" id="to-pattern">The pattern, to print</a>
   <a href="?mode=texture" id="mode">One yarn, texture only</a>
+  <a href="puffy.html" id="puffy">Alize Puffy</a>
   <label class="dye">Colours <select id="palette"></select></label>
 </nav>
 

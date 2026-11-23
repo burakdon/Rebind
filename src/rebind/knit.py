@@ -13,6 +13,8 @@ counted apart, would pick yarns two or more apart, the row is left undyed.
 
 pattern.json holds the rules (K1-K7), the materials, and every pair of rows as chart
 symbols and as written instructions, each with its tallies and the facts it rests on.
+It also holds the same rows for one yarn (`texture`) and a finger-knitted scarf in
+Alize Puffy loop yarn (`puffy`), where neighbouring passages share a row.
 """
 
 from __future__ import annotations
@@ -20,6 +22,8 @@ from __future__ import annotations
 import json
 from collections import Counter
 from datetime import datetime, timezone
+from itertools import groupby
+from math import ceil
 from pathlib import Path
 
 from .source import ROOT
@@ -187,6 +191,136 @@ def written_tx(cells: str) -> str:
     return ", ".join(out)
 
 
+# ---- the same reading in Alize Puffy --------------------------------------------------------------------
+# Puffy is a loop yarn: the loops are already made, and a scarf is worked with the fingers by pulling each new
+# loop through the one below. A scarf is 6 to 10 loops wide, 8 for choice, and a row is about as tall as a thumb
+# is wide, so the book cannot have a row for every passage. Neighbouring passages are counted together instead.
+# One colour: three kinds of loop say everything. Nothing is decided again; the labels and the cuts are K2's.
+PUFFY_LOOPS = 8
+PUFFY_MAX_ROWS = 80                        # about a scarf's length at the gauge below
+# Not measured on a swatch. The width comes from Alize's own wrap (24 loops across 42 cm, five balls for
+# 42 x 192 cm); the row height is a guess. Measure ten rows of your own work before trusting the length.
+PUFFY_GAUGE = {"yarn": "Alize Puffy, one colour (100 g and about 9 m a ball, loops about 3 cm)",
+               "loop_width_cm": 1.75, "row_height_cm": 2.0, "cm2_per_ball": 1613,
+               "note": "Estimates, not a measured swatch: the width is worked out from Alize's own wrap pattern "
+                       "and the row height is a guess. Knit ten rows and measure them before trusting the length."}
+PUFFY_STITCHES = {
+    "normal": "Pull the next loop of the yarn through the loop below from back to front. The front shows a V.",
+    "reverse": "Pull it through from front to back, so the bump sits on the front.",
+    "cross": "Two loops. Lift the left loop of the pair over the right so they change places, then pull a "
+             "normal loop through each.",
+}
+PUFFY_RULES = {
+    "P1": "Cast on {loops} loops and work with your fingers, first chapter to last. Every row is a run of "
+          "neighbouring passages from one chapter, counted together. Runs are as short as they can be while the "
+          "scarf stays at {most} rows or fewer: here that is up to {group} to a row.",
+    "P2": "Count the row's labels as rule K2 counts a passage's: warm labels minus cold ones over both readings, "
+          f"divided by the number of labels. A if that is {a_} or less, B if below {b_}, C if below {c_}, "
+          f"D if below {d_}, E otherwise. Loops 2 to 5 carry it, cold as reverse loops and warm as normal ones: "
+          "A is four reverse loops, B three, C two, D one and E none, counted from loop 2.",
+    "P3": f"Loops 6 and 7 are a pair. If at least {round(RIDGED_SHARE * 100)} in 100 of the row's labels are tense, "
+          "cross the pair; otherwise work two normal loops.",
+    "P4": "Loops 1 and 8 are the edges and are always normal loops.",
+    "P5": "The two readings are also counted apart. If on their own they would pick classes two or more apart "
+          "(A and C, say), all eight loops are reverse loops: a ridge from edge to edge that makes no claim, "
+          "about feeling or about tension.",
+    "P6": "People are left out. Their ten columns do not fit in eight loops.",
+}
+PUFFY_ONCE = {"P2": "Count the row's labels as rule K2 counts a passage's: warm sentences minus cold ones, divided "
+                    f"by the number of sentences. A if that is {a_} or less, B if below {b_}, C if below {c_}, "
+                    f"D if below {d_}, E otherwise. Loops 2 to 5 carry it, cold as reverse loops and warm as "
+                    "normal ones: A is four reverse loops, B three, C two, D one and E none, counted from loop 2.",
+              "P5": "The book has been read only once so far, so nothing checks whether the labels depend on how "
+                    "the question was put. A row with no usable labels is eight reverse loops."}
+
+
+def puffy_groups(chapters: list[int], most: int = PUFFY_MAX_ROWS) -> tuple[int, list[list[int]]]:
+    """Which passages share a Puffy row. `chapters[i]` is the chapter of passage i.
+
+    Returns the largest number of passages in a row and the rows, each a list of passage indices. A row never
+    crosses a chapter, and a chapter's rows are as even in size as they can be.
+    """
+    runs = [list(g) for _, g in groupby(range(len(chapters)), key=chapters.__getitem__)]
+    longest = max((len(r) for r in runs), default=1)
+    for n in range(1, longest + 1):
+        groups = []
+        for run in runs:
+            k = ceil(len(run) / n)
+            groups += [run[j * len(run) // k:(j + 1) * len(run) // k] for j in range(k)]
+        if len(groups) <= most or n == longest:     # a book with more chapters than rows gets a row a chapter
+            return max(len(g) for g in groups), groups
+    return 1, []
+
+
+def puffy_cells(cls: str, tense: bool) -> str:
+    """One Puffy row as chart symbols, loop 1 first: k normal, p reverse, X x the two loops of a crossed pair."""
+    if cls == UNSURE:
+        return "p" * PUFFY_LOOPS
+    return "k" + "p" * PURLED[cls] + "k" * (4 - PURLED[cls]) + ("Xx" if tense else "kk") + "k"
+
+
+def written_puffy(cells: str) -> str:
+    """Chart symbols as words: 'normal 1, reverse 3, normal 1, cross 2, normal 1'."""
+    out, i = [], 0
+    while i < len(cells):
+        j = i
+        while j < len(cells) and cells[j] == cells[i] and cells[i] in "kp":
+            j += 1
+        if j > i:
+            out.append(f"{'normal' if cells[i] == 'k' else 'reverse'} {j - i}")
+            i = j
+        else:
+            out.append("cross 2")
+            i += 2
+    return ", ".join(out)
+
+
+def puffy(B: dict, rows: list[dict], twice: bool) -> dict:
+    """The Puffy scarf of a book: its rows, rules, stitches and size. `rows` are the coloured scarf's rows."""
+    S, P = B["sentences"], B["passages"]
+    most, groups = puffy_groups([p["chapter"] for p in P])
+
+    def pooled(feeling: str, pace: str, idx: list[int]) -> tuple[list[int], list[int]]:
+        keep = [i for i in idx if S[feeling][i] >= 0 and S[pace][i] >= 0]       # a sentence with no label is not counted
+        return [S[feeling][i] for i in keep], [S[pace][i] for i in keep]
+
+    out, seen = [], set()
+    for m, g in enumerate(groups, 1):
+        idx = [i for j in g for i in range(P[j]["sentences"][0], sum(P[j]["sentences"]))]
+        fa, pa = pooled("feeling", "pace", idx)
+        fb, pb = pooled("feeling_b", "pace_b", idx) if twice else ([], [])
+        ta, tb = tally(fa, pa), tally(fb, pb) if twice else None
+        both = tally(fa + fb, pa + pb) if twice else ta
+        gap = abs("ABCDE".index(ta["yarn"]) - "ABCDE".index(tb["yarn"])) if ta and tb else None
+        unsure = both is None or (twice and gap is not None and gap >= UNSURE_GAP)
+        cls, tense = UNSURE if unsure else both["yarn"], bool(both and both["ridged"])
+        chapter = P[g[0]]["chapter"]
+        cells = puffy_cells(cls, tense)
+        out.append({"n": m, "passages": [P[j]["id"] for j in g], "pairs": [rows[g[0]]["n"], rows[g[-1]]["n"]],
+                    "chapter": chapter, "chapter_label": B["chapters"][chapter - 1]["label"],
+                    "starts_chapter": chapter not in seen, "yarn": cls, "unsure": unsure, "tense": tense,
+                    "tally": {"a": ta, "b": tb, "both": both}, "gap": gap, "margin": margin(both) if both else None,
+                    "cells": cells, "text": written_puffy(cells)})
+        seen.add(chapter)
+    g_ = PUFFY_GAUGE
+    width, length = PUFFY_LOOPS * g_["loop_width_cm"], len(out) * g_["row_height_cm"]
+    word = (B["book"].get("chapter_word") or "chapter").lower()
+    return {
+        "loops": PUFFY_LOOPS, "max_rows": PUFFY_MAX_ROWS, "group": most, "gauge": g_, "stitches": PUFFY_STITCHES,
+        "rules": {k: v.replace("{loops}", str(PUFFY_LOOPS)).replace("{most}", str(PUFFY_MAX_ROWS))
+                  .replace("{group}", "one passage" if most == 1 else f"{most} passages").replace("chapter", word)
+                  for k, v in {**PUFFY_RULES, **({} if twice else PUFFY_ONCE)}.items()},
+        "purled_in_four": PURLED,
+        "yarn": {"name": "Alize Puffy in one light colour", "hex": "#e8d9c3",
+                 "note": "Any single colour works. A light one shows the bumps and crossings best."},
+        "size": {"rows": len(out), "loops": (len(out) + 1) * PUFFY_LOOPS, "width_cm": round(width), "length_cm": round(length),
+                 "width_in": round(width / 2.54, 1), "length_in": round(length / 2.54),
+                 "balls": ceil(width * length / g_["cm2_per_ball"]), "crossed": sum(r["tense"] and not r["unsure"] for r in out),
+                 "unsure": sum(r["unsure"] for r in out)},
+        "rows": out,
+    }
+
+
 ABBREVIATIONS = {"k": "knit", "p": "purl", "yo": "yarn over", "k2tog": "knit two together",
                  "RS": "right side", "WS": "wrong side"}
 
@@ -344,6 +478,7 @@ def knit(book_json: Path, out_dir: Path | None = None, log=print) -> Path:
                      "stitches": 2 * len(rows) * TX_CAST_ON, "twisted_pairs": sum(r["texture"] == "ridged" for r in rows),
                      "yards": round(len(rows) * 2 * TX_CAST_ON * g["yarn_inches_per_stitch"] / 36 * 1.1)},
         },
+        "puffy": puffy(B, rows, twice),
         "rows": rows,
     }
     out = Path(out_dir or ROOT / "site" / "data" / B["book"]["slug"])

@@ -246,7 +246,7 @@ const $ = id => document.getElementById(id), esc = s => String(s).replace(/[&<>]
 const S = K.size, CW = K.book.chapter_word || 'Chapter';
 document.title = `Rebind · ${K.book.title}, knitted`; $('title').textContent = K.book.title;
 $('to-pattern').href = `pattern.html?book=${BOOK}${TX ? '&mode=texture' : ''}`;
-$('mode').href = `?book=${BOOK}${TX ? '' : '&mode=texture'}`; $('mode').textContent = TX ? 'In colour' : 'One yarn, texture only';
+$('mode').href = `?book=${BOOK}${TX ? '' : '&mode=texture'}`; $('puffy').href = `puffy.html?book=${BOOK}`; if (!K.puffy) $('puffy').remove(); $('mode').textContent = TX ? 'In colour' : 'One yarn, texture only';
 if (TX) { $('palette').closest('label').remove(); document.querySelector('#cartouche .sub').textContent = 'The whole book as a scarf in one yarn. Every pair of rows is one passage, told in stitches alone.'; }
 $('meta').textContent = `${S.pairs} passages, ${S.rows} rows, about ${Math.round((TX || K).size.width_in)} × ${(TX || K).size.length_in} inches. Click any row to unravel it.`;
 $('key').innerHTML = TX
@@ -375,4 +375,6 @@ const clock = new THREE.Clock();
   light.set(-0.5 + 0.2 * Math.sin(t * 0.25), 0.6 + 0.08 * Math.sin(t * 0.17), 0.65);
   controls.update(); renderer.render(scene, camera); requestAnimationFrame(frame);
 })();
+// ?row=41 opens that passage's explanation straight away: the front page sends a clicked row here
+if (Q.has('row')) { const n = Math.round(num('row', 0)) - 1; if (K.rows[n]) explain({ n, c: 0, row: K.rows[n] }); }
 window.knit = { K, explain, rowAt, camera, controls, centre, along };

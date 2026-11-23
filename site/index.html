@@ -8,49 +8,203 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-  :root { --paper: #efe5cf; --soft: #cdbf9f; --dim: #8f8370; --rule: #4a4236; --wall: #0d0c0b; }
+  :root { --paper: #efe5cf; --soft: #cdbf9f; --dim: #8f8370; --rule: #4a4236; --wall: #0d0c0b; --ink: #2b2620; }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body { margin: 0; background: radial-gradient(ellipse at 50% 0%, #26221d 0%, var(--wall) 70%) fixed, var(--wall); color: var(--paper);
     font-family: "EB Garamond", Georgia, serif; font-size: 18px; line-height: 1.5; }
-  main { max-width: 980px; margin: 0 auto; padding: 44px 16px 70px; }
-  .brand { font-family: "IM Fell English SC", serif; letter-spacing: 0.16em; color: var(--dim); font-size: 16px; margin: 0 0 22px; }
-  h1 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: clamp(34px, 6.4vw, 62px); line-height: 1.05; letter-spacing: 0.03em; margin: 0 0 14px; text-wrap: balance; }
-  .lede { font-family: "IM Fell English", serif; font-style: italic; font-size: clamp(18px, 2.4vw, 22px); color: var(--soft); max-width: 40em; margin: 0 0 8px; }
+  a { color: var(--paper); }
+  h1 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: clamp(34px, 6.4vw, 70px); line-height: 1.05; letter-spacing: 0.03em; margin: 0; text-wrap: balance; }
   h2 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 23px; letter-spacing: 0.06em; margin: 54px 0 10px; padding-bottom: 5px; border-bottom: 1px solid var(--rule); }
   p { max-width: 42em; }
-  a { color: var(--paper); }
-  .book { margin: 26px 0 34px; }
-  .book canvas { display: block; width: 100%; height: auto; box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6); }
+  .small { color: var(--dim); font-size: 15.5px; }
+
+  /* ---- the story: tall sections, each with a stage that stays put while you scroll through it ---- */
+  .top { position: fixed; z-index: 5; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; pointer-events: none; transition: opacity 0.4s; }
+  .top.gone { opacity: 0; }
+  .top a { pointer-events: auto; text-decoration: none; }
+  .top.gone a { pointer-events: none; }
+  .top .brand { font-family: "IM Fell English SC", serif; letter-spacing: 0.16em; color: var(--dim); font-size: 16px; }
+  .top .skip { font-size: 15px; border: 1px solid #6f6453; padding: 4px 11px; background: rgba(20, 18, 16, 0.8); }
+  #bar { position: fixed; z-index: 6; top: 0; left: 0; height: 2px; width: 0; background: var(--soft); }
+  .scene { position: relative; height: var(--h, 300vh); }
+  .pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px 16px 22px; }
+  .cap { position: relative; z-index: 2; width: min(100%, 700px); height: 5.4em; flex: none; margin-bottom: 14px; }
+  .line { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; max-width: none; text-align: center; font-family: "IM Fell English", serif; font-style: italic;
+    font-size: clamp(19px, 2.7vw, 27px); line-height: 1.25; color: var(--paper); opacity: 0; transform: translateY(10px); transition: opacity 0.45s, transform 0.45s; text-wrap: balance;
+    text-shadow: 0 0 10px var(--wall), 0 0 22px var(--wall), 0 0 34px var(--wall); }
+  .line.on { opacity: 1; transform: none; }
+
+  #s-title .pin { justify-content: center; text-align: center; }
+  #s-title h1 { will-change: transform, opacity; }
+  #s-title .by { position: absolute; left: 16px; bottom: 16px; margin: 0; color: var(--dim); font-size: 15.5px; }
+  #s-title .hint { position: absolute; right: 16px; bottom: 16px; margin: 0; color: var(--soft); font-size: 15.5px; animation: nudge 2.2s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translateY(5px); } }
+
+  /* the page of the book */
+  #leaf { --k: 0; position: relative; width: min(100%, 640px); flex: none; color: var(--ink); font-size: 16.5px; line-height: 1.5; padding: 18px 22px; }
+  #leaf::before { content: ""; position: absolute; inset: 0; background: var(--paper); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6); opacity: calc(1 - var(--k)); }
+  #leaf .text { position: relative; margin: 0; max-width: none; }
+  #leaf .w { display: inline-block; padding: 0 0.13em; margin: 0 -0.13em; background: rgba(239, 229, 207, var(--k)); will-change: transform; }
+  #leaf .s { border-bottom: 2px solid transparent; transition: background-color 0.35s, border-color 0.35s; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  #leaf .s.lab { background-color: var(--c); }
+  #leaf .s.lab.tense { border-bottom: 2px dotted var(--ink); }
+  #leaf .gap { display: block; height: 0.45em; }
+  #leaf .alt { display: none; font-family: "EB Garamond", serif; font-style: italic; font-size: 0.82em; color: #6a5c48; border: 1px solid #a5957a; padding: 0 5px; margin-left: 4px; white-space: nowrap; }
+  #leaf.twice .alt { display: inline; }
+  #leaf .src { position: relative; opacity: calc(1 - var(--k)); margin: 8px 0 0; font-size: 13.5px; color: #6a5c48; font-style: italic; max-width: none; }
+  #under { width: min(100%, 640px); flex: none; min-height: 126px; margin-top: 12px; text-align: center; }
+  #lkey, #count, #band { transition: opacity 0.4s; }
+  #lkey { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font-size: 15px; color: var(--soft); margin: 0; opacity: 0; }
+  #lkey.on { opacity: 1; }
+  #lkey i { display: inline-block; width: 22px; height: 11px; vertical-align: -1px; margin-right: 5px; border: 1px solid #000; }
+  #lkey u { text-decoration: underline dotted; text-underline-offset: 3px; }
+  #count { margin: 8px auto 0; font-size: 16.5px; color: var(--paper); opacity: 0; }
+  #count.on { opacity: 1; }
+  #count p { margin: 0; max-width: none; }
+  #count .res { opacity: 0; transition: opacity 0.4s; }
+  #count.res .res { opacity: 1; }
+  #count i { display: inline-block; width: 22px; height: 11px; vertical-align: -1px; margin: 0 5px; border: 1px solid #000; }
+  #band { opacity: 0; margin: 8px 0 0; }
+  #band.on { opacity: 1; }
+  #band canvas { display: block; width: 100%; height: 26px; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6); outline: 1px solid rgba(239, 229, 207, 0.4); }
+  #band p { margin: 4px 0 0; max-width: none; }
+
+  /* the scarf growing */
+  #grow { width: 100%; flex: none; overflow: hidden; padding: 10px 0 22px; }
+  #track { position: relative; transform-origin: 0 50%; will-change: transform; width: max-content; margin: 0 auto; }
+  #clip { position: relative; overflow: hidden; }
+  #track canvas { display: block; height: clamp(110px, 30vh, 250px); width: auto; box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6); cursor: pointer; }
+  #track canvas#g2 { position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; transition: opacity 0.5s; box-shadow: none; }
+  #where { margin: 0; min-height: 1.5em; color: var(--soft); font-size: 16px; text-align: center; }
+  .cta { margin: 12px 0 0; opacity: 0; transition: opacity 0.4s; text-align: center; }
+  .cta.on { opacity: 1; }
+  .btn { font-size: 16.5px; border: 1px solid var(--paper); padding: 6px 14px; text-decoration: none; background: var(--paper); color: var(--ink); display: inline-block; }
+  .btn.quiet { background: rgba(20, 18, 16, 0.8); color: var(--paper); border-color: #6f6453; }
+  #tip { position: fixed; z-index: 9; pointer-events: none; transform: translate(-50%, calc(-100% - 12px)); background: var(--paper); color: var(--ink); font-size: 14.5px; padding: 3px 9px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); }
+
+  /* ---- after the story ---- */
+  main { max-width: 980px; margin: 0 auto; padding: 30px 16px 70px; }
+  .book { margin: 26px 0 38px; }
+  .book canvas { display: block; width: 100%; height: auto; box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6); cursor: pointer; }
   .book h3 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 25px; letter-spacing: 0.06em; margin: 14px 0 0; }
   .book .by { font-style: italic; color: var(--soft); margin: 0; }
   .book .facts { color: var(--dim); font-size: 15.5px; margin: 2px 0 8px; max-width: none; }
-  .go { display: flex; gap: 8px; flex-wrap: wrap; }
+  .go { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
   .go a { font-size: 16px; border: 1px solid #6f6453; padding: 5px 12px; text-decoration: none; background: rgba(20, 18, 16, 0.8); }
-  .go a.first { background: var(--paper); color: #2b2620; border-color: var(--paper); }
+  .go a.first { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .go span { color: var(--dim); font-size: 15.5px; margin-left: 6px; }
   .key { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15.5px; color: var(--soft); margin: 10px 0 0; padding: 0; list-style: none; }
-  .key i { display: inline-block; width: 26px; height: 12px; vertical-align: -1px; margin-right: 6px; border: 1px solid #000; }
   .pick { margin: 6px 0 2px; max-width: none; }
-  .pick select { font: inherit; font-size: 16px; background: var(--paper); color: #2b2620; border: 0; padding: 3px 6px; margin: 0 8px 0 4px; }
+  .pick select { font: inherit; font-size: 16px; background: var(--paper); color: var(--ink); border: 0; padding: 3px 6px; margin: 0 8px 0 4px; }
   .book .dyed { color: var(--soft); font-size: 15.5px; margin: 6px 0 0; max-width: none; }
   .book .dyed .sw { margin-right: 8px; white-space: nowrap; }
   .book .dyed i { display: inline-block; width: 22px; height: 11px; vertical-align: -1px; border: 1px solid #000; margin-right: 2px; }
+  .ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px 26px; margin: 14px 0 0; padding: 0; list-style: none; }
+  .ways b { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 19px; letter-spacing: 0.05em; display: block; }
+  .ways li { color: var(--soft); font-size: 16.5px; }
+  .why { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 10px 34px; align-items: start; }
+  .why p { margin: 0 0 12px; }
+  .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .photos img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
+  .photos img.tall { grid-row: 1 / span 2; aspect-ratio: auto; }
+  .photos + p { margin: 6px 0 0; }
+  @media (max-width: 720px) { .why { grid-template-columns: 1fr; } }
   ol.steps { padding-left: 0; list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px 28px; }
   ol.steps li { counter-increment: s; }
   ol.steps li::before { content: counter(s); font-family: "IM Fell English SC", serif; font-size: 30px; color: var(--dim); display: block; line-height: 1; margin-bottom: 4px; }
   ol.steps b { font-weight: 500; }
-  .small { color: var(--dim); font-size: 15.5px; }
+  ul.refs { padding-left: 1.1em; color: var(--soft); font-size: 16.5px; max-width: 46em; }
+  ul.refs li { margin: 3px 0; }
+
+  @media (max-width: 640px), (max-height: 720px) {
+    .pin { padding: 46px 12px 14px; }
+    .cap { height: 5em; margin-bottom: 8px; }
+    #leaf { font-size: 13px; line-height: 1.42; padding: 12px 14px; }
+    #leaf .src { font-size: 12px; margin-top: 5px; }
+    #under { min-height: 112px; margin-top: 8px; }
+    #lkey { font-size: 13.5px; gap: 2px 10px; } #count { font-size: 14.5px; } #band canvas { height: 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .line, #lkey, #count, #band, .cta, #leaf .s { transition: none; }
+    #s-title .hint { animation: none; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <p class="brand">Rebind</p>
-  <h1>I don’t mind the IPO,<br>but stop ripping books…</h1>
-  <p class="lede">To learn from a book, big AI cuts it into pieces and keeps no note of where each piece came from. Rebind has an AI model that reads a book and hands back a scarf pattern in which every row leads to the sentences it was made from, fully traceable.</p>
+<div id="bar"></div>
+<div class="top" id="top"><a class="brand" href="#s-title">Rebind</a><a class="skip" href="#books">Skip to the books ↓</a></div>
 
-  <h2>The books</h2>
+<section class="scene" id="s-title" style="--h: 150vh">
+  <div class="pin">
+    <h1>I don’t mind the IPO,<br>but stop ripping books…</h1>
+    <p class="by">Burak Donbekci · AIPI 590, Duke University</p>
+    <p class="hint">Scroll ↓</p>
+  </div>
+</section>
+
+<section class="scene" id="s-read" style="--h: 760vh">
+  <div class="pin">
+    <div class="cap">
+      <p class="line" data-from="0" data-to="0.13">To learn from a book, big AI cuts it into pieces</p>
+      <p class="line" data-from="0.13" data-to="0.26">and keeps no note of where each piece came from.</p>
+      <p class="line" data-from="0.26" data-to="0.38">Rebind keeps the note.</p>
+      <p class="line" data-from="0.38" data-to="0.58">A model on a laptop reads the book one passage at a time. It labels every sentence warm, cold or neither, and tense or calm.</p>
+      <p class="line" data-from="0.58" data-to="0.70">It is asked twice, in different words. Where its two answers differ, both are counted.</p>
+      <p class="line" data-from="0.70" data-to="0.84">Then plain code counts the labels. No model decides a stitch.</p>
+      <p class="line" data-from="0.84" data-to="1">The count is a knitting instruction. This passage is now one pair of rows.</p>
+    </div>
+    <div id="leaf"><p class="text" id="text"></p><p class="src" id="src"></p></div>
+    <div id="under">
+      <p id="lkey"></p>
+      <div id="count"></div>
+      <div id="band"><canvas></canvas><p class="small" id="band-note"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" id="s-scarf" style="--h: 460vh">
+  <div class="pin">
+    <div class="cap">
+      <p class="line" data-from="0" data-to="0.45" id="cap-all">Every passage gets its pair of rows, from the first page to the last.</p>
+      <p class="line" data-from="0.45" data-to="0.72" id="cap-undyed">Some rows are left undyed. There the model’s two answers disagreed, so the scarf says nothing.</p>
+      <p class="line" data-from="0.72" data-to="1">Every row leads back to its sentences. Click or tap any row to unravel it.</p>
+    </div>
+    <div id="grow"><div id="track"><div id="clip"><canvas id="g1" role="img" aria-label="The whole book as a scarf, first page at the left"></canvas><canvas id="g2" aria-hidden="true"></canvas></div></div></div>
+    <p id="where"></p>
+    <p class="cta" id="cta"><a class="btn" id="open">See it knitted, stitch by stitch</a> <a class="btn quiet" href="#books">All the books ↓</a></p>
+  </div>
+</section>
+
+<main>
+  <h2 id="books" style="margin-top: 20px">The books</h2>
+  <p>Three books so far. Each one can be knitted three ways, all counted from the same labels by the same rules.</p>
+  <ul class="ways">
+    <li><b>In five colours</b>Cold to warm in yarn colour, a ridge where the book is tense, a hole where a person is in the passage.</li>
+    <li><b>In one yarn</b>No colour at all. Cold is rough, warm is smooth, and a rope twists where the book is tense. It can be read by touch.</li>
+    <li><b>In Alize Puffy</b>A loop yarn knitted with fingers alone, eight loops wide and one colour. Neighbouring passages share a row, and three kinds of loop carry the feeling, the tension and the doubt.</li>
+  </ul>
   <p class="pick"><label>Colours <select id="palette"></select></label> <span class="small">The colours are a choice. Changing them moves no stitch.</span></p>
   <ul class="key" id="key"></ul>
-  <div id="books"><p class="small">Loading the books.</p></div>
+  <div id="list"><p class="small">Loading the books.</p></div>
+
+  <h2>Why a scarf</h2>
+  <div class="why">
+    <div>
+      <p>In 2025 a court described how Anthropic built the library it trained its AI from. It bought millions of printed books, cut off their bindings, scanned the pages and threw the paper away. The judge ruled that lawful. Millions more books had come from pirate libraries, and for those the company settled with authors for $1.5 billion in 2026.</p>
+      <p>Lawful or not, I find this annoying: books taken apart so a machine could learn from them, with nothing left to say which page taught it what. I wanted to try the opposite. Let an AI read a book, keep the book whole, and hand back something a person can hold and check row by row.</p>
+      <p>From 2018 until Covid in 2020 I taught children to knit. So when I looked for a way to keep a book, a knitted scarf sounded cool especially with the approaching weather.</p>
+    </div>
+    <div>
+      <div class="photos">
+        <img class="tall" src="poster/img/scarves.jpg" alt="Two people behind a table piled with knitted scarves" loading="lazy">
+        <img src="poster/img/class.jpg" alt="Children knitting at tables in a classroom" loading="lazy">
+        <img src="poster/img/room.jpg" alt="Children in a playroom, one wearing a knitted hat and scarf" loading="lazy">
+      </div>
+      <p class="small">Me teaching, 2018 to 2020.</p>
+    </div>
+  </div>
 
   <h2>How a book becomes a scarf</h2>
   <ol class="steps">
@@ -62,27 +216,43 @@
   <h2>How far to trust it</h2>
   <p>The labels are one model’s opinion of each sentence. So the model is asked twice, in different words, and both answers are counted. Where the two answers alone would choose yarns two or more shades apart, the row is left undyed: the scarf makes no claim there. No person has checked the labels yet. Each scarf’s page gives its own numbers under “How it was knitted”, and lets you label a sample yourself.</p>
 
+  <h2>Builds on</h2>
+  <ul class="refs">
+    <li>Rudin, 2019: prefer models a person can follow over explanations of a black box.</li>
+    <li>Jacovi and Goldberg, 2020: what it means for an explanation to be faithful.</li>
+    <li>Sclar and others, 2024: the wording of a question moves a model’s answers.</li>
+    <li>Chang and others, 2023: which books a model has memorised.</li>
+    <li>Reagan and others, 2016: the emotional arcs of stories.</li>
+    <li>Jansen and others, 2015: data you can hold in your hands.</li>
+  </ul>
+  <p class="small">Full references, the limits of the method and the code are in <a href="https://github.com/burakdon/Rebind">the repository</a>. There is also <a href="poster/">a poster</a>.</p>
+
   <h2>Earlier studies</h2>
   <p class="small">The same reading of Pride and Prejudice, drawn two other ways before the scarf: <a href="map/">as a survey map</a> and <a href="weave/">as woven cloth</a>.</p>
 </main>
+<div id="tip" hidden></div>
+
 <script type="module">
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 import { chosen, dye, loadPalettes, picker, swatches } from './palette.js';
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const $ = id => document.getElementById(id);
 const books = await fetch('data/books.json').then(r => r.json());
 const patterns = await Promise.all(books.map(b => fetch(`data/${b.slug}/pattern.json`).then(r => r.json())));
 
 // Each book is dyed in its own palette unless the visitor picks one for all of them.
 const PALETTES = await loadPalettes('data/'), OWN = patterns.map(K => K.palette?.name);
 patterns.forEach(K => dye(K, PALETTES, chosen()));
-picker(document.getElementById('palette'), PALETTES, 'Each book’s own');
-document.getElementById('key').innerHTML = '<li>cool colour: cold</li><li>grey: neither</li><li>warm colour: warm</li><li>cream: the two readings too far apart</li>'
+picker($('palette'), PALETTES, 'Each book’s own');
+$('key').innerHTML = '<li>cool colour: cold</li><li>grey: neither</li><li>warm colour: warm</li><li>cream: the two readings too far apart</li>'
   + '<li>◦ a hole: that person is in the passage</li><li>a darker band: tense</li>';
 
 // Draw a scarf lying flat: one band per passage, as wide as its two rows are tall.
-function draw(cv, K) {
-  const unit = r => r.texture === 'ridged' ? 1 : 1.5, total = K.rows.reduce((s, r) => s + unit(r), 0);
-  const W = 1960, H = Math.max(120, Math.min(260, Math.round(W * K.cast_on / total))), x = cv.getContext('2d');
-  cv.width = W; cv.height = H;
+// `only` dims every band that fails it. The canvas remembers where each band ends, so a pointer can find its row.
+const unit = r => (r.texture === 'ridged' ? 1 : 1.5);
+function draw(cv, K, { W = 1960, H, only } = {}) {
+  const total = K.rows.reduce((s, r) => s + unit(r), 0), x = cv.getContext('2d');
+  H = H || Math.max(120, Math.min(260, Math.round(W * K.cast_on / total)));
+  cv.width = W; cv.height = H; cv.ends = [];
   let at = 0;
   for (const r of K.rows) {
     const w = unit(r) * W / total, hex = K.yarns.find(y => y.key === r.yarn).hex;
@@ -90,26 +260,165 @@ function draw(cv, K) {
     if (r.texture === 'ridged') { x.fillStyle = 'rgba(0,0,0,0.17)'; x.fillRect(at, 0, w + 0.6, H); }
     x.fillStyle = 'rgba(14,11,9,0.85)';
     [...r.rs].forEach((c, i) => { if (c === 'o') { const y = (i + 1) / K.cast_on * H, d = Math.max(1.4, Math.min(w * 0.3, H / K.cast_on * 0.42)); x.beginPath(); x.arc(at + w * 0.3, y, d, 0, 7); x.fill(); } });
-    at += w;
+    if (only && !only(r)) { x.fillStyle = 'rgba(13,12,11,0.8)'; x.fillRect(at, 0, w + 0.6, H); }
+    at += w; cv.ends.push(at / W);
   }
   // a little light across the width, so it reads as cloth and not as a bar chart
   const g = x.createLinearGradient(0, 0, 0, H);
   g.addColorStop(0, 'rgba(0,0,0,0.3)'); g.addColorStop(0.12, 'rgba(255,255,255,0.05)'); g.addColorStop(0.88, 'rgba(0,0,0,0.05)'); g.addColorStop(1, 'rgba(0,0,0,0.36)');
   x.fillStyle = g; x.fillRect(0, 0, W, H);
 }
+const rowAt = (cv, f) => { const i = cv.ends.findIndex(e => e >= f); return i < 0 ? cv.ends.length - 1 : i; };
+// Point at a band to see what it is; click to open that row in the knitted scarf.
+const tip = $('tip');
+function wire(cv, K, slug) {
+  const word = K.book.chapter_word || 'Chapter';
+  const find = e => { const b = cv.getBoundingClientRect(); return K.rows[rowAt(cv, (e.clientX - b.left) / b.width)]; };
+  cv.addEventListener('pointermove', e => {
+    const r = find(e); tip.hidden = false;
+    tip.textContent = `${word} ${r.chapter_label} · passage ${r.n} · ${r.unsure ? 'undyed: the readings disagree' : `yarn ${r.yarn}, ${K.yarns.find(y => y.key === r.yarn).name}`}${r.texture === 'ridged' ? ', tense' : ''}`;
+    tip.style.left = Math.max(110, Math.min(innerWidth - 110, e.clientX)) + 'px'; tip.style.top = e.clientY + 'px';
+  });
+  cv.addEventListener('pointerleave', () => { tip.hidden = true; });
+  cv.addEventListener('click', e => { location.href = `knit/?book=${slug}&row=${find(e).n}`; });
+}
 
-const root = document.getElementById('books'); root.innerHTML = '';
+const root = $('list'); root.innerHTML = '';
 books.forEach((b, i) => {
   const K = patterns[i], a = document.createElement('div'), see = `knit/?book=${b.slug}`;
   a.className = 'book';
-  a.innerHTML = `<a href="${see}"><canvas role="img" aria-label="${esc(b.title)} as a scarf, first page at the left"></canvas></a>
+  a.innerHTML = `<canvas role="img" aria-label="${esc(b.title)} as a scarf, first page at the left"></canvas>
     <h3>${esc(b.title)}</h3><p class="by">${esc(b.author || '')}</p>
     <p class="dyed"><span class="sw">cold ${swatches(K).slice(0, 5).join('')} warm ${swatches(K)[5]} undyed</span> ${esc(K.palette?.name || '')}${K.palette && !K.palette.borrowed ? `, after ${esc(K.palette.from)}` : K.palette ? ` (its own: ${esc(OWN[i])})` : ''}</p>
     <p class="facts">${b.pairs} passages, ${b.rows} rows, about ${b.width_in} × ${b.length_in} inches. ${b.undyed} of ${b.pairs} passages undyed. Columns: ${esc(b.people.join(', '))}.</p>
-    <div class="go"><a class="first" href="${see}">See it knitted</a><a href="knit/pattern.html?book=${b.slug}">The pattern, to print</a><a href="${see}&mode=texture">In one yarn, texture only</a></div>`;
+    <div class="go"><a class="first" href="${see}">See it knitted</a><a href="${see}&mode=texture">In one yarn</a>${K.puffy ? `<a href="knit/puffy.html?book=${b.slug}">In Alize Puffy</a>` : ''}<a href="knit/pattern.html?book=${b.slug}">The pattern, to print</a><span>or click any row above</span></div>`;
   root.appendChild(a);
-  draw(a.querySelector('canvas'), K);
+  draw(a.querySelector('canvas'), K); wire(a.querySelector('canvas'), K, b.slug);
 });
+
+// ---- the story ---------------------------------------------------------------------------------------------
+// One passage of the first book is followed from the page to its pair of rows, then the whole scarf grows.
+// Nothing here is made up for the story: the sentences, labels and sums are read from the same files as the scarf.
+const K0 = patterns[0], slug0 = books[0].slug, STORY = 'c01.p15';
+const [B0, T0] = await Promise.all(['book.json', 'text.json'].map(f => fetch(`data/${slug0}/${f}`).then(r => r.json())));
+const row0 = K0.rows.find(r => r.passage === STORY && !r.unsure) || K0.rows.find(r => !r.unsure && r.tally.both && r.tally.both.n <= 18) || K0.rows[0];
+const p0 = B0.passages.find(p => p.id === row0.passage), S0 = B0.sentences, [s0, sn] = p0.sentences, full = T0.passages[p0.id];
+const yarn0 = Object.fromEntries(K0.yarns.map(y => [y.key, y])), word0 = K0.book.chapter_word || 'Chapter';
+const FEEL = ['neither', 'warm', 'cold'], PACE = ['calm', 'tense'];
+const tint = [`color-mix(in srgb, ${yarn0.C.hex} 38%, transparent)`, `color-mix(in srgb, ${yarn0.D.hex} 72%, transparent)`, `color-mix(in srgb, ${yarn0.B.hex} 78%, transparent)`];
+
+const sents = [], words = [];
+let html = '';
+for (let i = s0; i < s0 + sn; i++) {
+  const f = S0.feeling[i], pc = S0.pace[i], fb = S0.feeling_b?.[i] ?? -1, pb = S0.pace_b?.[i] ?? -1;
+  const text = full.slice(S0.start[i] - p0.start, S0.end[i] - p0.start).trim();
+  if (i > s0 && /\n\s*\n/.test(full.slice(S0.end[i - 1] - p0.start, S0.start[i] - p0.start))) html += '<span class="gap"></span>';
+  html += `<span class="s${pc === 1 ? ' tense' : ''}" style="--c:${f >= 0 ? tint[f] : 'transparent'}">${text.split(/\s+/).map(w => `<span class="w">${esc(w)}</span>`).join(' ')}</span>`
+    + (fb >= 0 && (fb !== f || pb !== pc) ? `<span class="alt">asked again: ${FEEL[fb]}, ${PACE[pb]}</span>` : '') + ' ';
+}
+$('text').innerHTML = html;
+$('src').textContent = `${K0.book.title}, ${word0} ${row0.chapter_label}. Passage ${row0.n} of ${K0.rows.length}.`;
+document.querySelectorAll('#text .s').forEach(el => sents.push(el));
+document.querySelectorAll('#text .w').forEach((el, j) => {
+  // each word flies to its own place, the same place every time
+  const h = n => { const v = Math.sin((j + 1) * n) * 43758.5453; return v - Math.floor(v); };
+  words.push({ el, dx: h(12.9898) * 2 - 1, dy: h(78.233) * 2 - 1, r: (h(39.425) * 2 - 1) * 70 });
+});
+$('lkey').innerHTML = `<span><i style="background:${yarn0.B.hex}"></i>cold</span><span><i style="background:${yarn0.C.hex}"></i>neither</span><span><i style="background:${yarn0.D.hex}"></i>warm</span><span><u>dotted line</u>: tense</span>`;
+{
+  const t = row0.tally.both, twice = !!row0.tally.b, d = t.warm - t.cold, need = Math.round(K0.ridged_share * 100);
+  const place = { A: 'the coldest of the five yarns', B: 'the cool yarn', C: 'the grey yarn in the middle', D: 'the warm yarn', E: 'the warmest of the five yarns' }[t.yarn];
+  $('count').innerHTML = `<p>${sn} sentences${twice ? `, read twice: ${t.n} labels` : ''}. ${t.warm} warm, ${t.cold} cold, ${t.neither} neither.</p>
+    <p class="res">(${t.warm} − ${t.cold}) ÷ ${t.n} = ${(d / t.n).toFixed(2).replace('-', '−')} <i style="background:${yarn0[t.yarn].hex}"></i>yarn ${t.yarn}, ${place}.</p>
+    <p class="res">${t.tense} of ${t.n} labels are tense. A ridge needs ${need} in 100, so this row is ${row0.texture}.</p>`;
+  $('band-note').textContent = `Rows ${row0.n * 2 - 1} and ${row0.n * 2} of ${K0.rows.length * 2}. Each hole is a person the model found in the passage.`;
+  // the pair of rows, lying across: two rows of stitches in the yarn the count picked
+  const cv = document.querySelector('#band canvas'), x = cv.getContext('2d'), W = K0.cast_on, u = 20;
+  cv.width = W * u; cv.height = 2 * u;
+  x.fillStyle = yarn0[row0.yarn].hex; x.fillRect(0, 0, cv.width, cv.height);
+  if (row0.texture === 'ridged') { x.fillStyle = 'rgba(0,0,0,0.2)'; x.fillRect(0, u, cv.width, u); }
+  x.strokeStyle = 'rgba(0,0,0,0.22)'; x.lineWidth = 1.5;
+  for (let c = 0; c < W; c++) for (let r = 0; r < 2; r++) {
+    if (r === 0 && row0.rs[c] === 'o') { x.fillStyle = 'rgba(14,11,9,0.9)'; x.beginPath(); x.arc(c * u + u / 2, u / 2, u * 0.3, 0, 7); x.fill(); continue; }
+    x.beginPath();
+    if (r === 1 && row0.texture === 'ridged') { x.moveTo(c * u + 3, r * u + u / 2); x.lineTo(c * u + u - 3, r * u + u / 2); }
+    else { x.moveTo(c * u + 3, r * u + 3); x.lineTo(c * u + u / 2, r * u + u - 3); x.lineTo(c * u + u - 3, r * u + 3); }
+    x.stroke();
+  }
+}
+
+// the growing scarf, and the same scarf with only its undyed rows lit
+const g1 = $('g1'), g2 = $('g2'), track = $('track'), clip = $('clip');
+const total0 = K0.rows.reduce((s, r) => s + unit(r), 0), size0 = { W: Math.round(300 * total0 / K0.cast_on), H: 300 };
+draw(g1, K0, size0); draw(g2, K0, { ...size0, only: r => r.unsure }); wire(g1, K0, slug0);
+const undyed0 = K0.rows.filter(r => r.unsure).length;
+$('cap-all').textContent = `Every passage gets its pair of rows, from the first page to the last. ${K0.book.title} is ${K0.rows.length} of them.`;
+$('cap-undyed').textContent = `${undyed0} of the ${K0.rows.length} are left undyed. There the model’s two answers disagreed, so the scarf says nothing.`;
+$('open').href = `knit/?book=${slug0}`;
+
+const ramp = (p, a, b) => Math.max(0, Math.min(1, (p - a) / (b - a))), ease = k => k * k * (3 - 2 * k);
+const STILL = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const leaf = $('leaf');
+let lastK = -1;
+const UPDATE = {
+  's-title'(p, el) {
+    const h = el.querySelector('h1'), k = ramp(p, 0.25, 0.95);
+    h.style.opacity = 1 - k; h.style.transform = `translateY(${-70 * k}px)`;
+    el.querySelector('.hint').style.opacity = 1 - ramp(p, 0, 0.25);
+  },
+  's-read'(p) {
+    // the page comes apart into scraps, then goes back together
+    const k = STILL ? 0 : ease(p < 0.26 ? ramp(p, 0.02, 0.13) : 1 - ramp(p, 0.26, 0.35));
+    if (k !== lastK) {
+      lastK = k; leaf.style.setProperty('--k', k.toFixed(3));
+      const rx = Math.min(innerWidth * 0.42, 430), ry = Math.min(innerHeight * 0.34, 300);
+      for (const w of words) w.el.style.transform = k ? `translate(${(w.dx * rx * k).toFixed(1)}px, ${(w.dy * ry * k).toFixed(1)}px) rotate(${(w.r * k).toFixed(1)}deg)` : '';
+    }
+    const done = Math.ceil(ramp(p, 0.4, 0.55) * sents.length);
+    sents.forEach((s, i) => s.classList.toggle('lab', p >= 0.38 && i < done));
+    leaf.classList.toggle('twice', p >= 0.6);
+    $('lkey').classList.toggle('on', p >= 0.4);
+    $('count').classList.toggle('on', p >= 0.72); $('count').classList.toggle('res', p >= 0.77);
+    $('band').classList.toggle('on', p >= 0.86);
+  },
+  's-scarf'(p) {
+    const q = STILL ? 1 : ease(ramp(p, 0.02, 0.42)), full = g1.offsetWidth, room = track.parentElement.clientWidth;
+    clip.style.width = Math.max(2, q * full) + 'px';
+    // on a narrow screen the scarf is longer than the screen: follow the growing end, then step back to show all of it
+    const fit = Math.min(1, room / full), f = ease(ramp(p, 0.43, 0.5));
+    const pan = Math.max(room - full, Math.min(0, room * 0.8 - q * full));
+    track.style.margin = fit < 1 ? '0' : '0 auto';
+    track.style.transform = fit < 1 ? `translateX(${pan * (1 - f)}px) scale(${1 + (fit - 1) * f})` : '';
+    g2.style.opacity = p >= 0.45 && p < 0.72 ? 1 : 0;
+    const r = K0.rows[rowAt(g1, q)];
+    $('where').textContent = p < 0.45 ? `${word0} ${r.chapter_label} · passage ${r.n} of ${K0.rows.length}` : p < 0.72 ? 'Cream rows: undyed.' : 'Point at a row to see what it is.';
+    $('cta').classList.toggle('on', p >= 0.74);
+  },
+};
+const scenes = [...document.querySelectorAll('.scene')].map(el => ({ el, lines: [...el.querySelectorAll('.line')], p: -1 }));
+function tick() {
+  const vh = innerHeight; if (!vh) return;
+  for (const s of scenes) {
+    const b = s.el.getBoundingClientRect(), p = Math.max(0, Math.min(1, -b.top / Math.max(1, b.height - vh)));
+    if (p === s.p && !tick.force) continue;
+    s.p = p;
+    for (const l of s.lines) l.classList.toggle('on', p >= +l.dataset.from && (p < +l.dataset.to || +l.dataset.to >= 1));
+    UPDATE[s.el.id]?.(p, s.el);
+  }
+  tick.force = false;
+  const end = scenes[scenes.length - 1].el.getBoundingClientRect().bottom + scrollY - vh;
+  $('bar').style.width = Math.min(100, 100 * scrollY / Math.max(1, end)) + '%';
+  $('top').classList.toggle('gone', scrollY > end + vh * 0.5);
+  $('bar').style.opacity = scrollY > end + vh * 0.5 ? 0 : 1;
+}
+let queued = false;
+const ask = () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; tick(); }); } };
+addEventListener('scroll', ask, { passive: true });
+addEventListener('resize', () => { tick.force = true; lastK = -1; ask(); });
+document.addEventListener('visibilitychange', () => { tick.force = true; ask(); });
+tick.force = true; tick();
+// arriving with #books in the address: the page grew after it loaded, so go there again
+if (location.hash.length > 1) requestAnimationFrame(() => document.getElementById(location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' }));
 </script>
 </body>
 </html>

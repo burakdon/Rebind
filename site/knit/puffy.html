@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rebind · in Alize Puffy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #efe5cf; --soft: #cdbf9f; --dim: #8f8370; --rule: #4a4236; --wall: #0d0c0b; --ink: #2b2620; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(ellipse at 50% 0%, #26221d 0%, var(--wall) 70%) fixed, var(--wall); color: var(--paper);
+    font-family: "EB Garamond", Georgia, serif; font-size: 18px; line-height: 1.5; }
+  main { max-width: 1040px; margin: 0 auto; padding: 22px 16px 70px; }
+  a { color: var(--paper); }
+  .brand { font-family: "IM Fell English SC", serif; letter-spacing: 0.16em; color: var(--dim); font-size: 15px; text-decoration: none; }
+  h1 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: clamp(30px, 5vw, 46px); line-height: 1.08; letter-spacing: 0.04em; margin: 4px 0 4px; }
+  h2 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 23px; letter-spacing: 0.06em; margin: 46px 0 10px; padding-bottom: 5px; border-bottom: 1px solid var(--rule); }
+  h3 { font-family: "IM Fell English SC", serif; font-weight: 400; font-size: 19px; letter-spacing: 0.05em; margin: 18px 0 4px; }
+  p { max-width: 42em; margin: 0 0 10px; }
+  .sub { font-family: "IM Fell English", serif; font-style: italic; color: var(--soft); font-size: 20px; margin: 0 0 4px; }
+  .small { color: var(--dim); font-size: 15.5px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0 0; }
+  .bar a, .bar button, .bar select { font: inherit; font-size: 15.5px; border: 1px solid #6f6453; padding: 4px 11px; text-decoration: none; background: rgba(20, 18, 16, 0.8); color: var(--paper); cursor: pointer; }
+  .bar select { background: var(--paper); color: var(--ink); border-color: var(--paper); padding: 4px 6px; }
+  .bar .dyes { display: inline-flex; align-items: center; gap: 5px; font-size: 15.5px; color: var(--soft); margin-left: 4px; }
+  .bar .dyes button { width: 24px; height: 24px; padding: 0; border: 1px solid #000; }
+  .bar .dyes button[aria-pressed="true"] { outline: 2px solid var(--paper); outline-offset: 1px; }
+  .keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 22px; margin: 18px 0 0; padding: 0; list-style: none; }
+  .keys li { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; font-size: 16px; color: var(--soft); line-height: 1.3; }
+  .keys canvas { width: 88px; height: 44px; display: block; }
+  .keys b { color: var(--paper); font-weight: 500; display: block; }
+  .work { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 28px; align-items: start; margin-top: 22px; }
+  #scarf { display: block; cursor: pointer; touch-action: pan-y; max-width: 100%; height: auto; }
+  #panel { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; background: #fbf7ee; color: var(--ink); padding: 14px 18px 18px; font-size: 16.5px; line-height: 1.42; box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6); }
+  #panel h2 { margin: 0 0 2px; border: 0; padding: 0; font-size: 24px; }
+  #panel h3 { border-top: 1px solid #d8c9a6; padding-top: 10px; }
+  #panel a { color: var(--ink); }
+  #panel .kicker { color: #6a5c48; font-style: italic; margin: 0 0 8px; }
+  #panel .how { font-family: ui-monospace, Menlo, monospace; font-size: 13px; background: #fff8e8; border: 1px solid #b9a582; padding: 8px 10px; margin: 8px 0; }
+  #panel .rule { font-size: 14.5px; color: #5a4e40; border-left: 3px solid #d8c9a6; padding-left: 9px; margin: 8px 0; }
+  #panel blockquote { margin: 6px 0; padding: 2px 0 2px 10px; font-size: 15.5px; }
+  #panel .fact { font-size: 13.5px; color: #6a5c48; font-style: italic; }
+  .boxes { display: inline-grid; grid-template-columns: repeat(8, 26px); margin: 6px 0 2px; }
+  .boxes span { height: 26px; border: 1px solid rgba(43, 38, 32, 0.5); margin-left: -1px; text-align: center; font-family: ui-monospace, Menlo, monospace; font-size: 13px; line-height: 24px; }
+  .boxes span.p { background: #d9cdb2; }
+  .boxes span.x { background: #eadfc6; }
+  ol.rules { padding-left: 1.3em; max-width: 46em; } ol.rules li { margin: 5px 0; }
+  table.plain { border-collapse: collapse; font-size: 16.5px; max-width: 46em; }
+  table.plain td { padding: 4px 14px 4px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  table.plain td:first-child { color: var(--soft); white-space: nowrap; }
+  .chart { border-collapse: collapse; margin: 10px 0 4px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+  .chart td { width: 22px; height: 18px; text-align: center; padding: 0; border: 1px solid rgba(239, 229, 207, 0.35); line-height: 17px; }
+  .chart td.p { background: rgba(239, 229, 207, 0.22); } .chart td.x { background: rgba(239, 229, 207, 0.1); }
+  .chart td.m { border: 0; width: auto; padding: 0 8px; white-space: nowrap; color: var(--soft); text-align: right; }
+  .chart td.r { text-align: left; }
+  .chart tr.head td { border: 0; color: var(--soft); }
+  .cols { columns: 2 320px; column-gap: 30px; }
+  #tip { position: fixed; z-index: 9; pointer-events: none; transform: translate(-50%, calc(-100% - 12px)); background: var(--paper); color: var(--ink); font-size: 14.5px; padding: 3px 9px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); }
+  @media (max-width: 760px) {
+    .work { grid-template-columns: 1fr; }
+    #scarf { margin: 0 auto; }
+    #panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 56vh; z-index: 8; }
+    #panel.idle { display: none; }
+  }
+  #close { display: none; float: right; font: inherit; font-size: 22px; line-height: 1; background: none; border: 0; cursor: pointer; color: var(--ink); }
+  @media (max-width: 760px) { #close { display: block; } }
+  @media print {
+    body { background: #fff; color: #000; font-size: 11.5pt; } main { max-width: none; padding: 0; }
+    .bar, .work, #tip, .keys canvas, .noprint { display: none !important; }
+    a, .small, .sub, .keys li, .keys b, table.plain td:first-child, .chart td.m, .chart tr.head td { color: #000; }
+    h2 { border-color: #999; } table.plain td { border-color: #ccc; }
+    .chart td { border-color: #666; } .chart td.p { background: #ccc; } .chart td.x { background: #eee; }
+    .keys { grid-template-columns: 1fr; gap: 4px; } .keys li { display: block; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="../#books">Rebind · all books</a>
+  <h1 id="title">In Alize Puffy</h1>
+  <p class="sub">The book as a scarf you knit with your fingers: eight loops wide, one colour, three kinds of loop.</p>
+  <p class="small" id="meta"></p>
+  <nav class="bar">
+    <select id="book" aria-label="Book"></select>
+    <a id="to-colour">In five colours</a>
+    <a id="to-yarn">In one yarn</a>
+    <button id="print">Print the pattern</button>
+    <span class="dyes" id="dyes">Yarn colour</span>
+  </nav>
+
+  <ul class="keys" id="keys"></ul>
+
+  <div class="work">
+    <canvas id="scarf" role="img" aria-label="The scarf, first row at the top"></canvas>
+    <aside id="panel" class="idle"><button id="close" aria-label="Close">×</button><div id="panel-body"></div></aside>
+  </div>
+
+  <h2>The pattern</h2>
+  <table class="plain" id="materials"></table>
+  <h3>The three loops</h3>
+  <ul class="keys" id="stitches" style="grid-template-columns: 1fr; gap: 6px"></ul>
+  <h3>The rules</h3>
+  <ol class="rules" id="rules"></ol>
+  <h3>The chart</h3>
+  <p class="small">Row 1 is the first row you work after casting on. Loop 1 is at the left as you look at the front. Puffy is not turned, so you work one row leftwards and the next rightwards: read a row in the direction you are working it. An empty box is a normal loop, • is a reverse loop, and &gt;&lt; is a crossed pair.</p>
+  <div class="cols" id="charts"></div>
+  <h3>Row by row</h3>
+  <div class="cols small" id="written" style="color: var(--soft)"></div>
+</main>
+<div id="tip" hidden></div>
+
+<script type="module">
+import { chosen, dye, loadPalettes } from '../palette.js';
+const $ = id => document.getElementById(id), esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const Q = new URLSearchParams(location.search), DATA = '../data/';
+const books = await fetch(DATA + 'books.json').then(r => r.json());
+const BOOK = books.some(b => b.slug === Q.get('book')) ? Q.get('book') : books[0].slug;
+const [K, B, TXT] = await Promise.all(['pattern.json', 'book.json', 'text.json'].map(f => fetch(`${DATA}${BOOK}/${f}`).then(r => r.json())));
+dye(K, await loadPalettes(DATA), chosen());
+await Promise.all([document.fonts.load('16px "IM Fell English SC"'), document.fonts.load('16px "EB Garamond"')]).catch(() => {});
+const P = K.puffy, S = P.size, CW = K.book.chapter_word || 'Chapter', yarn = Object.fromEntries(K.yarns.map(y => [y.key, y]));
+const passage = Object.fromEntries(B.passages.map(p => [p.id, p]));
+
+document.title = `Rebind · ${K.book.title} in Alize Puffy`; $('title').textContent = `${K.book.title}, in Alize Puffy`;
+$('meta').textContent = `${S.rows} rows of ${P.loops} loops, about ${S.width_cm} × ${S.length_cm} cm (${S.width_in} × ${S.length_in} in), about ${S.balls} balls. ${P.group > 1 ? `Up to ${P.group} passages share a row.` : 'One passage a row.'} Click any row to unravel it.`;
+$('book').innerHTML = books.map(b => `<option value="${b.slug}"${b.slug === BOOK ? ' selected' : ''}>${esc(b.title)}</option>`).join('');
+$('book').onchange = e => { location.href = `?book=${e.target.value}`; };
+$('to-colour').href = `./?book=${BOOK}`; $('to-yarn').href = `./?book=${BOOK}&mode=texture`;
+$('print').onclick = () => print();
+
+// ---- drawing plush loops -----------------------------------------------------------------------------------
+const DYES = [['cream', '#e8d9c3'], ['rose', '#e3a7a8'], ['sky', '#a9c6e0'], ['sage', '#b3c7a0'], ['mustard', '#dcb24f']];
+let colour = DYES[0][1];
+try { const c = localStorage.getItem('rebind.puffy'); if (DYES.some(d => d[1] === c)) colour = c; } catch { /* no storage: cream */ }
+const mix = (h, t, k) => { const a = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)), b = [1, 3, 5].map(i => parseInt(t.slice(i, i + 2), 16)); return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * k)).join(',')})`; };
+// one fat strand of chenille from a to b, bent towards (cx, cy)
+function strand(x, a, c, b, w) {
+  const line = () => { x.beginPath(); x.moveTo(a[0], a[1]); x.quadraticCurveTo(c[0], c[1], b[0], b[1]); x.stroke(); };
+  x.lineCap = 'round';
+  x.strokeStyle = mix(colour, '#000000', 0.62); x.lineWidth = w + 3; line();
+  x.strokeStyle = mix(colour, '#000000', 0.12); x.lineWidth = w; line();
+  x.strokeStyle = colour; x.lineWidth = w * 0.66; line();
+  x.strokeStyle = mix(colour, '#ffffff', 0.4); x.lineWidth = w * 0.22;
+  x.save(); x.translate(-w * 0.13, -w * 0.13); line(); x.restore();
+}
+// The scarf hangs from its cast-on edge, so a normal loop shows as two legs meeting at the top.
+function loop(x, sym, x0, y0, w, h) {
+  const t = w * 0.36;
+  if (sym === 'p') {            // reverse: one bump lying across
+    strand(x, [x0 + w * 0.06, y0 + h * 0.66], [x0 + w * 0.5, y0 + h * 0.08], [x0 + w * 0.94, y0 + h * 0.66], t);
+  } else if (sym === 'X') {     // a crossed pair takes two boxes
+    strand(x, [x0 + w * 0.34, y0 + h * 0.12], [x0 + w * 0.9, y0 + h * 0.5], [x0 + w * 1.66, y0 + h * 0.98], t);
+    strand(x, [x0 + w * 1.66, y0 + h * 0.12], [x0 + w * 1.1, y0 + h * 0.5], [x0 + w * 0.34, y0 + h * 0.98], t);
+  } else if (sym === 'k') {     // normal: two legs
+    strand(x, [x0 + w * 0.5, y0 + h * 0.1], [x0 + w * 0.3, y0 + h * 0.5], [x0 + w * 0.2, y0 + h * 1.04], t);
+    strand(x, [x0 + w * 0.5, y0 + h * 0.1], [x0 + w * 0.7, y0 + h * 0.5], [x0 + w * 0.8, y0 + h * 1.04], t);
+  }
+}
+const CW_ = 42, CH = 38, GUT = 74, PAD = 14;      // a loop's box on screen, the gutter for row numbers
+const cv = $('scarf'), cx = cv.getContext('2d');
+let hover = -1, picked = -1;
+function paint() {
+  const dpr = Math.min(devicePixelRatio || 1, 2), W = GUT + P.loops * CW_ + PAD, H = P.rows.length * CH + 2 * PAD + 22;
+  cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + 'px'; cv.dataset.w = W;       // CSS may shrink it to fit a phone
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0); cx.clearRect(0, 0, W, H);
+  const top = PAD + 22;
+  cx.fillStyle = mix(colour, '#000000', 0.74); cx.fillRect(GUT - 5, top - 5, P.loops * CW_ + 10, P.rows.length * CH + 14);
+  cx.textBaseline = 'middle';
+  cx.font = '13px "IM Fell English SC"'; cx.fillStyle = '#8f8370'; cx.textAlign = 'left'; cx.fillText('cast on', GUT, PAD + 4);
+  P.rows.forEach((r, n) => {
+    const y = top + n * CH;
+    if (r.unsure || r.cells.includes('p')) {      // reverse loops sit lower than normal ones: shade their boxes
+      [...r.cells].forEach((s, c) => { if (s === 'p') { cx.fillStyle = 'rgba(0,0,0,0.22)'; cx.fillRect(GUT + c * CW_, y, CW_, CH); } });
+    }
+    [...r.cells].forEach((s, c) => loop(cx, s, GUT + c * CW_, y, CW_, CH));
+    if (n === picked || n === hover) { cx.fillStyle = n === picked ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.1)'; cx.fillRect(GUT - 5, y, P.loops * CW_ + 10, CH); }
+    if (n === picked) { cx.strokeStyle = '#efe5cf'; cx.lineWidth = 2; cx.strokeRect(GUT - 5, y + 1, P.loops * CW_ + 10, CH - 2); }
+    cx.textAlign = 'right';
+    if (r.starts_chapter) { cx.font = '15px "IM Fell English SC"'; cx.fillStyle = '#cdbf9f'; cx.fillText(`${CW} ${r.chapter_label}`, GUT - 12, y + CH / 2); }
+    else if (r.n % 5 === 0) { cx.font = '13px "EB Garamond"'; cx.fillStyle = '#8f8370'; cx.fillText(r.n, GUT - 12, y + CH / 2); }
+  });
+}
+// the three loops, drawn small for the key
+function sample(cells) {
+  const c = document.createElement('canvas'), x = c.getContext('2d'), d = 2;
+  c.width = 88 * d; c.height = 44 * d; x.scale(d, d);
+  x.fillStyle = mix(colour, '#000000', 0.74); x.fillRect(0, 0, 88, 44);
+  [...cells].forEach((s, i) => { if (s === 'p') { x.fillStyle = 'rgba(0,0,0,0.22)'; x.fillRect(2 + i * 42, 3, 42, 38); } loop(x, s, 2 + i * 42, 3, 42, 38); });
+  return c;
+}
+const KEYS = [['kk', 'Normal loops', 'The plain fabric. In loops 2 to 5, more of them means warmer.'], ['pp', 'Reverse loops', 'Bumps. In loops 2 to 5, more of them means colder. All eight: the two readings disagree, so the row says nothing.'],
+  ['Xx', 'A crossed pair', 'Loops 6 and 7 cross where the book is tense.']];
+function keys() {
+  for (const [id, text] of [['keys', k => `<span><b>${k[1]}</b>${k[2]}</span>`], ['stitches', k => `<span><b>${k[1]}</b>${esc(P.stitches[k[0] === 'kk' ? 'normal' : k[0] === 'pp' ? 'reverse' : 'cross'])}</span>`]]) {
+    $(id).innerHTML = '';
+    for (const k of KEYS) { const li = document.createElement('li'); li.appendChild(sample(k[0])); li.insertAdjacentHTML('beforeend', text(k)); $(id).appendChild(li); }
+  }
+}
+$('dyes').insertAdjacentHTML('beforeend', DYES.map(([name, h]) => `<button style="background:${h}" title="${name}" aria-label="${name}" aria-pressed="${h === colour}" data-h="${h}"></button>`).join(''));
+$('dyes').onclick = e => {
+  const h = e.target.dataset?.h; if (!h) return;
+  colour = h; try { localStorage.setItem('rebind.puffy', h); } catch { /* not remembered */ }
+  $('dyes').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.h === h));
+  paint(); keys();
+};
+paint(); keys();
+
+// ---- every row explains itself -----------------------------------------------------------------------------
+const FEEL = ['neither', 'warm', 'cold'], PACE = ['calm', 'tense'], CHIP = [yarn.C.hex, yarn.D.hex, yarn.A.hex];
+const WORKED = { A: 'four reverse loops', B: 'three reverse loops and one normal', C: 'two reverse loops and two normal', D: 'one reverse loop and three normal', E: 'four normal loops' };
+const rule = k => `<div class="rule"><b>Rule ${k}.</b> ${esc(P.rules[k])}</div>`;
+const boxes = cells => `<span class="boxes">${[...cells].map(s => `<span class="${s === 'p' ? 'p' : s === 'k' ? '' : 'x'}">${s === 'p' ? '•' : s === 'X' ? '&gt;' : s === 'x' ? '&lt;' : ''}</span>`).join('')}</span>`;
+const sum = (t, unit) => `${t.n} ${unit}: ${t.warm} warm, ${t.cold} cold, ${t.neither} neither. (${t.warm} − ${t.cold}) ÷ ${t.n} = ${((t.warm - t.cold) / t.n).toFixed(2).replace('-', '−')}, which is class ${t.yarn}.`;
+function why(r) {
+  const a = r.tally.a, b = r.tally.b, t = r.tally.both;
+  if (!t) return `<h3>Why these loops</h3><p>The reader gave no usable labels here, so all eight loops are reverse loops.</p>${rule('P5')}`;
+  let h = '<h3>Why these loops</h3>';
+  if (b) h += `<p><b>First reading.</b> ${sum(a, 'sentences')}</p><p><b>Second reading.</b> ${sum(b, 'sentences')}</p><p><b>Both together.</b> ${sum(t, 'labels')}</p>
+    <p>${r.unsure ? `Counted apart, the readings pick classes ${a.yarn} and ${b.yarn}, which are ${r.gap} apart. That is too far, so all eight loops are reverse loops and the row makes no claim.`
+      : `Counted apart, the readings pick ${r.gap === 0 ? `class ${a.yarn} too` : `neighbours, ${a.yarn} and ${b.yarn}`}, so loops 2 to 5 are worked as class ${r.yarn}: ${WORKED[r.yarn]}.`}</p>`;
+  else h += `<p>${sum(a, 'sentences')}${r.unsure ? '' : ` Loops 2 to 5 are worked as class ${r.yarn}: ${WORKED[r.yarn]}.`}</p>`;
+  if (r.margin) h += `<p>Change ${r.margin === 1 ? 'one label' : r.margin + ' labels'} out of ${t.n} and the count would pick a different class.</p>`;
+  h += rule('P2') + rule('P5');
+  const need = Math.round(K.ridged_share * 100);
+  h += `<h3>Why the pair is ${r.unsure ? 'not shown' : r.tense ? 'crossed' : 'straight'}</h3><p>${t.tense} of ${t.n} ${b ? 'labels' : 'sentences'} are tense (${Math.round(100 * t.tense / t.n)} in 100). A crossing needs ${need} in 100${r.unsure ? ', but this row makes no claim, so loops 6 and 7 are reverse loops like the rest' : `, so loops 6 and 7 are ${r.tense ? 'crossed' : 'two normal loops'}`}.</p>${rule('P3')}`;
+  return h;
+}
+function unravel(p) {
+  const L = B.sentences, [s0, sn] = p.sentences;
+  let h = '';
+  for (let i = s0; i < s0 + sn; i++) {
+    const f = L.feeling[i], pc = L.pace[i], fb = L.feeling_b?.[i] ?? -1, pb = L.pace_b?.[i] ?? -1;
+    const text = TXT.passages[p.id].slice(L.start[i] - p.start, L.end[i] - p.start).replace(/\s*\r?\n\s*/g, ' ');
+    h += `<blockquote style="border-left:5px solid ${f >= 0 ? CHIP[f] : '#efe6d0'}">${esc(text)}<br><span class="fact">${f >= 0 ? `${FEEL[f]}, ${PACE[pc]}` : 'no label'}${fb >= 0 && (fb !== f || pb !== pc) ? ` · second reading: ${FEEL[fb]}, ${PACE[pb]}` : ''}</span></blockquote>`;
+  }
+  return h;
+}
+const span = r => (r.pairs[0] === r.pairs[1] ? `Passage ${r.pairs[0]}` : `Passages ${r.pairs[0]} ${r.pairs[1] - r.pairs[0] === 1 ? 'and' : 'to'} ${r.pairs[1]}`);
+function explain(n) {
+  const r = P.rows[n]; picked = n; paint();
+  $('panel-body').innerHTML = `<h2>${CW} ${r.chapter_label}</h2>
+    <p class="kicker">Row ${r.n} of ${S.rows}. ${span(r)} of ${K.rows.length}${r.passages.length > 1 ? ', counted together' : ''}.</p>
+    <div class="how">Row ${r.n}: ${esc(r.text)}.<br>${boxes(r.cells)}</div>
+    ${why(r)}
+    <h3>Unravel this row</h3><p>Every sentence the row was counted from, with the label the reader gave it.</p>`
+    + r.passages.map((id, i) => `<p class="fact">Passage ${r.pairs[0] + i} <a href="./?book=${BOOK}&row=${r.pairs[0] + i}">in the coloured scarf</a></p>${unravel(passage[id])}`).join('');
+  $('panel').classList.remove('idle'); $('panel').scrollTop = 0;
+}
+function idle() {
+  picked = -1; paint(); $('panel').classList.add('idle');
+  $('panel-body').innerHTML = `<h2>Pick a row</h2><p>Each row of loops is ${P.group > 1 ? `up to ${P.group} neighbouring passages` : 'one passage'} of the book. Click one to see the count that chose its loops and every sentence behind it.</p>
+    <p class="fact">The first row is at the top, as the scarf hangs from its cast-on edge.</p>`;
+}
+const at = e => { const b = cv.getBoundingClientRect(), k = cv.dataset.w / b.width, n = Math.floor(((e.clientY - b.top) * k - PAD - 22) / CH); return n >= 0 && n < P.rows.length && (e.clientX - b.left) * k > GUT - 8 ? n : -1; };
+const tip = $('tip');
+cv.addEventListener('pointermove', e => {
+  const n = at(e); if (n !== hover) { hover = n; paint(); }
+  tip.hidden = n < 0 || e.pointerType === 'touch';
+  if (n >= 0) { const r = P.rows[n]; tip.textContent = `Row ${r.n} · ${CW} ${r.chapter_label} · ${r.unsure ? 'no claim: the readings disagree' : `class ${r.yarn}${r.tense ? ', tense' : ''}`}`; tip.style.left = Math.max(120, Math.min(innerWidth - 120, e.clientX)) + 'px'; tip.style.top = e.clientY + 'px'; }
+});
+cv.addEventListener('pointerleave', () => { hover = -1; tip.hidden = true; paint(); });
+cv.addEventListener('click', e => { const n = at(e); if (n >= 0) explain(n); });
+$('close').onclick = idle;
+idle();
+if (Q.has('row')) { const n = parseInt(Q.get('row'), 10) - 1; if (P.rows[n]) explain(n); }
+
+// ---- the pattern, to print ---------------------------------------------------------------------------------
+$('materials').innerHTML = [
+  ['Yarn', `${esc(P.gauge.yarn)}. About ${S.balls} balls; buy one more than that.`],
+  ['Tools', 'Your fingers. Scissors for the two ends.'],
+  ['Size', `${P.loops} loops wide and ${S.rows} rows long: about ${S.width_cm} × ${S.length_cm} cm (${S.width_in} × ${S.length_in} in).`],
+  ['Gauge', esc(P.gauge.note)],
+  ['In it', `${S.rows - S.unsure} rows that say something, ${S.crossed} of them with a crossed pair, and ${S.unsure} rows that make no claim.`],
+  ['To begin', `Cut open the first few loops for a tail. Lay ${P.loops} loops side by side, not twisted: that is the cast-on. Row 1 is worked into them.`],
+  ['To finish', 'Bind off: work two loops, pull the second through the first, work one more, pull it through, and so on to the end. Cut, open the last few loops and pull the tail through.'],
+].map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+$('rules').innerHTML = Object.entries(P.rules).map(([, v]) => `<li>${esc(v)}</li>`).join('');
+const half = Math.ceil(P.rows.length / 2);
+$('charts').innerHTML = [P.rows.slice(0, half), P.rows.slice(half)].map(part => `<table class="chart"><tr class="head"><td class="m"></td>${[1, 2, 3, 4, 5, 6, 7, 8].map(i => `<td>${i}</td>`).join('')}<td class="m r"></td></tr>`
+  + part.map(r => `<tr><td class="m">${r.starts_chapter ? `${CW} ${r.chapter_label} · ` : ''}${r.n}</td>${[...r.cells].map(s => `<td class="${s === 'p' ? 'p' : s === 'k' ? '' : 'x'}">${s === 'p' ? '•' : s === 'X' ? '&gt;' : s === 'x' ? '&lt;' : ''}</td>`).join('')}<td class="m r">${r.unsure ? 'no claim' : r.yarn}</td></tr>`).join('') + '</table>').join('');
+$('written').innerHTML = P.rows.map(r => `<div>${r.starts_chapter ? `<b>${CW} ${r.chapter_label}.</b> ` : ''}Row ${r.n}: ${esc(r.text)}. <i>${span(r).toLowerCase()}</i></div>`).join('');
+window.puffy = { K, P, explain };
+</script>
+</body>
+</html>

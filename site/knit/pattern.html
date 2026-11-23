@@ -47,7 +47,7 @@
 <main>
   <h1 id="title">Pride and Prejudice</h1>
   <p class="sub" id="sub"></p>
-  <div class="bar"><a href="./">See it knitted</a><button onclick="print()">Print</button><a href="#" id="mode"></a><label class="dye">Colours <select id="palette"></select></label></div>
+  <div class="bar"><a href="./">See it knitted</a><button onclick="print()">Print</button><a href="#" id="mode"></a><a href="puffy.html" id="puffy">In Alize Puffy</a><label class="dye">Colours <select id="palette"></select></label></div>
 
   <h2>What you need</h2>
   <table class="plain" id="yarns"></table>
@@ -84,7 +84,7 @@ if (TX) document.getElementById('palette').closest('label').remove(); else picke
 if (TX) document.getElementById('dye').textContent = TX.yarn.note;
 else if (K.palette) document.getElementById('dye').textContent = `Colours: “${K.palette.name}”${K.palette.borrowed ? `, borrowed from another book` : `, after ${K.palette.from}`}. ${K.palette.note} Any five yarns that run from a cool colour to a warm one will do, with a sixth left undyed.`;
 document.querySelector('.bar a').href = `./?book=${BOOK}${TX ? '&mode=texture' : ''}`;
-document.getElementById('mode').href = `?book=${BOOK}${TX ? '' : '&mode=texture'}`; document.getElementById('mode').textContent = TX ? 'The coloured version' : 'The one-yarn version';
+document.getElementById('mode').href = `?book=${BOOK}${TX ? '' : '&mode=texture'}`; document.getElementById('puffy').href = `puffy.html?book=${BOOK}`; document.getElementById('mode').textContent = TX ? 'The coloured version' : 'The one-yarn version';
 const $ = id => document.getElementById(id), esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 const yarn = Object.fromEntries(K.yarns.map(y => [y.key, y])), S = TX ? { ...K.size, ...TX.size } : K.size, G = K.gauge, CAST = TX ? TX.cast_on : K.cast_on;
 const RULES = TX ? { ...K.rules, ...TX.rules } : K.rules, ABBR = TX ? { ...K.abbreviations, ...TX.abbreviations } : K.abbreviations;
